@@ -15,7 +15,9 @@ class TickerOrderViewController: UIViewController {
     let segmentedControlContainerView: UIView = UIView()
     var segmentedControl: UISegmentedControl  = UISegmentedControl()
     let underlineView: UIView                 = UIView()
-    
+
+    var hsrLogoImageView: UIImageView = UIImageView()
+
     let pickerView: UIPickerView     = UIPickerView()
     let customToolbar: UIToolbar     = UIToolbar   ()
     let pickerStackView: UIStackView = UIStackView ()
@@ -158,7 +160,24 @@ class TickerOrderViewController: UIViewController {
         // Set up barButton's tintColor
         speakerBarButton.tintColor = .white
         accountBarButton.tintColor = .white
-        
+
+
+        // hsrLogo Set up
+        let hsrlogoImage = UIImage(named: "hsrLogo") //Your logo url here
+        hsrLogoImageView = UIImageView(image: hsrlogoImage)
+
+        let bannerWidth  = navigationController?.navigationBar.frame.size.width
+        let bannerHeight = navigationController?.navigationBar.frame.size.height
+
+        let bannerX = bannerWidth! / 2 - (hsrlogoImage?.size.width)! / 2
+        let bannerY = bannerHeight! / 2 - (hsrlogoImage?.size.height)! / 2
+
+        hsrLogoImageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
+
+        hsrLogoImageView.contentMode = .scaleAspectFit
+
+        self.navigationItem.titleView = hsrLogoImageView
+
         // Set up navigationItem's rightBarButton
         self.navigationItem.rightBarButtonItems = [accountBarButton, fixedSpace, speakerBarButton]
         print("customNavigationBar")

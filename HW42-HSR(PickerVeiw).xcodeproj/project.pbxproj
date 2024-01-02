@@ -121,8 +121,7 @@
 		D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */ = {
 			isa = PBXGroup;
 			children = (
-				D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */,
-				D38C05932B42D6E50098E0B9 /* StationName+Model.swift */,
+				D38C061A2B43E70D0098E0B9 /* Model */,
 				D3407D2B2B39A49800D9DFA2 /* Main.storyboard */,
 				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
 				D3407D622B39DC0400D9DFA2 /* Supporting Files */,
@@ -196,6 +195,15 @@
 				D377B5C22B3C17A500392B26 /* ServiceSelectionTableViewCell.swift */,
 			);
 			path = ServiceSelectionTableViewCell;
+			sourceTree = "<group>";
+		};
+		D38C061A2B43E70D0098E0B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */,
+				D38C05932B42D6E50098E0B9 /* StationName+Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */ = {

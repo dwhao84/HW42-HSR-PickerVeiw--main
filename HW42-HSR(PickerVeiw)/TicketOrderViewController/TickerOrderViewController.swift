@@ -9,8 +9,9 @@ import UIKit
 
 class TickerOrderViewController: UIViewController {
     
-    let backgroundView = UIView()
+    let backgroundView: UIView       = UIView()
     let stackView:       UIStackView = UIStackView()
+    let backgroundShadowView: UIView = UIView()
     
     let segmentedControlContainerView: UIView = UIView()
     var segmentedControl: UISegmentedControl  = UISegmentedControl()
@@ -336,7 +337,8 @@ class TickerOrderViewController: UIViewController {
         backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         backgroundView.layer.borderColor  = UIColor.lightGray.cgColor
-        backgroundView.layer.borderWidth  = 0.3
+        backgroundView.layer.borderWidth  = 0.2
+        backgroundView.dropShadow()
         
         backgroundView.widthAnchor.constraint(equalToConstant:  395).isActive = true
         backgroundView.heightAnchor.constraint(equalToConstant: 610).isActive = true

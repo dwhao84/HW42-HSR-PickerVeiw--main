@@ -24,6 +24,7 @@
 		D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */; };
 		D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05932B42D6E50098E0B9 /* StationName+Model.swift */; };
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
+		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
 		EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
+		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 				D377B5C62B3C194C00392B26 /* ServiceSelectionTableViewCell */,
 				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
 				D3407D572B39A55400D9DFA2 /* TicketOrderViewController */,
+				EB83C6F62B44747A00C78859 /* Extension */,
 			);
 			path = "HW42-HSR(PickerVeiw)";
 			sourceTree = "<group>";
@@ -204,6 +207,14 @@
 				D38C05932B42D6E50098E0B9 /* StationName+Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EB83C6F62B44747A00C78859 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EB83C6F42B4473B100C78859 /* UIView+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */ = {
@@ -352,6 +363,7 @@
 			files = (
 				D377B5C42B3C17A500392B26 /* ServiceSelectionTableViewCell.swift in Sources */,
 				D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */,
+				EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */,
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,

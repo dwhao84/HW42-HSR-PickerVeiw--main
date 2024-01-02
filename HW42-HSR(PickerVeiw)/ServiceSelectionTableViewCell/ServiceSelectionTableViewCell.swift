@@ -20,13 +20,13 @@ class ServiceSelectionTableViewCell: UITableViewCell {
 
         serviceStatusTitleLabel.text          = "座位偏好"
         serviceStatusTitleLabel.textAlignment = .left
-        serviceStatusTitleLabel.textColor     = .darkGray
+        serviceStatusTitleLabel.textColor     = .lightGray
         serviceStatusTitleLabel.font          = UIFont.systemFont(ofSize: 15)
 
         statusLabel.text                      = "無偏好"
         statusLabel.textAlignment             = .left
         statusLabel.textColor                 = .black
-        statusLabel.font                      = UIFont.boldSystemFont(ofSize: 17)
+        statusLabel.font                      = UIFont.boldSystemFont(ofSize: 16)
         
         // drawLine for tableViewCell
         drawLineFromPoint(start: CGPoint(x: 40, y: 75), toPoint: CGPoint(x: 365, y: 75), ofColor: UIColor.systemGray4, inView: self.contentView)

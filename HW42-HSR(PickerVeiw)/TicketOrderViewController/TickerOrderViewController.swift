@@ -28,7 +28,7 @@ class TickerOrderViewController: UIViewController {
     let searchTableView:         UITableView = UITableView()
     
     // Define Common color
-    static let orangeBrandColor: UIColor        = UIColor(red: 222/255, green: 83/255, blue: 9/255, alpha: 1)
+    static let orangeBrandColor: UIColor       = UIColor(red: 222/255, green: 83/255, blue: 9/255, alpha: 1)
     static let navigationBarColor: UIColor     = UIColor(red: 53/255, green: 56/255, blue: 61/255, alpha: 1)
     
     enum Constants {
@@ -72,17 +72,20 @@ class TickerOrderViewController: UIViewController {
         chooseStationTableView.rowHeight = 145
         serviceTableView.rowHeight       = 75
         searchTableView.rowHeight        = 120
+
+        // add roundCorner by using maskedCorners
+        trainStatusTableView.layer.cornerRadius = 10
+        trainStatusTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        //        trainStatusTableView.backgroundColor   = .red
-        //        chooseStationTableView.backgroundColor = .black
-        //        serviceTableView.backgroundColor       = .cyan
-        //        searchTableView.backgroundColor        = .blue
+        searchTableView.layer.cornerRadius = 10
+        searchTableView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
+        // Set Layout Constraints
         trainStatusTableView.translatesAutoresizingMaskIntoConstraints   = false
         chooseStationTableView.translatesAutoresizingMaskIntoConstraints = false
         serviceTableView.translatesAutoresizingMaskIntoConstraints       = false
         searchTableView.translatesAutoresizingMaskIntoConstraints        = false
-        
+                
         NSLayoutConstraint.activate([
             // trainStatusTableView
             trainStatusTableView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
@@ -161,7 +164,6 @@ class TickerOrderViewController: UIViewController {
         speakerBarButton.tintColor = .white
         accountBarButton.tintColor = .white
 
-
         // hsrLogo Set up
         let hsrlogoImage = UIImage(named: "hsrLogo") //Your logo url here
         hsrLogoImageView = UIImageView(image: hsrlogoImage)
@@ -169,27 +171,31 @@ class TickerOrderViewController: UIViewController {
         let bannerWidth  = navigationController?.navigationBar.frame.size.width
         let bannerHeight = navigationController?.navigationBar.frame.size.height
 
-        let bannerX = bannerWidth! / 2 - (hsrlogoImage?.size.width)! / 2
-        let bannerY = bannerHeight! / 2 - (hsrlogoImage?.size.height)! / 2
+        let bannerX = (bannerWidth! / 2  - (hsrlogoImage?.size.width)!) / 2
+        let bannerY = (bannerHeight! / 2 - (hsrlogoImage?.size.height)!) / 2
 
-        hsrLogoImageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
-
+        hsrLogoImageView.frame       = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
         hsrLogoImageView.contentMode = .scaleAspectFit
-
-        self.navigationItem.titleView = hsrLogoImageView
 
         // Set up navigationItem's rightBarButton
         self.navigationItem.rightBarButtonItems = [accountBarButton, fixedSpace, speakerBarButton]
-        print("customNavigationBar")
+        // Set up navigationItem's titleView
+        self.navigationItem.titleView           = hsrLogoImageView
+
+        NSLayoutConstraint.activate([
+            hsrLogoImageView.centerXAnchor.constraint(equalTo: self.navigationItem.titleView!.centerXAnchor),
+            hsrLogoImageView.centerYAnchor.constraint(equalTo: self.navigationItem.titleView!.centerYAnchor)
+        ])
     }
     
     func configurePickerView () {
         pickerView.delegate   = self
         pickerView.dataSource = self
+        
         pickerView.backgroundColor = UIColor.white
         pickerView.selectedRow(inComponent: 0)
         pickerView.tintColor = TickerOrderViewController.orangeBrandColor
-        
+
         // custom UIBarButtonItem
         let switchStationBarButtton: UIBarButtonItem = UIBarButtonItem(title: "起始站互換", style: .plain, target: self, action: #selector(switchButtonTapped))
         let doneBarButton: UIBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(doneButtonTapped))
@@ -200,8 +206,16 @@ class TickerOrderViewController: UIViewController {
         
         // customToolbar
         customToolbar.barStyle = UIBarStyle.default
-        customToolbar.backgroundColor = .white
+//        customToolbar.backgroundColor = .white
         customToolbar.items = [switchStationBarButtton, flexibleSpace, doneBarButton]
+        
+        customToolbar.barTintColor = .white
+        customToolbar.layer.cornerRadius  = 10
+//        customToolbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        customToolbar.clipsToBounds       = true
+//        customToolbar.layer.borderColor   = UIColor.systemGray3.cgColor
+//        customToolbar.layer.borderWidth   = 0.3
+
         constraintPickerView()
     }
     
@@ -217,7 +231,7 @@ class TickerOrderViewController: UIViewController {
         
         pickerStackView.addArrangedSubview(customToolbar)
         pickerStackView.addArrangedSubview(pickerView)
-        
+                
         pickerStackView.axis    = .vertical
         pickerStackView.spacing = 0
         pickerStackView.distribution = .equalSpacing
@@ -279,7 +293,6 @@ class TickerOrderViewController: UIViewController {
         underlineView.backgroundColor    = TickerOrderViewController.orangeBrandColor
         underlineView.layer.cornerRadius = Constants.underlineViewHeight / 2
         
-        
         view.addSubview(segmentedControlContainerView)
         segmentedControlContainerView.addSubview(segmentedControl)
         view.addSubview(underlineView)
@@ -304,7 +317,7 @@ class TickerOrderViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             underlineView.bottomAnchor.constraint(equalTo: segmentedControlContainerView.bottomAnchor),
-            underlineView.leadingAnchor.constraint(equalTo: segmentedControlContainerView.leadingAnchor, constant: 50),
+            underlineView.leadingAnchor.constraint(equalTo: segmentedControlContainerView.leadingAnchor, constant: 60),
             underlineView.heightAnchor.constraint(equalToConstant: Constants.underlineViewHeight),
             underlineView.widthAnchor.constraint(equalToConstant:  Constants.underlineViewWidth)
         ])
@@ -319,9 +332,8 @@ class TickerOrderViewController: UIViewController {
     }
     
     func constraintBackgroundView () {
-        backgroundView.backgroundColor    = .white
         backgroundView.layer.cornerRadius = 10
-        backgroundView.clipsToBounds      = false
+        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         backgroundView.layer.borderColor  = UIColor.lightGray.cgColor
         backgroundView.layer.borderWidth  = 0.3
@@ -340,7 +352,9 @@ class TickerOrderViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 62),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
         ])
     }
     

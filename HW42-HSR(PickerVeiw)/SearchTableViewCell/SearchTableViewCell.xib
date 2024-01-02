@@ -57,7 +57,7 @@
                 <outlet property="savedItinerariesButton" destination="RGQ-if-D4A" id="i5P-aa-buD"/>
                 <outlet property="searchButton" destination="u4s-a1-mjG" id="2bY-2R-HGr"/>
             </connections>
-            <point key="canvasLocation" x="187" y="-21"/>
+            <point key="canvasLocation" x="185.74766355140187" y="-21.382289416846653"/>
         </tableViewCell>
     </objects>
     <resources>

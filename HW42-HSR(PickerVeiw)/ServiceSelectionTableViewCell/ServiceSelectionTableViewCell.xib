@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5zw-LV-zZN">
-                        <rect key="frame" x="10" y="15" width="143" height="45"/>
+                        <rect key="frame" x="35" y="15" width="143" height="45"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="35L-Lg-Io7">
                                 <rect key="frame" x="0.0" y="5" width="35" height="35"/>
@@ -72,7 +72,7 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="5zw-LV-zZN" firstAttribute="leading" secondItem="zNK-Wf-Auq" secondAttribute="leading" constant="10" id="M0q-fE-prl"/>
+                    <constraint firstItem="5zw-LV-zZN" firstAttribute="leading" secondItem="zNK-Wf-Auq" secondAttribute="leading" constant="35" id="M0q-fE-prl"/>
                     <constraint firstItem="5zw-LV-zZN" firstAttribute="centerY" secondItem="zNK-Wf-Auq" secondAttribute="centerY" id="c0q-Z1-PtL"/>
                 </constraints>
             </tableViewCellContentView>
@@ -81,7 +81,7 @@
                 <outlet property="serviceStatusTitleLabel" destination="3i0-vu-Mag" id="fJ5-iJ-j53"/>
                 <outlet property="statusLabel" destination="7eK-qg-kv4" id="yrs-cM-mu9"/>
             </connections>
-            <point key="canvasLocation" x="-219" y="27"/>
+            <point key="canvasLocation" x="-219.08396946564883" y="26.408450704225352"/>
         </tableViewCell>
     </objects>
     <resources>

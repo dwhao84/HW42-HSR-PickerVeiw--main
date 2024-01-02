@@ -27,6 +27,23 @@ class ServiceSelectionTableViewCell: UITableViewCell {
         statusLabel.textAlignment             = .left
         statusLabel.textColor                 = .black
         statusLabel.font                      = UIFont.boldSystemFont(ofSize: 17)
+        
+        // drawLine for tableViewCell
+        drawLineFromPoint(start: CGPoint(x: 40, y: 75), toPoint: CGPoint(x: 365, y: 75), ofColor: UIColor.systemGray4, inView: self.contentView)
+        
+        func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
+            //design the path
+            let path = UIBezierPath()
+            path.move(to: start)
+            path.addLine(to: end)
+            //design path in layer
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.path = path.cgPath
+            shapeLayer.strokeColor = lineColor.cgColor
+            shapeLayer.lineWidth = 1.0
+
+            view.layer.addSublayer(shapeLayer)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

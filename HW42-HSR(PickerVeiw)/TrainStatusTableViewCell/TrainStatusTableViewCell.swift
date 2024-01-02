@@ -13,10 +13,27 @@ class TrainStatusTableViewCell: UITableViewCell {
 
     @IBOutlet weak var statusButton: UIButton!
 
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
+        // drawLine for tableViewCell
+        drawLineFromPoint(start: CGPoint(x: 0, y: 45), toPoint: CGPoint(x: 405, y: 45), ofColor: UIColor.systemGray4, inView: self.contentView)
+        
+        func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
+            //design the path
+            let path = UIBezierPath()
+            path.move(to: start)
+            path.addLine(to: end)
+            //design path in layer
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.path = path.cgPath
+            shapeLayer.strokeColor = lineColor.cgColor
+            shapeLayer.lineWidth = 1.0
+
+            view.layer.addSublayer(shapeLayer)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

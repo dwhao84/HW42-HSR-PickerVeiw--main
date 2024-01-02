@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceSelectionTableViewCell" rowHeight="75" id="ugS-Qf-ayV" customClass="ServiceSelectionTableViewCell" customModule="HW42_HSR_PickerVeiw_" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ugS-Qf-ayV" id="zNK-Wf-Auq" customClass="ServiceStautsTableViewCell" customModule="HW42_HSR_PickerVeiw_" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5zw-LV-zZN">
+                        <rect key="frame" x="10" y="15" width="143" height="45"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="35L-Lg-Io7">
+                                <rect key="frame" x="0.0" y="5" width="35" height="35"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dDz-SW-BTc">
+                                        <rect key="frame" x="0.0" y="1" width="35" height="32"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="Nzb-bt-47m"/>
+                                            <constraint firstAttribute="height" constant="35" id="xSa-Fa-uqp"/>
+                                            <constraint firstAttribute="width" secondItem="dDz-SW-BTc" secondAttribute="height" id="zbC-6a-Wxp"/>
+                                        </constraints>
+                                        <imageReference key="image" image="carseat.right.massage" catalog="system" symbolScale="small"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="PvM-at-Au6">
+                                <rect key="frame" x="43" y="0.0" width="100" height="45"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="gg3-jg-t15">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="座位偏好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3i0-vu-Mag">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="3i0-vu-Mag" secondAttribute="height" multiplier="65:18" id="4uV-t3-buN"/>
+                                                    <constraint firstAttribute="width" constant="65" id="7cY-v9-HVU"/>
+                                                    <constraint firstAttribute="height" constant="18" id="QHy-VK-237"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="無偏好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-qg-kv4">
+                                                <rect key="frame" x="0.0" y="25" width="100" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="7eK-qg-kv4" secondAttribute="height" multiplier="100:20" id="EvQ-KD-Aaz"/>
+                                                    <constraint firstAttribute="height" constant="20" id="dBz-9t-52o"/>
+                                                    <constraint firstAttribute="width" constant="100" id="lcX-OU-nnh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="5zw-LV-zZN" firstAttribute="leading" secondItem="zNK-Wf-Auq" secondAttribute="leading" constant="10" id="M0q-fE-prl"/>
+                    <constraint firstItem="5zw-LV-zZN" firstAttribute="centerY" secondItem="zNK-Wf-Auq" secondAttribute="centerY" id="c0q-Z1-PtL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="serviceImageView" destination="dDz-SW-BTc" id="0Xe-ie-DTv"/>
+                <outlet property="serviceStatusTitleLabel" destination="3i0-vu-Mag" id="fJ5-iJ-j53"/>
+                <outlet property="statusLabel" destination="7eK-qg-kv4" id="yrs-cM-mu9"/>
+            </connections>
+            <point key="canvasLocation" x="-219" y="27"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="carseat.right.massage" catalog="system" width="128" height="118"/>
+    </resources>
+</document>

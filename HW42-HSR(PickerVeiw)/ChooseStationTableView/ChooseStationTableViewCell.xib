@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChooseStationTableViewCell" rowHeight="145" id="KGk-i7-Jjw" customClass="ChooseStationTableViewCell" customModule="HW42_HSR_PickerVeiw_" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="145"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="145"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Z6V-GB-xdh">
+                        <rect key="frame" x="12" y="20" width="371" height="102"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="256" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-Ow-i2Y">
+                                <rect key="frame" x="17.666666666666657" y="0.0" width="336" height="16"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="起程站" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiU-Vc-Xra">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Ag0-LF-S9C"/>
+                                            <constraint firstAttribute="height" constant="16" id="gtI-Sq-aEh"/>
+                                            <constraint firstAttribute="width" secondItem="aiU-Vc-Xra" secondAttribute="height" multiplier="5:2" id="vb7-VN-XBz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <color key="textColor" red="0.52156862749999999" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到達站" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiQ-sS-eBP">
+                                        <rect key="frame" x="296" y="0.0" width="40" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="FAb-Jj-6N2"/>
+                                            <constraint firstAttribute="width" secondItem="MiQ-sS-eBP" secondAttribute="height" multiplier="5:2" id="RbV-Me-sDM"/>
+                                            <constraint firstAttribute="height" constant="16" id="vjL-nQ-4AD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <color key="textColor" red="0.52156862749999999" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="RbE-hX-g0m">
+                                <rect key="frame" x="0.0" y="28" width="371" height="74"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="195" translatesAutoresizingMaskIntoConstraints="NO" id="Luu-FM-tF5">
+                                        <rect key="frame" x="0.0" y="0.0" width="371" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mf0-LV-dhQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="88" id="V6E-7Y-7Fv"/>
+                                                    <constraint firstAttribute="height" constant="30" id="pP0-jz-RRD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="嘉義">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2az-qN-9tY">
+                                                <rect key="frame" x="283" y="0.0" width="88" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="88" id="BBL-fH-hw4"/>
+                                                    <constraint firstAttribute="height" constant="30" id="L3I-c9-kZ7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="左營"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rD1-fI-RDP">
+                                        <rect key="frame" x="15.666666666666657" y="44" width="340" height="30"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8KN-OP-fdM">
+                                                <rect key="frame" x="0.0" y="0.0" width="340" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="340" id="FdV-SM-5le"/>
+                                                    <constraint firstAttribute="height" constant="30" id="h4G-CP-7do"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="單程票"/>
+                                                    <segment title="去回票"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Z6V-GB-xdh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5Ad-Ke-6kv"/>
+                    <constraint firstItem="Z6V-GB-xdh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="A72-7k-Lkm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="departureLabel" destination="MiQ-sS-eBP" id="vFY-gn-nmq"/>
+                <outlet property="departureStationButton" destination="2az-qN-9tY" id="REx-PS-v28"/>
+                <outlet property="fromLabel" destination="aiU-Vc-Xra" id="t1J-BF-ADI"/>
+                <outlet property="fromStationButton" destination="mf0-LV-dhQ" id="hQl-OT-0LJ"/>
+                <outlet property="ticketStatusSegmentendControl" destination="8KN-OP-fdM" id="9NC-GG-9BN"/>
+            </connections>
+            <point key="canvasLocation" x="104.58015267175573" y="-107.3943661971831"/>
+        </tableViewCell>
+    </objects>
+</document>

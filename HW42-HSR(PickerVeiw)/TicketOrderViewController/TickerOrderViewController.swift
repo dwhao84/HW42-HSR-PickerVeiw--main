@@ -539,7 +539,5 @@ extension TickerOrderViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return stationName.count
     }
-    
-    
 }
 

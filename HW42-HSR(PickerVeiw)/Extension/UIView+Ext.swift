@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 extension UIView {
     func dropShadow() {
@@ -16,5 +17,13 @@ extension UIView {
         layer.shadowRadius = 10
 //        layer.shouldRasterize = false
 //        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+    
+    func roundCorner(corners: UIRectCorner, radius: CGFloat) {
+        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        layer.mask = maskLayer
     }
 }

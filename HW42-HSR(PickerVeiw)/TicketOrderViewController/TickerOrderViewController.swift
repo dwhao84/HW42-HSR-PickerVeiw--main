@@ -26,16 +26,20 @@ class TickerOrderViewController: UIViewController {
     let customToolbar: UIToolbar     = UIToolbar   ()
     let pickerStackView: UIStackView = UIStackView ()
     
+    static let selectedStationName: String = ""
+    
     let trainStatusTableView:    UITableView = UITableView()
     let serviceTableView:        UITableView = UITableView()
     let chooseStationTableView : UITableView = UITableView()
     let searchTableView:         UITableView = UITableView()
     
+    var selectedServiceIndex: IndexPath?
+    var selectedIndex: Int?
     let controller = UIAlertController(
         title: "選擇座位偏好",
         message: "",
         preferredStyle: .actionSheet)
-    let names = ["靠窗優先", "靠走道優先", "無偏好"]
+    var names = ["靠窗優先", "靠走道優先", "無偏好"]
     
     // Define Common color
     static let orangeBrandColor: UIColor       = UIColor(red: 222/255, green: 83/255, blue: 9/255, alpha: 1)
@@ -215,7 +219,7 @@ class TickerOrderViewController: UIViewController {
         
         pickerView.addSubview(fromLocationLabel)
         pickerView.addSubview(departureLabel)
-
+        
         // custom UIBarButtonItem
         let switchStationBarButtton: UIBarButtonItem = UIBarButtonItem(title: "起始站互換", style: .plain, target: self, action: #selector(switchButtonTapped))
         let doneBarButton: UIBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(doneButtonTapped))
@@ -237,10 +241,7 @@ class TickerOrderViewController: UIViewController {
         customToolbar.clipsToBounds      = true
         
         constraintPickerView()
-        
-        // tapGesture
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTheView))
-        view.addGestureRecognizer(tapGesture)
+        tapTheViewController()
     }
     
     func constraintPickerView () {
@@ -273,17 +274,20 @@ class TickerOrderViewController: UIViewController {
     }
     
     func showingSeatSelectionAlertSheet () {
-        for name in names {
-            let action = UIAlertAction(title: name, style: .default) { action in
-                print(action.title!)
-            }
-            controller.addAction(action)
-        }
-        
-        controller.view.tintColor       = .black
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-        controller.addAction(cancelAction)
-        present(controller, animated: true)
+        controller.view.tintColor = .black
+          for (index, name) in names.enumerated() {
+              let action = UIAlertAction(title: name, style: .default) { [weak self] action in
+                  self?.selectedIndex = index
+                  // Update and reload the specific cell in serviceTableView
+                  if let selectedServiceIndex = self?.selectedServiceIndex {
+                      self?.serviceTableView.reloadRows(at: [selectedServiceIndex], with: .automatic)
+                  }
+              }
+              controller.addAction(action)
+          }
+          let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+          controller.addAction(cancelAction)
+          present(controller, animated: true)
     }
     
     func configureSegmentedControlContainerView () {
@@ -382,6 +386,13 @@ class TickerOrderViewController: UIViewController {
         ])
     }
     
+    func tapTheViewController () {
+        // tapGesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTheView))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+
+    
     // MARK: - @objc function Action.
     // MARK: ChooseStationTableViewCell Action:
     @objc func showFromLocationPickerView (_ sender: UIButton) {
@@ -422,15 +433,17 @@ class TickerOrderViewController: UIViewController {
     //MARK: - PickerView switchStation
     @objc func switchButtonTapped (_ sender: UIButton) {
         print("switchButtonTapped")
+        
     }
     
     @objc func doneButtonTapped (_ sender: UIButton) {
-        pickerStackView.isHidden = true
+        pickerStackView.removeFromSuperview()
+        print("doneButtonTapped")
     }
     
     @objc func tapTheView (_ sender: UITapGestureRecognizer) {
-        pickerStackView.isHidden = true
-        print("tapTheView action")
+        pickerStackView.removeFromSuperview()
+        print("tapTheView")
     }
     
     //MARK: - segmentedControlTapped
@@ -471,15 +484,8 @@ extension TickerOrderViewController: UITableViewDataSource {
         if tableView == trainStatusTableView {
 
             let trainStatusTableViewCell = trainStatusTableView.dequeueReusableCell(withIdentifier: TrainStatusTableViewCell.identifier, for: indexPath) as! TrainStatusTableViewCell
-
             trainStatusTableViewCell.selectionStyle   = .none
 
-            if pickerStackView.isHidden == false {
-                trainStatusTableViewCell.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
-            } else {
-                trainStatusTableViewCell.backgroundColor = .white
-            }
-            
             return trainStatusTableViewCell
             
         } else if tableView == chooseStationTableView {
@@ -513,13 +519,17 @@ extension TickerOrderViewController: UITableViewDataSource {
             serviceSelectionTableViewCell.accessoryType = .disclosureIndicator
             
             serviceSelectionTableViewCell.serviceStatusTitleLabel.text = servicesData[indexPath.row].service
-            serviceSelectionTableViewCell.statusLabel.text             = servicesData[indexPath.row].subtitleService
             serviceSelectionTableViewCell.serviceImageView.image       = servicesData[indexPath.row].serviceIcon
+            serviceSelectionTableViewCell.statusLabel.text             = servicesData[indexPath.row].subtitleService
             
-            print("\(indexPath.row)")
-            
+            // Update the status label based on the selected index
+            if let selectedIndex = selectedIndex, selectedServiceIndex == indexPath {
+                      serviceSelectionTableViewCell.statusLabel.text = names[selectedIndex]
+                  } else {
+                // Default or previous value
+//                serviceSelectionTableViewCell.statusLabel.text = "無偏好"
+            }
             return serviceSelectionTableViewCell
-
         } else {
             print("Nothing")
         }
@@ -534,16 +544,17 @@ extension TickerOrderViewController: UITableViewDelegate {
         switch indexPath.row {
             case 0:
                 ridingTimeSelectionCellTapped ()
-                print("case \(indexPath.row)")
+                print("case\(indexPath.row)")
             case 1:
                 carriageSelectionCellTapped ()
-                print("case \(indexPath.row)")
+                print("case\(indexPath.row)")
             case 2:
                 numberOfPassengersCellTapped ()
-                print("case \(indexPath.row)")
+                print("case\(indexPath.row)")
             case 3:
+                selectedServiceIndex = indexPath
                 showingSeatSelectionAlertSheet()
-                print("case \(indexPath.row)")
+                print("case\(indexPath.row)")
             default:
                 break
         }
@@ -554,6 +565,7 @@ extension TickerOrderViewController: UITableViewDelegate {
 extension TickerOrderViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let row = stationName[row]
+        print(row)
         return row
     }
 }

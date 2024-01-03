@@ -19,6 +19,9 @@ class TickerOrderViewController: UIViewController {
 
     var hsrLogoImageView: UIImageView = UIImageView()
 
+    let fromLocationLabel: UILabel = UILabel()
+    let departureLabel: UILabel = UILabel()
+    
     let pickerView: UIPickerView     = UIPickerView()
     let customToolbar: UIToolbar     = UIToolbar   ()
     let pickerStackView: UIStackView = UIStackView ()
@@ -27,6 +30,12 @@ class TickerOrderViewController: UIViewController {
     let serviceTableView:        UITableView = UITableView()
     let chooseStationTableView : UITableView = UITableView()
     let searchTableView:         UITableView = UITableView()
+    
+    let controller = UIAlertController(
+        title: "選擇座位偏好",
+        message: "",
+        preferredStyle: .actionSheet)
+    let names = ["靠窗優先", "靠走道優先", "無偏好"]
     
     // Define Common color
     static let orangeBrandColor: UIColor       = UIColor(red: 222/255, green: 83/255, blue: 9/255, alpha: 1)
@@ -57,13 +66,10 @@ class TickerOrderViewController: UIViewController {
         setupDelegateAndDataSource ()
         customNavigationBar        ()
         configureSegmentedControlContainerView ()
-        
-        //        // tapGesture
-        //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTheView))
-        //        view.addGestureRecognizer(tapGesture)
     }
     
     func constraintTableView () {
+        backgroundView.backgroundColor = .white
         backgroundView.addSubview(trainStatusTableView)
         backgroundView.addSubview(chooseStationTableView)
         backgroundView.addSubview(serviceTableView)
@@ -196,6 +202,19 @@ class TickerOrderViewController: UIViewController {
         pickerView.backgroundColor = UIColor.white
         pickerView.selectedRow(inComponent: 0)
         pickerView.tintColor = TickerOrderViewController.orangeBrandColor
+        
+        fromLocationLabel.frame = CGRect(x: 90, y: 3, width: 60, height: 20)
+        fromLocationLabel.text      = "起程點"
+        fromLocationLabel.textColor = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+        fromLocationLabel.font      = UIFont.systemFont(ofSize: 12)
+        
+        departureLabel.frame = CGRect(x: 288, y: 3, width: 60, height: 20)
+        departureLabel.text      = "到達站"
+        departureLabel.textColor = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+        departureLabel.font      = UIFont.systemFont(ofSize: 12)
+        
+        pickerView.addSubview(fromLocationLabel)
+        pickerView.addSubview(departureLabel)
 
         // custom UIBarButtonItem
         let switchStationBarButtton: UIBarButtonItem = UIBarButtonItem(title: "起始站互換", style: .plain, target: self, action: #selector(switchButtonTapped))
@@ -207,17 +226,21 @@ class TickerOrderViewController: UIViewController {
         
         // customToolbar
         customToolbar.barStyle = UIBarStyle.default
-//        customToolbar.backgroundColor = .white
-        customToolbar.items = [switchStationBarButtton, flexibleSpace, doneBarButton]
+        customToolbar.backgroundColor = .white
+        customToolbar.setItems([switchStationBarButtton, flexibleSpace, doneBarButton], animated: true)
         
         customToolbar.barTintColor = .white
         customToolbar.layer.cornerRadius  = 10
-//        customToolbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        customToolbar.clipsToBounds       = true
-//        customToolbar.layer.borderColor   = UIColor.systemGray3.cgColor
-//        customToolbar.layer.borderWidth   = 0.3
-
+        customToolbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        customToolbar.layer.borderColor   = UIColor.systemGray3.cgColor
+        customToolbar.layer.borderWidth   = 0.2
+        customToolbar.clipsToBounds      = true
+        
         constraintPickerView()
+        
+        // tapGesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTheView))
+        view.addGestureRecognizer(tapGesture)
     }
     
     func constraintPickerView () {
@@ -250,14 +273,13 @@ class TickerOrderViewController: UIViewController {
     }
     
     func showingSeatSelectionAlertSheet () {
-        let controller = UIAlertController(title: "選擇座位偏好", message: "", preferredStyle: .actionSheet)
-        let names = ["靠窗優先", "靠走道優先", "無偏好"]
         for name in names {
             let action = UIAlertAction(title: name, style: .default) { action in
                 print(action.title!)
             }
             controller.addAction(action)
         }
+        
         controller.view.tintColor       = .black
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         controller.addAction(cancelAction)
@@ -355,8 +377,8 @@ class TickerOrderViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 62),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
         ])
     }
     
@@ -411,10 +433,10 @@ class TickerOrderViewController: UIViewController {
         print("tapTheView action")
     }
     
+    //MARK: - segmentedControlTapped
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
         print("segmentedControlTapped")
         changeSegmentedControlLinePosition()
-        
     }
     
     @objc func speakerBarButtonTapped () {
@@ -452,6 +474,12 @@ extension TickerOrderViewController: UITableViewDataSource {
 
             trainStatusTableViewCell.selectionStyle   = .none
 
+            if pickerStackView.isHidden == false {
+                trainStatusTableViewCell.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
+            } else {
+                trainStatusTableViewCell.backgroundColor = .white
+            }
+            
             return trainStatusTableViewCell
             
         } else if tableView == chooseStationTableView {
@@ -475,7 +503,6 @@ extension TickerOrderViewController: UITableViewDataSource {
             
             // addTarget
             searchTableViewCell.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-            
             
             return searchTableViewCell
 

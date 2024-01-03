@@ -13,7 +13,6 @@ class TrainStatusTableViewCell: UITableViewCell {
 
     @IBOutlet weak var statusButton: UIButton!
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +20,7 @@ class TrainStatusTableViewCell: UITableViewCell {
         // drawLine for tableViewCell
         drawLineFromPoint(start: CGPoint(x: 0, y: 45), toPoint: CGPoint(x: 405, y: 45), ofColor: UIColor.systemGray4, inView: self.contentView)
         
+        // Call function
         func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
             //design the path
             let path = UIBezierPath()

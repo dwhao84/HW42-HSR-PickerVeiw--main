@@ -19,6 +19,7 @@
 		D3407D602B39D17700D9DFA2 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D5E2B39D17700D9DFA2 /* SearchTableViewCell.xib */; };
 		D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */; };
 		D3407D832B39F06100D9DFA2 /* ChooseStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */; };
+		D35AF65E2B46A89C00C2D3CD /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35AF65D2B46A89C00C2D3CD /* LaunchScreenViewController.swift */; };
 		D377B5C42B3C17A500392B26 /* ServiceSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D377B5C22B3C17A500392B26 /* ServiceSelectionTableViewCell.swift */; };
 		D377B5C52B3C17A500392B26 /* ServiceSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D377B5C32B3C17A500392B26 /* ServiceSelectionTableViewCell.xib */; };
 		D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */; };
@@ -64,6 +65,7 @@
 		D3407D632B39E00200D9DFA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStationTableViewCell.swift; sourceTree = "<group>"; };
 		D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseStationTableViewCell.xib; sourceTree = "<group>"; };
+		D35AF65D2B46A89C00C2D3CD /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = "Supporting Files/LaunchScreenViewController.swift"; sourceTree = "<group>"; };
 		D377B5C22B3C17A500392B26 /* ServiceSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		D377B5C32B3C17A500392B26 /* ServiceSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */ = {
 			isa = PBXGroup;
 			children = (
+				D35AF65D2B46A89C00C2D3CD /* LaunchScreenViewController.swift */,
 				D38C061A2B43E70D0098E0B9 /* Model */,
 				D3407D2B2B39A49800D9DFA2 /* Main.storyboard */,
 				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
@@ -370,6 +373,7 @@
 				D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */,
 				D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */,
 				D3407D5F2B39D17700D9DFA2 /* SearchTableViewCell.swift in Sources */,
+				D35AF65E2B46A89C00C2D3CD /* LaunchScreenViewController.swift in Sources */,
 				EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

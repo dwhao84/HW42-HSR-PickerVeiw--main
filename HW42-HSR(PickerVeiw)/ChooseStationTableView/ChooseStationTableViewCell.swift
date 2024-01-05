@@ -19,7 +19,7 @@ class ChooseStationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ticketStatusSegmentendControl: UISegmentedControl!
     
-    static var fromStationButtonText: String = stationName[0]
+    static var fromStationButtonText: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +38,7 @@ class ChooseStationTableViewCell: UITableViewCell {
         departureLabel.font          = .systemFont(ofSize: 13)
         
         // fromLocationLabel
-        fromStationButton.setTitle(ChooseStationTableViewCell.fromStationButtonText, for: .normal)
+        fromStationButton.setTitle(stationName[0], for: .normal)
         fromStationButton.titleLabel?.textAlignment     = .center
         fromStationButton.tintColor                     = .black
         fromStationButton.isEnabled                     = true

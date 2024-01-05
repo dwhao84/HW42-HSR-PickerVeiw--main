@@ -19,9 +19,9 @@ class TickerOrderViewController: UIViewController {
 
     var hsrLogoImageView: UIImageView = UIImageView()
 
-    let fromLocationLabel: UILabel = UILabel()
-    let departureLabel: UILabel = UILabel()
-    
+    let fromLocationLabel: UILabel   = UILabel()
+    let departureLabel: UILabel      = UILabel()
+
     let pickerView: UIPickerView     = UIPickerView()
     let customToolbar: UIToolbar     = UIToolbar   ()
     let pickerStackView: UIStackView = UIStackView ()
@@ -276,14 +276,14 @@ class TickerOrderViewController: UIViewController {
     func showingSeatSelectionAlertSheet () {
         controller.view.tintColor = .black
           for (index, name) in names.enumerated() {
-              let action = UIAlertAction(title: name, style: .default) { [weak self] action in
+              _ = UIAlertAction(title: name, style: .default) { [weak self] action in
                   self?.selectedIndex = index
                   // Update and reload the specific cell in serviceTableView
                   if let selectedServiceIndex = self?.selectedServiceIndex {
                       self?.serviceTableView.reloadRows(at: [selectedServiceIndex], with: .automatic)
                   }
               }
-              controller.addAction(action)
+//              controller.addAction(action)
           }
           let cancelAction = UIAlertAction(title: "取消", style: .cancel)
           controller.addAction(cancelAction)
@@ -565,6 +565,8 @@ extension TickerOrderViewController: UITableViewDelegate {
 extension TickerOrderViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let row = stationName[row]
+        ChooseStationTableViewCell.fromStationButtonText = row
+        
         print(row)
         return row
     }

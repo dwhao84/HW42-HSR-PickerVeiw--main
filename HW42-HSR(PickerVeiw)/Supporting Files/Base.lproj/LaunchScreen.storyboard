@@ -14,13 +14,61 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch Screen BackgroundColor" translatesAutoresizingMaskIntoConstraints="NO" id="lCq-7i-6jI">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch Screen Middle logo" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-kT-cqd">
+                                <rect key="frame" x="98.666666666666686" y="383.66666666666669" width="196" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="JtG-dC-M5A"/>
+                                    <constraint firstAttribute="width" constant="196" id="vIR-Fm-pBr"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch Screen Top logo" translatesAutoresizingMaskIntoConstraints="NO" id="aGX-NH-HrM">
+                                <rect key="frame" x="124" y="94" width="145" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Hfg-ba-yYy"/>
+                                    <constraint firstAttribute="width" constant="145" id="PWe-8r-t2D"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taiwan High Speed Rail Corporation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iW3-Zf-YyH">
+                                <rect key="frame" x="81.666666666666686" y="708" width="230" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="4kK-NN-yer"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.20784313730000001" green="0.21960784310000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iW3-Zf-YyH" secondAttribute="bottom" constant="95" id="7Io-4y-1AI"/>
+                            <constraint firstItem="y2c-kT-cqd" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="BbF-VK-ESE"/>
+                            <constraint firstItem="lCq-7i-6jI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FRC-Km-YdV"/>
+                            <constraint firstItem="iW3-Zf-YyH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HS4-Dc-FVx"/>
+                            <constraint firstItem="y2c-kT-cqd" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UZZ-tL-p2q"/>
+                            <constraint firstItem="aGX-NH-HrM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="fZd-ql-lIi"/>
+                            <constraint firstItem="lCq-7i-6jI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gce-Kh-VzR"/>
+                            <constraint firstItem="y2c-kT-cqd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ko2-0h-9GR"/>
+                            <constraint firstAttribute="bottom" secondItem="lCq-7i-6jI" secondAttribute="bottom" id="upK-Tn-cqV"/>
+                            <constraint firstItem="y2c-kT-cqd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vwe-XG-EQg"/>
+                            <constraint firstItem="lCq-7i-6jI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xCx-tr-Us0"/>
+                            <constraint firstItem="aGX-NH-HrM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zSf-PE-owt"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187" y="351"/>
+            <point key="canvasLocation" x="-1779.3893129770991" y="-536.61971830985919"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Launch Screen BackgroundColor" width="912" height="1962"/>
+        <image name="Launch Screen Middle logo" width="438" height="103"/>
+        <image name="Launch Screen Top logo" width="272" height="168"/>
+    </resources>
 </document>

@@ -14,8 +14,8 @@ struct ServiceSelection {
 }
 
 let servicesData: [ServiceSelection] = [
-    ServiceSelection(service: "去程時間", subtitleService: "TEXT", serviceIcon:   UIImage(systemName: "calendar")),
+    ServiceSelection(service: "去程時間", subtitleService: "TEXT",   serviceIcon:   UIImage(systemName: "calendar")),
     ServiceSelection(service: "車廂種類", subtitleService: "標準車廂", serviceIcon: UIImage(systemName: "tram.fill")),
-    ServiceSelection(service: "乘客人數", subtitleService: "全票*1", serviceIcon:  UIImage(systemName: "person.2.fill")),
-    ServiceSelection(service: "座位偏好", subtitleService: "無偏好", serviceIcon:  UIImage(systemName: "carseat.right"))
+    ServiceSelection(service: "乘客人數", subtitleService: "全票*1",  serviceIcon:  UIImage(systemName: "person.2.fill")),
+    ServiceSelection(service: "座位偏好", subtitleService: "無偏好",  serviceIcon:  UIImage(systemName: "carseat.right"))
 ]

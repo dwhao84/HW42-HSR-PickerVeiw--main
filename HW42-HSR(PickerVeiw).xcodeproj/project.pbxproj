@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D252B39A49800D9DFA2 /* AppDelegate.swift */; };
 		D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D272B39A49800D9DFA2 /* SceneDelegate.swift */; };
-		D3407D2D2B39A49800D9DFA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3407D2B2B39A49800D9DFA2 /* Main.storyboard */; };
 		D3407D2F2B39A4AA00D9DFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3407D2E2B39A4AA00D9DFA2 /* Assets.xcassets */; };
 		D3407D322B39A4AA00D9DFA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3407D302B39A4AA00D9DFA2 /* LaunchScreen.storyboard */; };
 		D3407D3D2B39A4AA00D9DFA2 /* HW42_HSR_PickerVeiw_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D3C2B39A4AA00D9DFA2 /* HW42_HSR_PickerVeiw_Tests.swift */; };
@@ -50,7 +49,6 @@
 		D3407D222B39A49800D9DFA2 /* HW42-HSR(PickerVeiw).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW42-HSR(PickerVeiw).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3407D252B39A49800D9DFA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3407D272B39A49800D9DFA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D3407D2C2B39A49800D9DFA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3407D2E2B39A4AA00D9DFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3407D312B39A4AA00D9DFA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3407D332B39A4AA00D9DFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				D38C061A2B43E70D0098E0B9 /* Model */,
-				D3407D2B2B39A49800D9DFA2 /* Main.storyboard */,
 				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
 				D3407D622B39DC0400D9DFA2 /* Supporting Files */,
 				EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */,
@@ -335,7 +332,6 @@
 				EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */,
 				D3407D2F2B39A4AA00D9DFA2 /* Assets.xcassets in Resources */,
 				D377B5C52B3C17A500392B26 /* ServiceSelectionTableViewCell.xib in Resources */,
-				D3407D2D2B39A49800D9DFA2 /* Main.storyboard in Resources */,
 				D3407D602B39D17700D9DFA2 /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,14 +403,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D3407D2B2B39A49800D9DFA2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D3407D2C2B39A49800D9DFA2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D3407D302B39A4AA00D9DFA2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -68,6 +68,7 @@ class TickerOrderViewController: UIViewController {
         constraintTableView        ()
         registerForTableView       ()
         setupDelegateAndDataSource ()
+        addPickerViewDelegateAndDataSource ()
         customNavigationBar        ()
         configureSegmentedControlContainerView ()
     }
@@ -199,10 +200,13 @@ class TickerOrderViewController: UIViewController {
         ])
     }
     
-    func configurePickerView () {
+    func addPickerViewDelegateAndDataSource () {
         pickerView.delegate   = self
         pickerView.dataSource = self
-        
+    }
+    
+    
+    func configurePickerView () {
         pickerView.backgroundColor = UIColor.white
         pickerView.selectedRow(inComponent: 0)
         pickerView.tintColor = TickerOrderViewController.orangeBrandColor
@@ -241,7 +245,7 @@ class TickerOrderViewController: UIViewController {
         customToolbar.clipsToBounds      = true
         
         constraintPickerView()
-        tapTheViewController()
+//        tapTheViewController()
     }
     
     func constraintPickerView () {
@@ -582,3 +586,7 @@ extension TickerOrderViewController: UIPickerViewDataSource {
     }
 }
 
+
+#Preview {
+    UINavigationController(rootViewController: TickerOrderViewController())
+}

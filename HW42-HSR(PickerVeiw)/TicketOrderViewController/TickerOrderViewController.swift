@@ -25,9 +25,7 @@ class TickerOrderViewController: UIViewController {
     let pickerView: UIPickerView     = UIPickerView()
     let customToolbar: UIToolbar     = UIToolbar   ()
     let pickerStackView: UIStackView = UIStackView ()
-    
-    static let selectedStationName: String = ""
-    
+        
     let trainStatusTableView:    UITableView = UITableView()
     let serviceTableView:        UITableView = UITableView()
     let chooseStationTableView : UITableView = UITableView()
@@ -35,42 +33,47 @@ class TickerOrderViewController: UIViewController {
     
     var selectedServiceIndex: IndexPath?
     var selectedIndex: Int?
+    
     let controller = UIAlertController(
         title: "選擇座位偏好",
         message: "",
         preferredStyle: .actionSheet)
     var names = ["靠窗優先", "靠走道優先", "無偏好"]
     
-    // Define Common color
-    static let orangeBrandColor: UIColor       = UIColor(red: 222/255, green: 83/255, blue: 9/255, alpha: 1)
-    static let navigationBarColor: UIColor     = UIColor(red: 53/255, green: 56/255, blue: 61/255, alpha: 1)
+    //
+    var selectedFromStationRow:     String = ""
+    var selectedDepatureStationRow: String = ""
     
     enum Constants {
         static let segmentedControlHeight: CGFloat = 45
-        static let underlineViewColor    : UIColor = TickerOrderViewController.orangeBrandColor
+        static let underlineViewColor    : UIColor = SystemColor.orangeBrandColor
         static let underlineViewHeight   : CGFloat = 5
         static let underlineViewWidth    : CGFloat = UIScreen.main.bounds.width / 10
-    }
-    
-    enum SelectRowAt: Int {
-        case zero  = 0
-        case one   = 1
-        case two   = 2
-        case three = 3
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red: 243/255, green: 245/255, blue: 247/255, alpha: 1)
-        
+        setupUI ()
+
+    }
+    
+    func setupUI () {
+        // tableView
         constraintBackgroundView   ()
         constraintTableView        ()
-        registerForTableView       ()
-        setupDelegateAndDataSource ()
+        setupTableView       ()
+        
+        addTableViewDelegateAndDataSource ()
+        
+        // pickerView
         addPickerViewDelegateAndDataSource ()
         customNavigationBar        ()
+        
+        // segmentedControl
         configureSegmentedControlContainerView ()
+        constraintSegmentedControl()
     }
     
     func constraintTableView () {
@@ -125,7 +128,7 @@ class TickerOrderViewController: UIViewController {
         ])
     }
     
-    func registerForTableView () {
+    func setupTableView () {
         trainStatusTableView.register(TrainStatusTableViewCell.nib(),     forCellReuseIdentifier: TrainStatusTableViewCell.identifier)
         chooseStationTableView.register(ChooseStationTableViewCell.nib(), forCellReuseIdentifier: ChooseStationTableViewCell.identifier)
         serviceTableView.register(ServiceSelectionTableViewCell.nib(),    forCellReuseIdentifier: ServiceSelectionTableViewCell.identifier)
@@ -142,7 +145,7 @@ class TickerOrderViewController: UIViewController {
         searchTableView.separatorStyle         = .none
     }
     
-    func setupDelegateAndDataSource () {
+    func addTableViewDelegateAndDataSource () {
         trainStatusTableView.delegate     = self
         trainStatusTableView.dataSource   = self
         
@@ -159,13 +162,13 @@ class TickerOrderViewController: UIViewController {
     func customNavigationBar () {
         // scrollEdgeAppearance
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = TickerOrderViewController.navigationBarColor
+        appearance.backgroundColor = SystemColor.navigationBarColor
         self.navigationItem.scrollEdgeAppearance = appearance
         
         // Set up navigation item
-        self.navigationItem.titleView?.backgroundColor           = TickerOrderViewController.navigationBarColor
-        self.navigationController?.navigationBar.backgroundColor = TickerOrderViewController.navigationBarColor
-        self.navigationController?.navigationBar.barTintColor    = TickerOrderViewController.navigationBarColor
+        self.navigationItem.titleView?.backgroundColor           = SystemColor.navigationBarColor
+        self.navigationController?.navigationBar.backgroundColor = SystemColor.navigationBarColor
+        self.navigationController?.navigationBar.barTintColor    = SystemColor.navigationBarColor
         
         // Set up UIBarButtonItem
         let speakerBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"speaker.wave.3.fill"), style: .plain, target: self, action: #selector(speakerBarButtonTapped))
@@ -193,7 +196,7 @@ class TickerOrderViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [accountBarButton, fixedSpace, speakerBarButton]
         // Set up navigationItem's titleView
         self.navigationItem.titleView           = hsrLogoImageView
-
+    
         NSLayoutConstraint.activate([
             hsrLogoImageView.centerXAnchor.constraint(equalTo: self.navigationItem.titleView!.centerXAnchor),
             hsrLogoImageView.centerYAnchor.constraint(equalTo: self.navigationItem.titleView!.centerYAnchor)
@@ -209,7 +212,7 @@ class TickerOrderViewController: UIViewController {
     func configurePickerView () {
         pickerView.backgroundColor = UIColor.white
         pickerView.selectedRow(inComponent: 0)
-        pickerView.tintColor = TickerOrderViewController.orangeBrandColor
+        pickerView.tintColor = SystemColor.orangeBrandColor
         
         fromLocationLabel.frame = CGRect(x: 90, y: 3, width: 60, height: 20)
         fromLocationLabel.text      = "起程點"
@@ -229,14 +232,14 @@ class TickerOrderViewController: UIViewController {
         let doneBarButton: UIBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(doneButtonTapped))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        switchStationBarButtton.tintColor = TickerOrderViewController.orangeBrandColor
-        doneBarButton.tintColor           = TickerOrderViewController.orangeBrandColor
+        // Set up tintColor
+        switchStationBarButtton.tintColor = SystemColor.orangeBrandColor
+        doneBarButton.tintColor           = SystemColor.orangeBrandColor
         
         // customToolbar
         customToolbar.barStyle = UIBarStyle.default
         customToolbar.backgroundColor = .white
         customToolbar.setItems([switchStationBarButtton, flexibleSpace, doneBarButton], animated: true)
-        
         customToolbar.barTintColor = .white
         customToolbar.layer.cornerRadius  = 10
         customToolbar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -266,9 +269,7 @@ class TickerOrderViewController: UIViewController {
         pickerStackView.distribution = .equalSpacing
         
         pickerStackView.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(pickerStackView)
-        
         NSLayoutConstraint.activate([
             pickerStackView.leadingAnchor.constraint(equalTo: view .leadingAnchor),
             pickerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -278,28 +279,16 @@ class TickerOrderViewController: UIViewController {
     }
     
     func showingSeatSelectionAlertSheet () {
-        controller.view.tintColor = .black
-          for (index, name) in names.enumerated() {
-              _ = UIAlertAction(title: name, style: .default) { [weak self] action in
-                  self?.selectedIndex = index
-                  // Update and reload the specific cell in serviceTableView
-                  if let selectedServiceIndex = self?.selectedServiceIndex {
-                      self?.serviceTableView.reloadRows(at: [selectedServiceIndex], with: .automatic)
-                  }
-              }
-//              controller.addAction(action)
-          }
-          let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-          controller.addAction(cancelAction)
-          present(controller, animated: true)
+        
     }
-    
+
+    // MARK: - SegmentedControl
     func configureSegmentedControlContainerView () {
         
         // segmentedControlContainerView
-        segmentedControlContainerView.backgroundColor = TickerOrderViewController.navigationBarColor
+        segmentedControlContainerView.backgroundColor = SystemColor.navigationBarColor
         
-        // segmentedControl
+        // segmentedControl's text
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)], for: .normal)
@@ -307,7 +296,7 @@ class TickerOrderViewController: UIViewController {
         segmentedControl.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .selected)
-        segmentedControl.insertSegment(withTitle: "一般訂票",  at:  0, animated: true)
+        segmentedControl.insertSegment(withTitle: "一般訂票",  at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "信用卡優惠", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "今日自由座", at: 2, animated: true)
         
@@ -321,9 +310,11 @@ class TickerOrderViewController: UIViewController {
         segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
         // underline
-        underlineView.backgroundColor    = TickerOrderViewController.orangeBrandColor
+        underlineView.backgroundColor    = SystemColor.orangeBrandColor
         underlineView.layer.cornerRadius = Constants.underlineViewHeight / 2
-        
+    }
+    
+    func constraintSegmentedControl () {
         view.addSubview(segmentedControlContainerView)
         segmentedControlContainerView.addSubview(segmentedControl)
         view.addSubview(underlineView)
@@ -438,6 +429,13 @@ class TickerOrderViewController: UIViewController {
     @objc func switchButtonTapped (_ sender: UIButton) {
         print("switchButtonTapped")
         
+        var switchingText: String = ""
+        selectedFromStationRow = switchingText
+        switchingText = selectedDepatureStationRow
+        
+        print(switchingText)
+        print(selectedFromStationRow)
+        print(selectedDepatureStationRow)
     }
     
     @objc func doneButtonTapped (_ sender: UIButton) {
@@ -450,19 +448,24 @@ class TickerOrderViewController: UIViewController {
         print("tapTheView")
     }
     
-    //MARK: - segmentedControlTapped
+    //MARK: - segmentedControlTapped.
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
         print("segmentedControlTapped")
         changeSegmentedControlLinePosition()
     }
     
-    @objc func speakerBarButtonTapped () {
+    @objc func speakerBarButtonTapped (_ sender: UIButton) {
         print("speakerBarButtonTapped")
     }
     
-    @objc func accountBarButtonTapped () {
-        print("speakerBarButtonTapped")
+    @objc func accountBarButtonTapped (_ sender: UIButton) {
+        print("accountBarButtonTapped")
+        
+        let accountVC = AccountViewController()
+        self.navigationController?.pushViewController(accountVC, animated: true)
     }
+    
+    
 }
 
 
@@ -537,6 +540,7 @@ extension TickerOrderViewController: UITableViewDataSource {
         } else {
             print("Nothing")
         }
+        tableView.reloadData()
         return UITableViewCell()
     }
 }
@@ -545,34 +549,20 @@ extension TickerOrderViewController: UITableViewDataSource {
 extension TickerOrderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        switch indexPath.row {
-            case 0:
-                ridingTimeSelectionCellTapped ()
-                print("case\(indexPath.row)")
-            case 1:
-                carriageSelectionCellTapped ()
-                print("case\(indexPath.row)")
-            case 2:
-                numberOfPassengersCellTapped ()
-                print("case\(indexPath.row)")
-            case 3:
-                selectedServiceIndex = indexPath
-                showingSeatSelectionAlertSheet()
-                print("case\(indexPath.row)")
-            default:
-                break
-        }
     }
 }
 
 // MARK: - Extension for PickerView's delegate :
 extension TickerOrderViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let row = stationName[row]
-        ChooseStationTableViewCell.fromStationButtonText = row
+        return stationName[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedFromStationRow = stationName[row]
+        print(selectedFromStationRow)
         
-        print(row)
-        return row
+        chooseStationTableView.reloadData()
     }
 }
 

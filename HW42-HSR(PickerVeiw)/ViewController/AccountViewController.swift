@@ -9,8 +9,8 @@ import UIKit
 
 class AccountViewController: UIViewController {
     
-    let infoTableView: UITableView    = UITableView(frame: .zero, style: .plain)
-    let infoSecTableView: UITableView = UITableView(frame: .zero, style: .plain)
+    let infoTableView: UITableView    = UITableView()
+    let infoSecTableView: UITableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +81,9 @@ class AccountViewController: UIViewController {
             infoTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             infoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             infoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            infoTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.41),
+            infoTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.429),
 
-            infoSecTableView.topAnchor.constraint(equalTo: infoTableView.bottomAnchor),
+            infoSecTableView.topAnchor.constraint(equalTo: infoTableView.bottomAnchor, constant: 10),
             infoSecTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             infoSecTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             infoSecTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -93,7 +93,10 @@ class AccountViewController: UIViewController {
 }
 
 extension AccountViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath)
+    }
 }
 
 

@@ -41,8 +41,8 @@ class TickerOrderViewController: UIViewController {
     var names = ["靠窗優先", "靠走道優先", "無偏好"]
     
     //
-    var selectedFromStationRow:     String = ""
-    var selectedDepatureStationRow: String = ""
+    var selectedFromStationRow:     String = stationName[0]
+    var selectedDepatureStationRow: String = reversedStationName[0]
     
     enum Constants {
         static let segmentedControlHeight: CGFloat = 45
@@ -176,8 +176,8 @@ class TickerOrderViewController: UIViewController {
         let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
         
         // Set up barButton's tintColor
-        speakerBarButton.tintColor = .white
-        accountBarButton.tintColor = .white
+        speakerBarButton.tintColor = SystemColor.white
+        accountBarButton.tintColor = SystemColor.white
 
         // hsrLogo Set up
         let hsrlogoImage = UIImage(named: "hsrLogo") //Your logo url here
@@ -227,7 +227,7 @@ class TickerOrderViewController: UIViewController {
         pickerView.addSubview(fromLocationLabel)
         pickerView.addSubview(departureLabel)
         
-        // custom UIBarButtonItem
+        // Custom UIBarButtonItem
         let switchStationBarButtton: UIBarButtonItem = UIBarButtonItem(title: "起始站互換", style: .plain, target: self, action: #selector(switchButtonTapped))
         let doneBarButton: UIBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(doneButtonTapped))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -427,13 +427,11 @@ class TickerOrderViewController: UIViewController {
     @objc func switchButtonTapped (_ sender: UIButton) {
         print("switchButtonTapped")
         
-        var switchingText: String = ""
-        selectedFromStationRow = switchingText
-        switchingText = selectedDepatureStationRow
-        
-        print(switchingText)
-        print(selectedFromStationRow)
-        print(selectedDepatureStationRow)
+        var switchStationName = ""
+        selectedFromStationRow = switchStationName
+        switchStationName = selectedDepatureStationRow
+                
+        print(switchStationName)
     }
     
     @objc func doneButtonTapped (_ sender: UIButton) {
@@ -479,7 +477,7 @@ class TickerOrderViewController: UIViewController {
 // MARK: - Extension for tableView dataSource:
 extension TickerOrderViewController: UITableViewDataSource {
     
-    // MARK: - numberOfRowsInSection
+    // 用if else去呈現不同的tableView，並用return返回，顯示不同數值列的內容。
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == trainStatusTableView {
             return 1
@@ -499,18 +497,23 @@ extension TickerOrderViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if tableView == trainStatusTableView {
-
-            let trainStatusTableViewCell = trainStatusTableView.dequeueReusableCell(withIdentifier: TrainStatusTableViewCell.identifier, for: indexPath) as! TrainStatusTableViewCell
+            guard let trainStatusTableViewCell = trainStatusTableView.dequeueReusableCell(withIdentifier: TrainStatusTableViewCell.identifier, for: indexPath) as? TrainStatusTableViewCell else {
+                fatalError("Unable to dequeue Resable trainStatusTableViewCell")
+            }
+            // Set up selectionStyle.
             trainStatusTableViewCell.selectionStyle   = .none
-
             return trainStatusTableViewCell
             
         } else if tableView == chooseStationTableView {
-
-            let chooseStationTableViewCell = chooseStationTableView.dequeueReusableCell(withIdentifier: ChooseStationTableViewCell.identifier, for: indexPath) as! ChooseStationTableViewCell
+            guard let chooseStationTableViewCell = chooseStationTableView.dequeueReusableCell(withIdentifier: ChooseStationTableViewCell.identifier, for: indexPath) as? ChooseStationTableViewCell else {
+                fatalError("Unable to dequeue Resable chooseStationTableViewCell")
+            }
+            // Set up selectionStyle, setTitle.
             chooseStationTableViewCell.selectionStyle = .none
+            chooseStationTableViewCell.fromStationButton.setTitle(selectedFromStationRow, for: .normal)
+            chooseStationTableViewCell.departureStationButton.setTitle(selectedDepatureStationRow, for: .normal)
             
-            // addTarget
+            // Add Target.
             chooseStationTableViewCell.fromStationButton.addTarget(self, action: #selector(showFromLocationPickerView), for: .touchUpInside)
             chooseStationTableViewCell.departureStationButton.addTarget(self, action: #selector(showDepartureLocationPickerView), for: .touchUpInside)
 
@@ -521,17 +524,23 @@ extension TickerOrderViewController: UITableViewDataSource {
 
         } else if tableView == searchTableView {
 
-            let searchTableViewCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
+            guard let searchTableViewCell = searchTableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else {
+                fatalError("Unable to dequeue Resable searchTableViewCell")
+            }
+            // Set up selectionStyle.
             searchTableViewCell.selectionStyle = .none
             
-            // addTarget
+            // Add Target
             searchTableViewCell.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-            
             return searchTableViewCell
 
         } else if tableView == serviceTableView {
 
-            let serviceSelectionTableViewCell: ServiceSelectionTableViewCell = serviceTableView.dequeueReusableCell(withIdentifier: ServiceSelectionTableViewCell.identifier, for: indexPath) as! ServiceSelectionTableViewCell
+            guard let serviceSelectionTableViewCell: ServiceSelectionTableViewCell = serviceTableView.dequeueReusableCell(withIdentifier: ServiceSelectionTableViewCell.identifier, for: indexPath) as? ServiceSelectionTableViewCell else {
+                fatalError("Unable to dequeue Resable serviceSelectionTableViewCell")
+            }
+            
+            // Set up selectionStyle, text, image.
             serviceSelectionTableViewCell.selectionStyle = .none
             serviceSelectionTableViewCell.accessoryType = .disclosureIndicator
             
@@ -566,24 +575,45 @@ extension TickerOrderViewController: UITableViewDelegate {
 // MARK: - Extension for PickerView's delegate :
 extension TickerOrderViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return stationName[row]
+        
+        if component == 0 {
+            print("component \(component) row \(row)")
+            return stationName[row]
+        } else {
+            print("component \(component) row \(row)")
+            return reversedStationName[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedFromStationRow = stationName[row]
-        print(selectedFromStationRow)
-        
+        if component == 0 {
+            selectedFromStationRow = stationName[row]
+        } else {
+            selectedDepatureStationRow = reversedStationName[row]
+        }
+        print("起程點為\(selectedFromStationRow)，到達站為\(selectedDepatureStationRow)")
         chooseStationTableView.reloadData()
     }
 }
 
 extension TickerOrderViewController: UIPickerViewDataSource {
+    // Keyword: numberOfComponents 意思是顯示總共幾行
+    // 舉例: 啟程點的南港是一行，點擊到達站 顯示的pickerView裡，左營站是一行
+    // 所以當 return 2時，就意味著會顯示兩行(numberOfComponents)的內容。
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
+    // Keyword: numberOfRowsInComponent意思是顯示一行裡面產生多少內容
+    // 舉例: 顯示啟程點的站名，是從南港到左營，總共11站。
+    // 所以當components == 0時，components的內容會從左至右產生，並且會產生stationName陣列裡面的內容。
+    // 反觀當components != 0時，則產生 reversedStationName 陣列裡面的內容。
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return stationName.count
+        if component == 0 {
+            return stationName.count
+        } else {
+            return reversedStationName.count
+        }
     }
 }
 

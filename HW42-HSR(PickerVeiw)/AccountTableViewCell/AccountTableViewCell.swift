@@ -17,10 +17,11 @@ class AccountTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
         iconImageView.tintColor     = SystemColor.darkGray
         serviceTitleLabel.textColor = SystemColor.darkGray
-        serviceTitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        serviceTitleLabel.font      = UIFont.boldSystemFont(ofSize: 17)
+        
+        self.backgroundColor = SystemColor.white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

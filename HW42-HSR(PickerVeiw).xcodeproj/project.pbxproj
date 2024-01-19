@@ -72,7 +72,7 @@
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
 		D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
-		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
+		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
 		D3F843E82B57B031001AF2D1 /* Account+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+Model.swift"; sourceTree = "<group>"; };
 		D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
@@ -138,8 +138,7 @@
 				D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */,
 				D377B5C62B3C194C00392B26 /* ServiceSelectionTableViewCell */,
 				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
-				D3407D572B39A55400D9DFA2 /* TicketOrderViewController */,
-				D3F843E62B57A654001AF2D1 /* AccountViewController.swift */,
+				D3407D572B39A55400D9DFA2 /* ViewController */,
 				D3F843EE2B57CB39001AF2D1 /* AccountTableViewCell */,
 				EB83C6F62B44747A00C78859 /* Extension */,
 			);
@@ -163,12 +162,13 @@
 			path = "HW42-HSR(PickerVeiw)UITests";
 			sourceTree = "<group>";
 		};
-		D3407D572B39A55400D9DFA2 /* TicketOrderViewController */ = {
+		D3407D572B39A55400D9DFA2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D3F843E62B57A654001AF2D1 /* AccountViewController.swift */,
 				EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */,
 			);
-			path = TicketOrderViewController;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */ = {

@@ -54,7 +54,7 @@ class TickerOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 243/255, green: 245/255, blue: 247/255, alpha: 1)
+        self.view.backgroundColor = SystemColor.brightGray
         setupUI ()
 
     }
@@ -387,9 +387,7 @@ class TickerOrderViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
 
-    
-    // MARK: - @objc function Action.
-    // MARK: ChooseStationTableViewCell Action:
+    // MARK: - ChooseStationTableViewCell Action:
     @objc func showFromLocationPickerView (_ sender: UIButton) {
         print("showFromLocationPickerView")
         configurePickerView()
@@ -448,29 +446,40 @@ class TickerOrderViewController: UIViewController {
         print("tapTheView")
     }
     
-    //MARK: - segmentedControlTapped.
+    //MARK: - Segmented Control Action:
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
         print("segmentedControlTapped")
         changeSegmentedControlLinePosition()
+        
+        switch selectedIndex {
+        case 0:
+            return
+        case 1:
+            return
+        case 2:
+            return
+        default:
+            break
+        }
     }
     
+    // MARK: - UIButton Action:
     @objc func speakerBarButtonTapped (_ sender: UIButton) {
         print("speakerBarButtonTapped")
     }
     
     @objc func accountBarButtonTapped (_ sender: UIButton) {
         print("accountBarButtonTapped")
-        
         let accountVC = AccountViewController()
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
-    
-    
 }
 
 
 // MARK: - Extension for tableView dataSource:
 extension TickerOrderViewController: UITableViewDataSource {
+    
+    // MARK: - numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == trainStatusTableView {
             return 1
@@ -486,6 +495,7 @@ extension TickerOrderViewController: UITableViewDataSource {
         }
     }
     
+    // MARK: - cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if tableView == trainStatusTableView {
@@ -545,10 +555,11 @@ extension TickerOrderViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Extension for TableView's delegate :
+// MARK: - tableView delegate didSelectRowAt
 extension TickerOrderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath)
     }
 }
 

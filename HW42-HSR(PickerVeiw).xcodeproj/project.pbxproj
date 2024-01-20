@@ -18,8 +18,6 @@
 		D3407D602B39D17700D9DFA2 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D5E2B39D17700D9DFA2 /* SearchTableViewCell.xib */; };
 		D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */; };
 		D3407D832B39F06100D9DFA2 /* ChooseStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */; };
-		D377B5C42B3C17A500392B26 /* ServiceSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D377B5C22B3C17A500392B26 /* ServiceSelectionTableViewCell.swift */; };
-		D377B5C52B3C17A500392B26 /* ServiceSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D377B5C32B3C17A500392B26 /* ServiceSelectionTableViewCell.xib */; };
 		D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */; };
 		D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05932B42D6E50098E0B9 /* StationName+Model.swift */; };
 		D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */; };
@@ -27,6 +25,8 @@
 		D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */; };
 		D3F843EC2B57CB2B001AF2D1 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */; };
 		D3F843ED2B57CB2B001AF2D1 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */; };
+		D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */; };
+		D3F843FE2B5C28B6001AF2D1 /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */; };
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
 		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
@@ -67,8 +67,6 @@
 		D3407D632B39E00200D9DFA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStationTableViewCell.swift; sourceTree = "<group>"; };
 		D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseStationTableViewCell.xib; sourceTree = "<group>"; };
-		D377B5C22B3C17A500392B26 /* ServiceSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		D377B5C32B3C17A500392B26 /* ServiceSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
 		D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -76,6 +74,8 @@
 		D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountTableViewCell+Model.swift"; sourceTree = "<group>"; };
 		D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceTableViewCell.swift; path = "/Users/haodawei/Desktop/Swift/HW42-HSR-PickerVeiw--main/HW42-HSR(PickerVeiw)/ServiceTableViewCell/ServiceTableViewCell.swift"; sourceTree = "<absolute>"; };
+		D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ServiceTableViewCell.xib; path = "/Users/haodawei/Desktop/Swift/HW42-HSR-PickerVeiw--main/HW42-HSR(PickerVeiw)/ServiceTableViewCell/ServiceTableViewCell.xib"; sourceTree = "<absolute>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				D3407D622B39DC0400D9DFA2 /* Supporting Files */,
 				EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */,
 				D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */,
-				D377B5C62B3C194C00392B26 /* ServiceSelectionTableViewCell */,
+				D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */,
 				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
 				D3407D572B39A55400D9DFA2 /* ViewController */,
 				D3F843EE2B57CB39001AF2D1 /* AccountTableViewCell */,
@@ -200,15 +200,6 @@
 			path = ChooseStationTableView;
 			sourceTree = "<group>";
 		};
-		D377B5C62B3C194C00392B26 /* ServiceSelectionTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				D377B5C32B3C17A500392B26 /* ServiceSelectionTableViewCell.xib */,
-				D377B5C22B3C17A500392B26 /* ServiceSelectionTableViewCell.swift */,
-			);
-			path = ServiceSelectionTableViewCell;
-			sourceTree = "<group>";
-		};
 		D38C061A2B43E70D0098E0B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +217,16 @@
 				D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */,
 			);
 			path = AccountTableViewCell;
+			sourceTree = "<group>";
+		};
+		D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */,
+				D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */,
+			);
+			name = ServiceTableViewCell;
+			path = ../ServiceTableViewCell;
 			sourceTree = "<group>";
 		};
 		EB83C6F62B44747A00C78859 /* Extension */ = {
@@ -354,7 +355,7 @@
 				D3407D322B39A4AA00D9DFA2 /* LaunchScreen.storyboard in Resources */,
 				EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */,
 				D3407D2F2B39A4AA00D9DFA2 /* Assets.xcassets in Resources */,
-				D377B5C52B3C17A500392B26 /* ServiceSelectionTableViewCell.xib in Resources */,
+				D3F843FE2B5C28B6001AF2D1 /* ServiceTableViewCell.xib in Resources */,
 				D3F843ED2B57CB2B001AF2D1 /* AccountTableViewCell.xib in Resources */,
 				D3407D602B39D17700D9DFA2 /* SearchTableViewCell.xib in Resources */,
 			);
@@ -381,13 +382,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D377B5C42B3C17A500392B26 /* ServiceSelectionTableViewCell.swift in Sources */,
 				D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */,
 				D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */,
 				EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */,
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
+				D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,
 				D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */,

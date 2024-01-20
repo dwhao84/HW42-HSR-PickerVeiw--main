@@ -29,7 +29,6 @@ class AccountViewController: UIViewController {
         self.navigationItem.scrollEdgeAppearance = appearance
                 
         self.navigationController?.isNavigationBarHidden      = false
-        self.navigationController?.navigationBar.barTintColor = SystemColor.white
         self.navigationItem.title  = "個人中心"
 
         self.navigationItem.titleView?.tintColor = .white

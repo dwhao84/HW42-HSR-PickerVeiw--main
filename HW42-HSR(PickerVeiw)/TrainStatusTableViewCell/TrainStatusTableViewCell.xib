@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="147" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Hp6-kd-UnE"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="147" id="dF4-Kv-ZbW"/>
+                                    <constraint firstAttribute="width" constant="147" id="dF4-Kv-ZbW"/>
                                 </constraints>
                                 <color key="tintColor" red="0.36078431370000003" green="0.51372549020000002" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>

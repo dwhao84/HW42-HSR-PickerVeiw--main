@@ -131,7 +131,7 @@ class TickerOrderViewController: UIViewController {
     func setupTableView () {
         trainStatusTableView.register(TrainStatusTableViewCell.nib(),     forCellReuseIdentifier: TrainStatusTableViewCell.identifier)
         chooseStationTableView.register(ChooseStationTableViewCell.nib(), forCellReuseIdentifier: ChooseStationTableViewCell.identifier)
-        serviceTableView.register(ServiceSelectionTableViewCell.nib(),    forCellReuseIdentifier: ServiceSelectionTableViewCell.identifier)
+        serviceTableView.register(ServiceTableViewCell.nib(),    forCellReuseIdentifier: ServiceTableViewCell.identifier)
         searchTableView.register(SearchTableViewCell.nib(),               forCellReuseIdentifier: SearchTableViewCell.identifier)
         
         trainStatusTableView.isScrollEnabled   = false
@@ -189,7 +189,7 @@ class TickerOrderViewController: UIViewController {
         let bannerX = (bannerWidth! / 2  - (hsrlogoImage?.size.width)!) / 2
         let bannerY = (bannerHeight! / 2 - (hsrlogoImage?.size.height)!) / 2
 
-        hsrLogoImageView.frame       = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
+//        hsrLogoImageView.frame       = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
         hsrLogoImageView.contentMode = .scaleAspectFit
 
         // Set up navigationItem's rightBarButton
@@ -197,10 +197,10 @@ class TickerOrderViewController: UIViewController {
         // Set up navigationItem's titleView
         self.navigationItem.titleView           = hsrLogoImageView
     
-        NSLayoutConstraint.activate([
-            hsrLogoImageView.centerXAnchor.constraint(equalTo: self.navigationItem.titleView!.centerXAnchor),
-            hsrLogoImageView.centerYAnchor.constraint(equalTo: self.navigationItem.titleView!.centerYAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            hsrLogoImageView.centerXAnchor.constraint(equalTo: self.navigationItem.titleView!.centerXAnchor),
+//            hsrLogoImageView.centerYAnchor.constraint(equalTo: self.navigationItem.titleView!.centerYAnchor)
+//        ])
     }
     
     func addPickerViewDelegateAndDataSource () {
@@ -257,17 +257,16 @@ class TickerOrderViewController: UIViewController {
         customToolbar.clipsToBounds      = true
         
         constraintPickerView()
-//        tapTheViewController()
     }
     
     func constraintPickerView () {
         view.addSubview(pickerView)
         view.addSubview(customToolbar)
         
-        customToolbar.widthAnchor.constraint(equalToConstant: 428).isActive = true
+//        customToolbar.widthAnchor.constraint(equalToConstant: 393).isActive = false
         customToolbar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        pickerView.widthAnchor.constraint(equalToConstant: 428).isActive  = true
+//        pickerView.widthAnchor.constraint(equalToConstant: 393).isActive  = false
         pickerView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
         pickerStackView.addArrangedSubview(customToolbar)
@@ -370,7 +369,6 @@ class TickerOrderViewController: UIViewController {
         backgroundView.layer.borderWidth  = 0.2
         backgroundView.dropShadow()
         
-        backgroundView.widthAnchor.constraint(equalToConstant:  395).isActive = true
         backgroundView.heightAnchor.constraint(equalToConstant: 610).isActive = true
         
         stackView.axis         = .horizontal
@@ -546,26 +544,25 @@ extension TickerOrderViewController: UITableViewDataSource {
 
         } else if tableView == serviceTableView {
 
-            guard let serviceSelectionTableViewCell = serviceTableView.dequeueReusableCell(withIdentifier: ServiceSelectionTableViewCell.identifier, for: indexPath) as? ServiceSelectionTableViewCell else {
+            guard let serviceTableViewCell = serviceTableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier, for: indexPath) as? ServiceTableViewCell else {
                 fatalError("Unable to dequeue Resable serviceSelectionTableViewCell")
             }
             
             // Set up selectionStyle, text, image.
-            serviceSelectionTableViewCell.selectionStyle = .none
-            serviceSelectionTableViewCell.accessoryType = .disclosureIndicator
-            
-            serviceSelectionTableViewCell.serviceStatusTitleLabel.text = servicesData[indexPath.row].service
-            serviceSelectionTableViewCell.serviceImageView.image       = servicesData[indexPath.row].serviceIcon
-            serviceSelectionTableViewCell.statusLabel.text             = servicesData[indexPath.row].subtitleService
+            serviceTableViewCell.selectionStyle = .none
+            serviceTableViewCell.accessoryType  = .disclosureIndicator
+            serviceTableViewCell.serviceStatusLabel.text = servicesData[indexPath.row].service
+            serviceTableViewCell.serviceImageView.image       = servicesData[indexPath.row].serviceIcon
+            serviceTableViewCell.statusLabel.text             = servicesData[indexPath.row].subtitleService
             
             // Update the status label based on the selected index
             if let selectedIndex = selectedIndex, selectedServiceIndex == indexPath {
-                      serviceSelectionTableViewCell.statusLabel.text = names[selectedIndex]
+                serviceTableViewCell.statusLabel.text = names[selectedIndex]
                   } else {
                 // Default or previous value
 //                serviceSelectionTableViewCell.statusLabel.text = "無偏好"
             }
-            return serviceSelectionTableViewCell
+            return serviceTableViewCell
         } else {
             print("Nothing")
         }

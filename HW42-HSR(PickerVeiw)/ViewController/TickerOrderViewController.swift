@@ -40,7 +40,7 @@ class TickerOrderViewController: UIViewController {
         preferredStyle: .actionSheet)
     var names = ["靠窗優先", "靠走道優先", "無偏好"]
     
-    //
+    // Store the selected FromStationRow & DepatureStationRow.
     var selectedFromStationRow:     String = stationName[0]
     var selectedDepatureStationRow: String = depatureStationName[11]
     
@@ -56,24 +56,24 @@ class TickerOrderViewController: UIViewController {
         
         self.view.backgroundColor = SystemColor.brightGray
         setupUI ()
-
+        tapTheViewController()
     }
     
     func setupUI () {
         // tableView
         constraintBackgroundView   ()
         constraintTableView        ()
-        setupTableView       ()
+        setupTableView             ()
         
         addTableViewDelegateAndDataSource ()
         
         // pickerView
         addPickerViewDelegateAndDataSource ()
-        customNavigationBar        ()
+        customNavigationBar                ()
         
         // segmentedControl
         configureSegmentedControlContainerView ()
-        constraintSegmentedControl()
+        constraintSegmentedControl             ()
     }
     
     func constraintTableView () {
@@ -182,25 +182,12 @@ class TickerOrderViewController: UIViewController {
         // hsrLogo Set up
         let hsrlogoImage = UIImage(named: "hsrLogo") //Your logo url here
         hsrLogoImageView = UIImageView(image: hsrlogoImage)
-
-        let bannerWidth  = navigationController?.navigationBar.frame.size.width
-        let bannerHeight = navigationController?.navigationBar.frame.size.height
-
-        let bannerX = (bannerWidth! / 2  - (hsrlogoImage?.size.width)!) / 2
-        let bannerY = (bannerHeight! / 2 - (hsrlogoImage?.size.height)!) / 2
-
-//        hsrLogoImageView.frame       = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
         hsrLogoImageView.contentMode = .scaleAspectFit
 
         // Set up navigationItem's rightBarButton
         self.navigationItem.rightBarButtonItems = [accountBarButton, fixedSpace, speakerBarButton]
         // Set up navigationItem's titleView
         self.navigationItem.titleView           = hsrLogoImageView
-    
-//        NSLayoutConstraint.activate([
-//            hsrLogoImageView.centerXAnchor.constraint(equalTo: self.navigationItem.titleView!.centerXAnchor),
-//            hsrLogoImageView.centerYAnchor.constraint(equalTo: self.navigationItem.titleView!.centerYAnchor)
-//        ])
     }
     
     func addPickerViewDelegateAndDataSource () {
@@ -223,14 +210,14 @@ class TickerOrderViewController: UIViewController {
         pickerView.selectRow(lastRowIndexInSecondComponent, inComponent: 1, animated: false)
         print(lastRowIndexInSecondComponent)
         
-        fromLocationLabel.frame = CGRect(x: 90, y: 3, width: 60, height: 20)
+        fromLocationLabel.frame     = CGRect(x: 90, y: 3, width: 60, height: 20)
         fromLocationLabel.text      = "起程點"
-        fromLocationLabel.textColor = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+        fromLocationLabel.textColor = SystemColor.pickerViewLightColorForLabel
         fromLocationLabel.font      = UIFont.systemFont(ofSize: 12)
         
-        departureLabel.frame = CGRect(x: 288, y: 3, width: 60, height: 20)
+        departureLabel.frame     = CGRect(x: 288, y: 3, width: 60, height: 20)
         departureLabel.text      = "到達站"
-        departureLabel.textColor = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+        departureLabel.textColor = SystemColor.pickerViewLightColorForLabel
         departureLabel.font      = UIFont.systemFont(ofSize: 12)
         
         pickerView.addSubview(fromLocationLabel)
@@ -255,7 +242,7 @@ class TickerOrderViewController: UIViewController {
         customToolbar.layer.borderColor   = UIColor.systemGray3.cgColor
         customToolbar.layer.borderWidth   = 0.2
         customToolbar.clipsToBounds      = true
-        
+            
         constraintPickerView()
     }
     
@@ -263,7 +250,7 @@ class TickerOrderViewController: UIViewController {
         view.addSubview(pickerView)
         view.addSubview(customToolbar)
         
-//        customToolbar.widthAnchor.constraint(equalToConstant: 393).isActive = false
+//        customToolbar.widthAnchor.constraint(equalToConstant: 393).isActive = true
         customToolbar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
 //        pickerView.widthAnchor.constraint(equalToConstant: 393).isActive  = false
@@ -274,7 +261,7 @@ class TickerOrderViewController: UIViewController {
                 
         pickerStackView.axis    = .vertical
         pickerStackView.spacing = 0
-        pickerStackView.distribution = .equalSpacing
+        pickerStackView.distribution = .fill
         
         pickerStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pickerStackView)
@@ -391,6 +378,7 @@ class TickerOrderViewController: UIViewController {
     func tapTheViewController () {
         // tapGesture
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTheView))
+        tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
     }
 
@@ -434,11 +422,14 @@ class TickerOrderViewController: UIViewController {
     @objc func switchButtonTapped (_ sender: UIButton) {
         print("switchButtonTapped")
         
-        var switchStationName = ""
-        selectedFromStationRow = switchStationName
-        switchStationName = selectedDepatureStationRow
-                
-        print(switchStationName)
+        var selectedRowInFirstComponent  = pickerView.selectedRow(inComponent: 0)
+        var selectedRowInSecondComponent = pickerView.selectedRow(inComponent: 1)
+        
+        // selectRow change to other components.
+        pickerView.selectRow(selectedRowInSecondComponent, inComponent: 0, animated: true)
+        pickerView.selectRow(selectedRowInFirstComponent,  inComponent: 1, animated: true)
+        
+        pickerView.reloadAllComponents   ()
     }
     
     @objc func doneButtonTapped (_ sender: UIButton) {
@@ -447,15 +438,14 @@ class TickerOrderViewController: UIViewController {
     }
     
     @objc func tapTheView (_ sender: UITapGestureRecognizer) {
-        pickerStackView.removeFromSuperview()
-        print("tapTheView")
-    }
+            pickerStackView.removeFromSuperview()
+            print("tapTheView")
+        }
     
     //MARK: - Segmented Control Action:
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
-        print("segmentedControlTapped")
         changeSegmentedControlLinePosition()
-        
+        print("segmentedControlTapped and selectedIndex is \(segmentedControl.selectedSegmentIndex)")
         switch selectedIndex {
         case 0:
             return
@@ -560,7 +550,7 @@ extension TickerOrderViewController: UITableViewDataSource {
                 serviceTableViewCell.statusLabel.text = names[selectedIndex]
                   } else {
                 // Default or previous value
-//                serviceSelectionTableViewCell.statusLabel.text = "無偏好"
+///                serviceSelectionTableViewCell.statusLabel.text = "無偏好"
             }
             return serviceTableViewCell
         } else {
@@ -582,7 +572,6 @@ extension TickerOrderViewController: UITableViewDelegate {
 // MARK: - Extension for PickerView's delegate :
 extension TickerOrderViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         if component == 0 {
             print("component \(component) row \(row)")
             return stationName[row]
@@ -591,6 +580,7 @@ extension TickerOrderViewController: UIPickerViewDelegate {
             return depatureStationName[row]
         }
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
             selectedFromStationRow = stationName[row]
@@ -599,7 +589,6 @@ extension TickerOrderViewController: UIPickerViewDelegate {
         }
         print("起程點為\(selectedFromStationRow)，到達站為\(selectedDepatureStationRow)")
         chooseStationTableView.reloadData()
-        pickerView.reloadAllComponents()
     }
 }
 

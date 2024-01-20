@@ -12,6 +12,7 @@ var stationName: [String] = [
     "南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"
 ]
 
-// stationName by departure status
-var reversedStationName: [String] = stationName.reversed()
+
+// After call reserved() function for stationName, named reversedStationName as an array.
+let depatureStationName: [String] = stationName
 

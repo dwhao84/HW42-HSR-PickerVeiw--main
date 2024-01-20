@@ -8,8 +8,8 @@
 import UIKit
 
 struct ServiceSelection {
-    let service:         String?
-    let subtitleService: String?
+    let service:         String
+    let subtitleService: String
     let serviceIcon:     UIImage?
 }
 
@@ -19,5 +19,3 @@ let servicesData: [ServiceSelection] = [
     ServiceSelection(service: "乘客人數", subtitleService: "全票*1",  serviceIcon:  UIImage(systemName: "person.2.fill")),
     ServiceSelection(service: "座位偏好", subtitleService: "無偏好",  serviceIcon:  UIImage(systemName: "carseat.right"))
 ]
-
-// Hiiiiiiiii

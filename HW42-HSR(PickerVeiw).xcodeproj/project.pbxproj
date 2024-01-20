@@ -24,7 +24,7 @@
 		D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05932B42D6E50098E0B9 /* StationName+Model.swift */; };
 		D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */; };
 		D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E62B57A654001AF2D1 /* AccountViewController.swift */; };
-		D3F843E92B57B031001AF2D1 /* Account+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E82B57B031001AF2D1 /* Account+Model.swift */; };
+		D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */; };
 		D3F843EC2B57CB2B001AF2D1 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */; };
 		D3F843ED2B57CB2B001AF2D1 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */; };
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
@@ -73,7 +73,7 @@
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
 		D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
-		D3F843E82B57B031001AF2D1 /* Account+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+Model.swift"; sourceTree = "<group>"; };
+		D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountTableViewCell+Model.swift"; sourceTree = "<group>"; };
 		D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 			children = (
 				D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */,
 				D38C05932B42D6E50098E0B9 /* StationName+Model.swift */,
-				D3F843E82B57B031001AF2D1 /* Account+Model.swift */,
+				D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,7 +386,7 @@
 				D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */,
 				EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */,
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
-				D3F843E92B57B031001AF2D1 /* Account+Model.swift in Sources */,
+				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,

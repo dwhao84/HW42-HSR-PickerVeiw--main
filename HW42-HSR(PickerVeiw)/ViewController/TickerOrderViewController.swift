@@ -42,7 +42,7 @@ class TickerOrderViewController: UIViewController {
     
     //
     var selectedFromStationRow:     String = stationName[0]
-    var selectedDepatureStationRow: String = reversedStationName[0]
+    var selectedDepatureStationRow: String = depatureStationName[11]
     
     enum Constants {
         static let segmentedControlHeight: CGFloat = 45
@@ -213,6 +213,15 @@ class TickerOrderViewController: UIViewController {
         pickerView.backgroundColor = UIColor.white
         pickerView.selectedRow(inComponent: 0)
         pickerView.tintColor = SystemColor.orangeBrandColor
+        
+        // Set up selectRow in first row component zero in pickerView.
+        let firstRowIndexInFirstComponent = stationName.startIndex
+        pickerView.selectRow(firstRowIndexInFirstComponent, inComponent: 0, animated: false)
+        print(firstRowIndexInFirstComponent)
+        // Set up selectRow in last row component one in pickerView.
+        let lastRowIndexInSecondComponent = depatureStationName.count - 1
+        pickerView.selectRow(lastRowIndexInSecondComponent, inComponent: 1, animated: false)
+        print(lastRowIndexInSecondComponent)
         
         fromLocationLabel.frame = CGRect(x: 90, y: 3, width: 60, height: 20)
         fromLocationLabel.text      = "起程點"
@@ -469,6 +478,7 @@ class TickerOrderViewController: UIViewController {
     @objc func accountBarButtonTapped (_ sender: UIButton) {
         print("accountBarButtonTapped")
         let accountVC = AccountViewController()
+        self.navigationController?.navigationBar.tintColor = SystemColor.white
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
 }
@@ -536,7 +546,7 @@ extension TickerOrderViewController: UITableViewDataSource {
 
         } else if tableView == serviceTableView {
 
-            guard let serviceSelectionTableViewCell: ServiceSelectionTableViewCell = serviceTableView.dequeueReusableCell(withIdentifier: ServiceSelectionTableViewCell.identifier, for: indexPath) as? ServiceSelectionTableViewCell else {
+            guard let serviceSelectionTableViewCell = serviceTableView.dequeueReusableCell(withIdentifier: ServiceSelectionTableViewCell.identifier, for: indexPath) as? ServiceSelectionTableViewCell else {
                 fatalError("Unable to dequeue Resable serviceSelectionTableViewCell")
             }
             
@@ -581,18 +591,18 @@ extension TickerOrderViewController: UIPickerViewDelegate {
             return stationName[row]
         } else {
             print("component \(component) row \(row)")
-            return reversedStationName[row]
+            return depatureStationName[row]
         }
     }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
             selectedFromStationRow = stationName[row]
         } else {
-            selectedDepatureStationRow = reversedStationName[row]
+            selectedDepatureStationRow = depatureStationName[row]
         }
         print("起程點為\(selectedFromStationRow)，到達站為\(selectedDepatureStationRow)")
         chooseStationTableView.reloadData()
+        pickerView.reloadAllComponents()
     }
 }
 
@@ -607,12 +617,12 @@ extension TickerOrderViewController: UIPickerViewDataSource {
     // Keyword: numberOfRowsInComponent意思是顯示一行裡面產生多少內容
     // 舉例: 顯示啟程點的站名，是從南港到左營，總共11站。
     // 所以當components == 0時，components的內容會從左至右產生，並且會產生stationName陣列裡面的內容。
-    // 反觀當components != 0時，則產生 reversedStationName 陣列裡面的內容。
+    // 反觀當components != 0時，則產生 depatureStationName 陣列裡面的內容。
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
             return stationName.count
         } else {
-            return reversedStationName.count
+            return depatureStationName.count
         }
     }
 }

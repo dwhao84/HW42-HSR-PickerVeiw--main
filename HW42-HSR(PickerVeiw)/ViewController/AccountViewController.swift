@@ -17,6 +17,7 @@ class AccountViewController: UIViewController {
 
         setupNavigationBar   ()
         setupTableView       ()
+        self.view.backgroundColor = SystemColor.brightGray
     }
     
     
@@ -27,8 +28,8 @@ class AccountViewController: UIViewController {
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationItem.scrollEdgeAppearance = appearance
                 
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.isNavigationBarHidden      = false
+        self.navigationController?.navigationBar.barTintColor = SystemColor.white
         self.navigationItem.title  = "個人中心"
 
         self.navigationItem.titleView?.tintColor = .white
@@ -78,12 +79,12 @@ class AccountViewController: UIViewController {
         infoSecTableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            infoTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            infoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             infoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             infoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            infoTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.429),
+            infoTableView.heightAnchor.constraint(equalToConstant: 300),
 
-            infoSecTableView.topAnchor.constraint(equalTo: infoTableView.bottomAnchor, constant: 10),
+            infoSecTableView.topAnchor.constraint(equalTo: infoTableView.bottomAnchor),
             infoSecTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             infoSecTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             infoSecTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

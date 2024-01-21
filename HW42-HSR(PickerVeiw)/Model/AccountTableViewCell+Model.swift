@@ -5,9 +5,9 @@
 //  Created by Dawei Hao on 2024/1/17.
 //
 
-import Foundation
 import UIKit
 
+// Create date struct for accountVC's infoTableView.
 struct AccountCenter {
     let image: String
     let title: String
@@ -21,6 +21,7 @@ let accountCenterInfo = [
     AccountCenter(image: "folder", title: "票券整理")
 ]
 
+// Create data struct for accountVC's infoSecTableView.
 struct AccountCenterSec {
     let image: String
     let title: String

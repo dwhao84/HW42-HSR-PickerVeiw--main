@@ -56,7 +56,7 @@ class TickerOrderViewController: UIViewController {
         
         self.view.backgroundColor = SystemColor.brightGray
         setupUI ()
-        tapTheViewController()
+//        tapTheViewController()
     }
     
     func setupUI () {
@@ -398,13 +398,15 @@ class TickerOrderViewController: UIViewController {
     //MARK: -  ServiceTableViewCell Action:
     @objc func ridingTimeSelectionCellTapped () {
         print("ridingTimeSelectionCellTapped")
+        
     }
     
     @objc func carriageSelectionCellTapped () {
         print("carriageSelectionCellTapped")
+        
     }
     
-    @objc func numberOfPassengersCellTapped () {
+    @objc func numberOfPassengersCellTapped (_ sender: UITableViewCell) {
         print("numberOfPassengersCellTapped")
     }
     
@@ -419,33 +421,43 @@ class TickerOrderViewController: UIViewController {
     }
     
     //MARK: - PickerView switchStation
-    @objc func switchButtonTapped (_ sender: UIButton) {
+    @objc func switchButtonTapped (_ sender: UIBarButtonItem) {
         print("switchButtonTapped")
         
-        var selectedRowInFirstComponent  = pickerView.selectedRow(inComponent: 0)
-        var selectedRowInSecondComponent = pickerView.selectedRow(inComponent: 1)
+        // Store the selecteRow in pickView's components.
+        let selectedRowInFirstComponent  = pickerView.selectedRow(inComponent: 0)
+        let selectedRowInSecondComponent = pickerView.selectedRow(inComponent: 1)
+        
+        print("selectedRowInFirstComponent is \(selectedRowInFirstComponent),",
+              "selectedRowInSecondComponent is \(selectedRowInSecondComponent)"
+        )
         
         // selectRow change to other components.
         pickerView.selectRow(selectedRowInSecondComponent, inComponent: 0, animated: true)
         pickerView.selectRow(selectedRowInFirstComponent,  inComponent: 1, animated: true)
         
+        selectedFromStationRow     = depatureStationName[selectedRowInSecondComponent]
+        selectedDepatureStationRow = stationName[selectedRowInFirstComponent]
+        
         pickerView.reloadAllComponents   ()
+        chooseStationTableView.reloadData()
     }
     
-    @objc func doneButtonTapped (_ sender: UIButton) {
+    @objc func doneButtonTapped (_ sender: UIBarButtonItem) {
         pickerStackView.removeFromSuperview()
+        chooseStationTableView.reloadData  ()
         print("doneButtonTapped")
     }
     
     @objc func tapTheView (_ sender: UITapGestureRecognizer) {
             pickerStackView.removeFromSuperview()
             print("tapTheView")
-        }
+    }
     
     //MARK: - Segmented Control Action:
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
         changeSegmentedControlLinePosition()
-        print("segmentedControlTapped and selectedIndex is \(segmentedControl.selectedSegmentIndex)")
+        print("segmentedControl's selectedIndex is \(segmentedControl.selectedSegmentIndex)")
         switch selectedIndex {
         case 0:
             return
@@ -564,8 +576,19 @@ extension TickerOrderViewController: UITableViewDataSource {
 // MARK: - tableView delegate didSelectRowAt
 extension TickerOrderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath)
+        if tableView == trainStatusTableView {
+            trainStatusTableView.deselectRow(at: indexPath, animated: true)
+            print("trainStatusTableView's index is \(indexPath)")
+        } else if tableView == chooseStationTableView {
+            chooseStationTableView.deselectRow(at: indexPath, animated: true)
+            print("chooseStationTableView's index is \(indexPath)")
+        } else if tableView == serviceTableView {
+            serviceTableView.deselectRow(at: indexPath, animated: true)
+            print("serviceTableView's index is \(indexPath)")
+        } else if tableView == searchTableView {
+            searchTableView.deselectRow(at: indexPath, animated: true)
+            print("searchTableView's index is \(indexPath)")
+        }
     }
 }
 

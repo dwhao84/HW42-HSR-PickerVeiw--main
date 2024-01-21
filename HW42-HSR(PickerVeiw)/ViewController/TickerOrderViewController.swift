@@ -564,6 +564,7 @@ extension TickerOrderViewController: UITableViewDataSource {
                 // Default or previous value
 ///                serviceSelectionTableViewCell.statusLabel.text = "無偏好"
             }
+            
             return serviceTableViewCell
         } else {
             print("Nothing")
@@ -579,12 +580,19 @@ extension TickerOrderViewController: UITableViewDelegate {
         if tableView == trainStatusTableView {
             trainStatusTableView.deselectRow(at: indexPath, animated: true)
             print("trainStatusTableView's index is \(indexPath)")
+            
         } else if tableView == chooseStationTableView {
             chooseStationTableView.deselectRow(at: indexPath, animated: true)
             print("chooseStationTableView's index is \(indexPath)")
-        } else if tableView == serviceTableView {
+            
+        } else if tableView == serviceTableView && indexPath.row == 0 {
             serviceTableView.deselectRow(at: indexPath, animated: true)
             print("serviceTableView's index is \(indexPath)")
+            
+            let ridingTimeVC = RidingTimeViewController()
+            self.navigationController?.navigationBar.tintColor = SystemColor.white
+            self.navigationController?.pushViewController(ridingTimeVC, animated: true)
+            
         } else if tableView == searchTableView {
             searchTableView.deselectRow(at: indexPath, animated: true)
             print("searchTableView's index is \(indexPath)")

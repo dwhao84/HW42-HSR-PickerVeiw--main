@@ -12,15 +12,7 @@ class RidingTimeViewController: UIViewController {
     let backgroundView: UIView           = UIView()
     let backgroundStackView: UIStackView = UIStackView()
     
-    let datePickerView: UIView           = UIView()
-    
     let datePickerStackView: UIStackView = UIStackView()
-    
-    
-    let timeSelectView: UIView           = UIView()
-    let todayButton   : UIButton         = UIButton(type: .system)
-    let finishButton:   UIButton         = UIButton(type: .system)
-    let fromtitleLabel: UILabel          = UILabel()
     let timeSelectStakView: UIStackView  = UIStackView()
     
     
@@ -31,58 +23,15 @@ class RidingTimeViewController: UIViewController {
         setupBackgroundColor()
         setupNavigationBar  ()
         
-        configureTodayButton()
-        configureFinishButton()
-        configureTimeSelectView()
-        
-        
         // backgroundView
         setupBackgroundView ()
         constraintBackgroundView()
     }
+
     
+
     
-    func configureDatePickerView () {
-        
-    }
-    
-    
-    func configureFromTitleLabel () {
-        fromtitleLabel.text = "出發時間"
-        fromtitleLabel.textColor = SystemColor.lightGray
-    }
-    
-    func configureTodayButton () {
-        var config   = UIButton.Configuration.filled()
-        config.title = "今天"
-        config.baseBackgroundColor = SystemColor.orangeBrandColor
-        config.baseForegroundColor = SystemColor.orangeBrandColor
-        config.cornerStyle = .large
-        todayButton.configuration = config
-        todayButton.widthAnchor.constraint(equalToConstant: 345).isActive = true
-        todayButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        timeSelectView.addSubview(todayButton)
-    }
-    
-    func configureFinishButton () {
-        var config   = UIButton.Configuration.filled()
-        config.title = "完成"
-//        config.baseBackgroundColor = SystemColor.orangeBrandColor
-        config.baseForegroundColor = SystemColor.orangeBrandColor
-        config.cornerStyle = .large
-        todayButton.configuration = config
-        todayButton.widthAnchor.constraint(equalToConstant: 345).isActive = true
-        todayButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        timeSelectView.addSubview(finishButton)
-    }
-    
-    func configureTimeSelectView () {
-        timeSelectView.backgroundColor = SystemColor.white
-        timeSelectView.layer.borderColor = SystemColor.lightGray.cgColor
-        timeSelectView.layer.borderWidth = 0.2
-        timeSelectView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        backgroundView.addSubview(timeSelectView)
-    }
+
     
     func setupBackgroundView () {
         backgroundView.backgroundColor = SystemColor.white

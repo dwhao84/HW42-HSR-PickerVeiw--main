@@ -74,6 +74,8 @@ class RidingTimeSelectorView: UIView {
         fromTimeTextField.text        = "Time"
         fromTimeTextField.textColor   = SystemColor.darkGray
         fromTimeTextField.borderStyle = .none
+        fromTimeTextField.isEnabled   = false
+        fromTimeTextField.isUserInteractionEnabled = true
         
         // Set up rightView for textField.
         fromTimeTextField.rightViewMode = UITextField.ViewMode.always
@@ -106,11 +108,11 @@ class RidingTimeSelectorView: UIView {
     func constraintsStackViewOne () {
         
         // Setup Auto-layout constraint for fromTitleLabel.
-        fromTitleLabel.widthAnchor.constraint(equalToConstant: 345).isActive = true
+        fromTitleLabel.widthAnchor.constraint(equalToConstant: 390).isActive = true
         fromTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
         // Setup Auto-layout constraint for menu.
-        fromTimeTextField.widthAnchor.constraint(equalToConstant: 345).isActive = true
+        fromTimeTextField.widthAnchor.constraint(equalToConstant: 390).isActive = true
         fromTimeTextField.heightAnchor.constraint(equalToConstant: textFieldHeight).isActive = true
         
         
@@ -123,19 +125,19 @@ class RidingTimeSelectorView: UIView {
         
         stackViewOne.alignment    = .leading
         stackViewOne.axis         = .vertical
-        stackViewOne.distribution = .fill
+        stackViewOne.distribution = .fillEqually
         stackViewOne.spacing      = 5
     }
     
     func constriantsStackViewTwo () {
         
         // Set auto-layout constraint for todayButton.
-        todayButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
-        todayButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        todayButton.widthAnchor.constraint(equalToConstant: 390).isActive = true
+        todayButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         // Set auto-layout constraint for finishButton.
-        finishButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
-        finishButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        finishButton.widthAnchor.constraint(equalToConstant: 390).isActive = true
+        finishButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         self.addSubview(stackViewTwo)
         stackViewTwo.translatesAutoresizingMaskIntoConstraints = false
@@ -160,20 +162,21 @@ class RidingTimeSelectorView: UIView {
         
         stackViewThree.alignment    = .center
         stackViewThree.axis         = .vertical
-        stackViewThree.distribution = .equalSpacing
-        stackViewThree.spacing      = 20
+        stackViewThree.distribution = .fillEqually
+        stackViewThree.spacing      = 5
+        
+//        stackViewThree.layer.borderColor = UIColor.black.cgColor
+//        stackViewThree.layer.borderWidth = 2
         
         NSLayoutConstraint.activate([
             stackViewThree.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            stackViewThree.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stackViewThree.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            stackViewThree.widthAnchor.constraint(equalToConstant: 345),
-            stackViewThree.heightAnchor.constraint(equalToConstant: 235)
+            stackViewThree.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            stackViewThree.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            stackViewThree.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
+            stackViewThree.widthAnchor.constraint(equalToConstant: 390),
+            stackViewThree.heightAnchor.constraint(equalToConstant: 230)
         ])
     }
-    
-
-
 }
 
 #Preview(traits: .fixedLayout(width: 390, height: 230), body: {

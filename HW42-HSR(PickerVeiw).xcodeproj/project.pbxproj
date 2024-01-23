@@ -141,8 +141,8 @@
 		D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */ = {
 			isa = PBXGroup;
 			children = (
-				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
 				D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */,
+				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
 				EBAE9D092B6027EC0091CE83 /* Storyboard.storyboard */,
 				D38C061A2B43E70D0098E0B9 /* Model */,
 				D3407D332B39A4AA00D9DFA2 /* Info.plist */,

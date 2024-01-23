@@ -15,4 +15,5 @@ enum SystemColor {
     static let lightGray         : UIColor           = UIColor.lightGray
     static let brightGray        : UIColor           = UIColor(red: 243/255, green: 245/255, blue: 247/255, alpha: 1)
     static let pickerViewLightColorForLabel: UIColor = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+    static let systemGray5       : UIColor           = UIColor.systemGray4
 }

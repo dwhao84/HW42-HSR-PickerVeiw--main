@@ -29,6 +29,8 @@
 		D3F843FE2B5C28B6001AF2D1 /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */; };
 		D3F844022B5D341D001AF2D1 /* RidingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */; };
 		D3F844042B5DEC48001AF2D1 /* RidingTimeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */; };
+		D3F844062B5F3EC5001AF2D1 /* Time+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844052B5F3EC5001AF2D1 /* Time+Model.swift */; };
+		D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */; };
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
 		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
@@ -80,6 +82,8 @@
 		D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ServiceTableViewCell.xib; path = "/Users/haodawei/Desktop/Swift/HW42-HSR-PickerVeiw--main/HW42-HSR(PickerVeiw)/ServiceTableViewCell/ServiceTableViewCell.xib"; sourceTree = "<absolute>"; };
 		D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingTimeViewController.swift; sourceTree = "<group>"; };
 		D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RidingTimeSelectorView.swift; path = "HW42-HSR(PickerVeiw)/RidingTimeSelectorView.swift"; sourceTree = SOURCE_ROOT; };
+		D3F844052B5F3EC5001AF2D1 /* Time+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time+Model.swift"; sourceTree = "<group>"; };
+		D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingDatePickerView.swift; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
+				D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */,
 				D38C061A2B43E70D0098E0B9 /* Model */,
 				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
 				D3407D622B39DC0400D9DFA2 /* Supporting Files */,
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */,
+				D3F844052B5F3EC5001AF2D1 /* Time+Model.swift */,
 				D38C05932B42D6E50098E0B9 /* StationName+Model.swift */,
 				D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */,
 			);
@@ -394,8 +400,10 @@
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
+				D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */,
 				D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
+				D3F844062B5F3EC5001AF2D1 /* Time+Model.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,
 				D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */,
 				D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */,

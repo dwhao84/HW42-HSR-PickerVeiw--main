@@ -13,11 +13,16 @@ class RidingTimeSelectorView: UIView {
     let buttonWidth:  CGFloat    = 345
     let textFieldHeight: CGFloat = 40
     
+    let grayLineWidth : CGFloat = 345
+    let grayLineHeight: CGFloat = 1
+    
     let todayButton:  UIButton = UIButton(type: .system)
     let finishButton: UIButton = UIButton(type: .system)
     
     let fromTitleLabel: UILabel        = UILabel()
     let fromTimeTextField: UITextField = UITextField()
+    
+    let grayLineView: UIView = UIView()
     
     // This stackView include todayButton & finishButton.
     let stackViewOne: UIStackView   = UIStackView()
@@ -25,6 +30,9 @@ class RidingTimeSelectorView: UIView {
     let stackViewTwo: UIStackView   = UIStackView()
     // This stackView include stackViewOne & stackViewTwo.
     let stackViewThree: UIStackView = UIStackView()
+    
+    // This stackView is for bottom line.
+    let stackViewFour: UIStackView = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +53,7 @@ class RidingTimeSelectorView: UIView {
         todayButton.layer.borderColor  = SystemColor.orangeBrandColor.cgColor
         todayButton.layer.borderWidth  = 1
     }
-
+    
     func configureFinishButton () {
         finishButton.setTitle("完成", for: .normal)
         finishButton.backgroundColor    = SystemColor.orangeBrandColor
@@ -53,7 +61,7 @@ class RidingTimeSelectorView: UIView {
         finishButton.layer.cornerRadius = buttonHeight / 8
         finishButton.clipsToBounds      = true
     }
-
+    
     func configureFromTitleLabel () {
         fromTitleLabel.text          = "出發時間"
         fromTitleLabel.textColor     = SystemColor.lightGray
@@ -62,19 +70,33 @@ class RidingTimeSelectorView: UIView {
     }
     
     func configureFromTextField () {
+        // Set up fromTimeTextField content.
         fromTimeTextField.text        = "Time"
         fromTimeTextField.textColor   = SystemColor.darkGray
         fromTimeTextField.borderStyle = .none
-    }
         
+        // Set up rightView for textField.
+        fromTimeTextField.rightViewMode = UITextField.ViewMode.always
+        fromTimeTextField.rightViewMode = .always
+        
+        // Set up arrowTriangleView as imageView.
+        let arrowTriangleImageView = UIImageView(image: UIImage(systemName: "arrowtriangle.down.fill"))
+        arrowTriangleImageView.tintColor = SystemColor.navigationBarColor
+        fromTimeTextField.rightView = arrowTriangleImageView
+        
+        // Add bottom line for UITextField.
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0, y: Int(textFieldHeight) - 1, width: 345, height: 1)
+        bottomLine.backgroundColor = SystemColor.systemGray5.cgColor
+        fromTimeTextField.layer.addSublayer(bottomLine)
+    }
+    
     func setupView () {
         configureFinishButton  ()
         configureTodayButton   ()
         configureTodayButton   ()
         configureFromTitleLabel()
         configureFromTextField ()
-        
-        setButtonAction()
         
         constraintsStackViewOne  ()
         constriantsStackViewTwo  ()
@@ -91,18 +113,20 @@ class RidingTimeSelectorView: UIView {
         fromTimeTextField.widthAnchor.constraint(equalToConstant: 345).isActive = true
         fromTimeTextField.heightAnchor.constraint(equalToConstant: textFieldHeight).isActive = true
         
+        
         self.addSubview(stackViewOne)
         stackViewOne.translatesAutoresizingMaskIntoConstraints = false
         
         stackViewOne.addArrangedSubview(fromTitleLabel)
         stackViewOne.addArrangedSubview(fromTimeTextField)
-                
+        stackViewOne.addArrangedSubview(grayLineView)
+        
         stackViewOne.alignment    = .leading
         stackViewOne.axis         = .vertical
-        stackViewOne.distribution = .fillEqually
-        stackViewOne.spacing      = 10
+        stackViewOne.distribution = .fill
+        stackViewOne.spacing      = 5
     }
-
+    
     func constriantsStackViewTwo () {
         
         // Set auto-layout constraint for todayButton.
@@ -112,7 +136,7 @@ class RidingTimeSelectorView: UIView {
         // Set auto-layout constraint for finishButton.
         finishButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         finishButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-    
+        
         self.addSubview(stackViewTwo)
         stackViewTwo.translatesAutoresizingMaskIntoConstraints = false
         
@@ -131,7 +155,7 @@ class RidingTimeSelectorView: UIView {
         stackViewThree.addArrangedSubview(stackViewOne)
         stackViewThree.addArrangedSubview(stackViewTwo)
         
-        stackViewOne.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        stackViewOne.heightAnchor.constraint(equalToConstant: 56).isActive = true
         stackViewTwo.heightAnchor.constraint(equalToConstant: 110).isActive = true
         
         stackViewThree.alignment    = .center
@@ -144,23 +168,12 @@ class RidingTimeSelectorView: UIView {
             stackViewThree.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackViewThree.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             stackViewThree.widthAnchor.constraint(equalToConstant: 345),
-            stackViewThree.heightAnchor.constraint(equalToConstant: 230)
+            stackViewThree.heightAnchor.constraint(equalToConstant: 235)
         ])
     }
     
-    func setButtonAction () {
-        todayButton.addTarget(self, action: #selector(todayButtonTapped), for: .touchUpInside)
-        finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpOutside)
-    }
-    
-    @objc func todayButtonTapped () {
-        print("todayButtonTapped")
-    }
-    
-    @objc func finishButtonTapped () {
-        print("finishButtonTapped")
-    }
-    
+
+
 }
 
 #Preview(traits: .fixedLayout(width: 390, height: 230), body: {

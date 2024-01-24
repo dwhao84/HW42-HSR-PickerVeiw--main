@@ -79,7 +79,7 @@
 		D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountTableViewCell+Model.swift"; sourceTree = "<group>"; };
 		D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
-		D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceTableViewCell.swift; path = "/Users/da-weihao/Desktop/Swift/HW42-HSR-PickerVeiw--main/HW42-HSR(PickerVeiw)/ServiceTableViewCell/ServiceTableViewCell.swift"; sourceTree = "<absolute>"; };
+		D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
 		D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingTimeViewController.swift; sourceTree = "<group>"; };
 		D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RidingTimeSelectorView.swift; path = "HW42-HSR(PickerVeiw)/RidingTimeSelectorView.swift"; sourceTree = SOURCE_ROOT; };

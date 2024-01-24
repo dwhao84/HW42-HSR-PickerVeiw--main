@@ -103,8 +103,37 @@ class RidingTimeSelectorView: UIView {
         constraintsStackViewOne  ()
         constriantsStackViewTwo  ()
         constriantsStackViewThree()
+        
+        finishButtonAddAction    ()
+        todayButtonAddAction     ()
     }
     
+    // MARK: - Add Button Action.
+    // Add Action
+    func finishButtonAddAction () {
+        let finishAction = UIAction { [weak self] _ in
+            self?.finishButtonTapped()
+        }
+        finishButton.addAction(finishAction, for: .touchUpInside)
+    }
+    // Create a function named finishButtonTapped.
+    func finishButtonTapped () {
+        print("finishButtonTapped")
+    }
+    
+    // Add Action
+    func todayButtonAddAction () {
+        let todayAction = UIAction { [weak self] _ in
+            self?.toadyButtonTapped() }
+        todayButton.addAction(todayAction, for: .touchUpInside)
+    }
+    
+    // Create a function named toadyButtonTapped.
+    func toadyButtonTapped () {
+        print("toadyButtonTapped")
+    }
+    
+    // MARK: - Constraint Stack View.
     func constraintsStackViewOne () {
         
         // Setup Auto-layout constraint for fromTitleLabel.

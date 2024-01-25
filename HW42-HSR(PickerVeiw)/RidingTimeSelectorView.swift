@@ -24,6 +24,8 @@ class RidingTimeSelectorView: UIView {
     
     let grayLineView: UIView = UIView()
     
+    let datePicker: UIDatePicker = UIDatePicker()
+    
     // This stackView include todayButton & finishButton.
     let stackViewOne: UIStackView   = UIStackView()
     // This stackView include fromTitleLabel & fromTimeTextField.
@@ -41,7 +43,24 @@ class RidingTimeSelectorView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupView ()
+        setupView ()        
+
+    }
+    
+    func getCurrentTimeAndUpdateContext () -> String {
+        let calendar = Calendar.current                             // Get the information from calendar.
+        let currentTime = calendar.component(.minute, from: Date()) // Get the current time by minute and from now date.
+        let addFiveMins = (5 - currentTime % 5)                     // Use the 5mins as unit, and calculate time from 5mins to minus currentTime.
+        let date = calendar.date(byAdding: .minute, value: addFiveMins, to: Date()) // Append time different to set up as 5mins as uint.
+        
+        let dateFormatter        = DateFormatter()
+        dateFormatter.calendar   = Calendar(identifier: .iso8601)
+        dateFormatter.locale     = Locale(identifier: "zh-TW")         // Set up local time as "zh-TW"
+        dateFormatter.timeZone   = .current                            // Get the current timeZone.
+        dateFormatter.dateFormat = "HH:mm"                             // Set up dateFormat for date.
+        let current = dateFormatter.string(from: date!)           // Format the date by using dateFormatter.string to a string.
+        let selectedTimeAddText = current + " 後出發"
+        return selectedTimeAddText
     }
     
     func configureTodayButton () {
@@ -70,11 +89,12 @@ class RidingTimeSelectorView: UIView {
     }
     
     func configureFromTextField () {
+        fromTimeTextField.delegate = self
+
         // Set up fromTimeTextField content.
-        fromTimeTextField.text        = "Time"
+        fromTimeTextField.text        = getCurrentTimeAndUpdateContext ()
         fromTimeTextField.textColor   = SystemColor.darkGray
         fromTimeTextField.borderStyle = .none
-        fromTimeTextField.isEnabled   = false
         fromTimeTextField.isUserInteractionEnabled = true
         
         // Set up rightView for textField.
@@ -91,6 +111,43 @@ class RidingTimeSelectorView: UIView {
         bottomLine.frame = CGRect(x: 0, y: Int(textFieldHeight) - 1, width: 345, height: 1)
         bottomLine.backgroundColor = SystemColor.systemGray5.cgColor
         fromTimeTextField.layer.addSublayer(bottomLine)
+        
+        configureDatePicker ()
+        
+        fromTimeTextField.inputView = datePicker
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
+        doneButton.tintColor = SystemColor.orangeBrandColor
+        let flexibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        
+        fromTimeTextField.inputAccessoryView = toolBar
+    }
+    
+    func configureDatePicker () {
+        let calendar = Calendar.current
+        let currentTime = calendar.component(.minute, from: Date()) // Get the current time by minute and from now date.
+        let addFiveMins = (5 - currentTime % 5)                     // Use the 5mins as unit, and calculate time from 5mins to minus currentTime.
+        guard let date = calendar.date(byAdding: .minute, value: addFiveMins, to: Date()) else {
+            datePicker.date = Date()
+            print(datePicker.date)
+            return
+        }
+        
+        datePicker.date = date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.minuteInterval = 5
+        datePicker.datePickerMode = .time
+    }
+    
+    @objc func doneButtonTapped () {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let selectedTime = dateFormatter.string(from: datePicker.date)
+        let selectedTimeAddText = selectedTime + "後出發"
+        fromTimeTextField.text = selectedTimeAddText
+        self.endEditing(true)
     }
     
     func setupView () {
@@ -106,7 +163,7 @@ class RidingTimeSelectorView: UIView {
         
         finishButtonAddAction    ()
         todayButtonAddAction     ()
-    }
+}
     
     // MARK: - Add Button Action.
     // Add Action
@@ -119,6 +176,7 @@ class RidingTimeSelectorView: UIView {
     // Create a function named finishButtonTapped.
     func finishButtonTapped () {
         print("finishButtonTapped")
+        self.endEditing(true)
     }
     
     // Add Action
@@ -131,6 +189,9 @@ class RidingTimeSelectorView: UIView {
     // Create a function named toadyButtonTapped.
     func toadyButtonTapped () {
         print("toadyButtonTapped")
+        fromTimeTextField.text = getCurrentTimeAndUpdateContext ()
+        print(getCurrentTimeAndUpdateContext)
+        self.endEditing(true)
     }
     
     // MARK: - Constraint Stack View.
@@ -206,6 +267,29 @@ class RidingTimeSelectorView: UIView {
             stackViewThree.heightAnchor.constraint(equalToConstant: 230)
         ])
     }
+}
+
+extension RidingTimeSelectorView: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing")
+        fromTimeTextField.inputView = datePicker
+        return true
+    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        print("textFieldShouldReturn")
+//        fromTimeTextField.inputView = datePicker
+//        datePicker.isHidden         = false
+//        self.addSubview(datePicker)
+//        return true
+//    }
+    
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        print("textFieldShouldReturn")
+//        fromTimeTextField.inputView = datePicker
+//        datePicker.inputViewController?.dismiss(animated: true)
+//        return true
+//    }
 }
 
 #Preview(traits: .fixedLayout(width: 390, height: 230), body: {

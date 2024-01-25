@@ -25,6 +25,24 @@ func getCurrentTime () -> String {
     return filteredSelectedTime
 }
 
+// Create a current time, and return the string value.
+func getCurrentTimeForTextField () -> String {
+    let calendar = Calendar.current                             // Get the information from calendar.
+    let currentTime = calendar.component(.minute, from: Date()) // Get the current time by minute and from now date.
+    let addFiveMins = (5 - currentTime % 5)                     // Use the 5mins as unit, and calculate time from 5mins to minus currentTime.
+    let date = calendar.date(byAdding: .minute, value: addFiveMins, to: Date()) // Append time different to set up as 5mins as uint.
+    
+    let dateFormatter        = DateFormatter()
+    dateFormatter.calendar   = Calendar(identifier: .iso8601)
+    dateFormatter.locale     = Locale(identifier: "zh-TW")         // Set up local time as "zh-TW"
+    dateFormatter.timeZone   = .current                            // Get the current timeZone.
+    dateFormatter.dateFormat = "HH:mm"                             // Set up dateFormat for date.
+    let selectedTime = dateFormatter.string(from: date!)           // Format the date by using dateFormatter.string to a string.
+    let filteredSelectedTime = selectedTime.replacingOccurrences(of: "-", with: ":")
+    
+    return filteredSelectedTime
+}
+
 struct ServiceSelection {
     let service:         String
     let subtitleService: String

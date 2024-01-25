@@ -38,12 +38,12 @@ class RidingTimeSelectorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView ()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupView ()        
+        setupUI()
 
     }
     
@@ -98,6 +98,7 @@ class RidingTimeSelectorView: UIView {
         fromTimeTextField.textColor   = SystemColor.darkGray
         fromTimeTextField.borderStyle = .none
         fromTimeTextField.isUserInteractionEnabled = true
+
         
         // Set up rightView for textField.
         fromTimeTextField.rightViewMode = UITextField.ViewMode.always
@@ -152,7 +153,7 @@ class RidingTimeSelectorView: UIView {
         self.endEditing(true)
     }
     
-    func setupView () {
+    func setupUI() {
         configureFinishButton  ()
         configureTodayButton   ()
         configureTodayButton   ()
@@ -164,8 +165,6 @@ class RidingTimeSelectorView: UIView {
         constraintsStackViewOne  ()
         constriantsStackViewTwo  ()
         constriantsStackViewThree()
-        
-
 }
     
     // MARK: - Add Button Action.
@@ -276,6 +275,7 @@ extension RidingTimeSelectorView: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
         fromTimeTextField.inputView = datePicker
+
         return true
     }
 }

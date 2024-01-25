@@ -33,6 +33,7 @@
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
 		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
 		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
+		EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
 		EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -81,11 +82,12 @@
 		D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
 		D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingTimeViewController.swift; sourceTree = "<group>"; };
-		D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RidingTimeSelectorView.swift; path = "HW42-HSR(PickerVeiw)/RidingTimeSelectorView.swift"; sourceTree = SOURCE_ROOT; };
+		D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingTimeSelectorView.swift; sourceTree = "<group>"; };
 		D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingDatePickerView.swift; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,18 +141,17 @@
 		D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */ = {
 			isa = PBXGroup;
 			children = (
-				D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */,
-				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
-				D38C061A2B43E70D0098E0B9 /* Model */,
-				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
 				D3407D622B39DC0400D9DFA2 /* Supporting Files */,
+				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
+				D38C061A2B43E70D0098E0B9 /* Model */,
+				EB83C6F62B44747A00C78859 /* Extension */,
+				EBA8F8632B62D2D3000237A4 /* CustomView */,
 				EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */,
 				D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */,
 				D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */,
 				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
-				D3407D572B39A55400D9DFA2 /* ViewController */,
 				D3F843EE2B57CB39001AF2D1 /* AccountTableViewCell */,
-				EB83C6F62B44747A00C78859 /* Extension */,
+				D3407D572B39A55400D9DFA2 /* ViewController */,
 			);
 			path = "HW42-HSR(PickerVeiw)";
 			sourceTree = "<group>";
@@ -178,6 +179,7 @@
 				EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */,
 				D3F843E62B57A654001AF2D1 /* AccountViewController.swift */,
 				D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */,
+				EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -247,6 +249,15 @@
 				EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		EBA8F8632B62D2D3000237A4 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */,
+				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */ = {
@@ -396,6 +407,7 @@
 				D3F844022B5D341D001AF2D1 /* RidingTimeViewController.swift in Sources */,
 				D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */,
 				D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */,
+				EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */,
 				EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */,
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,

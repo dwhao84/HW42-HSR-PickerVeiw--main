@@ -116,8 +116,6 @@ class RidingDatePickerView: UIView {
         stackViewTwo.alignment = .fill
         stackViewTwo.distribution = .equalSpacing
         stackViewTwo.spacing = 15
-//        stackViewTwo.layer.borderColor = UIColor.black.cgColor
-//        stackViewTwo.layer.borderWidth = 1
         
         NSLayoutConstraint.activate([
             stackViewTwo.topAnchor.constraint(equalTo: stackViewOne.bottomAnchor),

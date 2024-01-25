@@ -34,6 +34,7 @@
 		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
 		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
 		EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */; };
+		EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
 		EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoreTableView+Model.swift"; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +221,7 @@
 				D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */,
 				D38C05932B42D6E50098E0B9 /* StationName+Model.swift */,
 				D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */,
+				EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				D3F843EC2B57CB2B001AF2D1 /* AccountTableViewCell.swift in Sources */,
 				D3407D5F2B39D17700D9DFA2 /* SearchTableViewCell.swift in Sources */,
 				EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */,
+				EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */,
 				D3F844042B5DEC48001AF2D1 /* RidingTimeSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

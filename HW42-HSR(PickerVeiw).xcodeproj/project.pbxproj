@@ -32,6 +32,7 @@
 		D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */; };
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
 		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
+		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
 		EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingDatePickerView.swift; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +244,7 @@
 			children = (
 				EB83C6F42B4473B100C78859 /* UIView+Ext.swift */,
 				D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */,
+				EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
+				EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */,
 				D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */,
 				D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,

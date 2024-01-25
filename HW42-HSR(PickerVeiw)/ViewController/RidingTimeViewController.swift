@@ -15,7 +15,8 @@ class RidingTimeViewController: UIViewController {
     let datePickerStackView: UIStackView = UIStackView()
     let timeSelectStakView: UIStackView  = UIStackView()
     
-    
+    var ridingTimeSelectorView: RidingTimeSelectorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +27,14 @@ class RidingTimeViewController: UIViewController {
         // backgroundView
         setupBackgroundView ()
         constraintBackgroundView()
+        
     }
+    
+    
+        func dismissOrPopViewController() {
+             self.dismiss(animated: true, completion: nil)
+
+         }
 
     func addCustomView () {
         backgroundView.addSubview(RidingTimeSelectorView())

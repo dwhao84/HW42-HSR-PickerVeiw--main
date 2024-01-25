@@ -45,13 +45,17 @@ class ChooseStationTableViewCell: UITableViewCell {
         fromStationButton.isUserInteractionEnabled      = true
         fromStationButton.sizeToFit()
         
-        // arriveLocationLabel
+        fromStationButton.setTitleColor(SystemColor.lightGray, for: .highlighted)
+        
+        // departureStationButton
         departureStationButton.setTitle(stationName[11], for: .normal)
         departureStationButton.titleLabel?.textAlignment = .center
         departureStationButton.tintColor                 = .black
         departureStationButton.isEnabled                 = true
         departureStationButton.isUserInteractionEnabled  = true
         departureStationButton.sizeToFit()
+        
+        departureStationButton.setTitleColor(SystemColor.lightGray, for: .highlighted)
         
         let font = UIFont.boldSystemFont(ofSize: 16)
         ticketStatusSegmentendControl.selectedSegmentIndex = 0

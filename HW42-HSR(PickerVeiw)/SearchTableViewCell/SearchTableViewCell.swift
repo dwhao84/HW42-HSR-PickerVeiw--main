@@ -20,6 +20,9 @@ class SearchTableViewCell: UITableViewCell {
 
         self.backgroundColor = .white
         searchButton.tintColor = UIColor(red: 222/255, green: 83/255, blue: 0/255, alpha: 1)
+        
+        searchButton.setBackgroundColor(SystemColor.orangeBrandColor, for: .normal)
+        searchButton.setBackgroundColor(SystemColor.orangeBrandColorSelected, for: .highlighted)
     }
 
     static func nib () -> UINib {

@@ -14,7 +14,7 @@ class RidingDatePickerView: UIView {
     
     let datePicker: UIDatePicker   = UIDatePicker(frame: .zero)
     
-    let secondView:          UIView = UIView()
+    let secondView: UIView = UIView()
 
     let stackViewOne:   UIStackView = UIStackView()
     let stackViewTwo:   UIStackView = UIStackView()

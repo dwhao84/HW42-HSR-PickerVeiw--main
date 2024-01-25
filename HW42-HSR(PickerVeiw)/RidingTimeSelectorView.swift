@@ -17,7 +17,7 @@ class RidingTimeSelectorView: UIView {
     let grayLineHeight: CGFloat = 1
     
     let todayButton:  UIButton = UIButton(type: .system)
-    let finishButton: UIButton = UIButton(type: .system)
+    var finishButton: UIButton = UIButton(type: .system)
     
     let fromTitleLabel: UILabel        = UILabel()
     let fromTimeTextField: UITextField = UITextField()
@@ -72,13 +72,15 @@ class RidingTimeSelectorView: UIView {
         todayButton.layer.borderColor  = SystemColor.orangeBrandColor.cgColor
         todayButton.layer.borderWidth  = 1
     }
-    
+
     func configureFinishButton () {
         finishButton.setTitle("完成", for: .normal)
-        finishButton.backgroundColor    = SystemColor.orangeBrandColor
+        finishButton.setBackgroundColor(SystemColor.orangeBrandColor, for: .normal)
+        finishButton.setBackgroundColor(SystemColor.orangeBrandColorSelected, for: .highlighted)
         finishButton.tintColor          = SystemColor.white
         finishButton.layer.cornerRadius = buttonHeight / 8
         finishButton.clipsToBounds      = true
+        finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
     }
     
     func configureFromTitleLabel () {
@@ -145,7 +147,7 @@ class RidingTimeSelectorView: UIView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let selectedTime = dateFormatter.string(from: datePicker.date)
-        let selectedTimeAddText = selectedTime + "後出發"
+        let selectedTimeAddText = selectedTime + " 後出發"
         fromTimeTextField.text = selectedTimeAddText
         self.endEditing(true)
     }
@@ -157,26 +159,19 @@ class RidingTimeSelectorView: UIView {
         configureFromTitleLabel()
         configureFromTextField ()
         
+        todayButtonAddAction     ()
+        
         constraintsStackViewOne  ()
         constriantsStackViewTwo  ()
         constriantsStackViewThree()
         
-        finishButtonAddAction    ()
-        todayButtonAddAction     ()
+
 }
     
     // MARK: - Add Button Action.
-    // Add Action
-    func finishButtonAddAction () {
-        let finishAction = UIAction { [weak self] _ in
-            self?.finishButtonTapped()
-        }
-        finishButton.addAction(finishAction, for: .touchUpInside)
-    }
     // Create a function named finishButtonTapped.
-    func finishButtonTapped () {
+    @objc func finishButtonTapped (_ sender: UIButton) {
         print("finishButtonTapped")
-        self.endEditing(true)
     }
     
     // Add Action
@@ -184,14 +179,25 @@ class RidingTimeSelectorView: UIView {
         let todayAction = UIAction { [weak self] _ in
             self?.toadyButtonTapped() }
         todayButton.addAction(todayAction, for: .touchUpInside)
+        
+        todayButton.addTarget(self, action: #selector(todayButtonTouchDown), for: .touchDown)
+        todayButton.addTarget(self, action: #selector(todayButtonTouchUp), for: [.touchUpInside, .touchUpOutside, .touchCancel])
     }
     
     // Create a function named toadyButtonTapped.
     func toadyButtonTapped () {
         print("toadyButtonTapped")
         fromTimeTextField.text = getCurrentTimeAndUpdateContext ()
-        print(getCurrentTimeAndUpdateContext)
+        print("\(fromTimeTextField.text!), 回復成現在的時間")
         self.endEditing(true)
+    }
+
+    @objc func todayButtonTouchDown() {
+        todayButton.layer.borderColor = SystemColor.orangeBrandColorSelected.cgColor
+    }
+
+    @objc func todayButtonTouchUp() {
+        todayButton.layer.borderColor = SystemColor.orangeBrandColor.cgColor
     }
     
     // MARK: - Constraint Stack View.
@@ -255,9 +261,6 @@ class RidingTimeSelectorView: UIView {
         stackViewThree.distribution = .fillEqually
         stackViewThree.spacing      = 5
         
-//        stackViewThree.layer.borderColor = UIColor.black.cgColor
-//        stackViewThree.layer.borderWidth = 2
-        
         NSLayoutConstraint.activate([
             stackViewThree.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             stackViewThree.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
@@ -275,21 +278,6 @@ extension RidingTimeSelectorView: UITextFieldDelegate {
         fromTimeTextField.inputView = datePicker
         return true
     }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        print("textFieldShouldReturn")
-//        fromTimeTextField.inputView = datePicker
-//        datePicker.isHidden         = false
-//        self.addSubview(datePicker)
-//        return true
-//    }
-    
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        print("textFieldShouldReturn")
-//        fromTimeTextField.inputView = datePicker
-//        datePicker.inputViewController?.dismiss(animated: true)
-//        return true
-//    }
 }
 
 #Preview(traits: .fixedLayout(width: 390, height: 230), body: {

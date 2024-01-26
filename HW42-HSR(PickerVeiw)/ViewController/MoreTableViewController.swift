@@ -10,6 +10,9 @@ import SafariServices
 
 class MoreTableViewController: UIViewController {
     
+    let containerView: UIView  = UIView()
+    let stackView: UIStackView = UIStackView()
+    
     let trainServiceTableView:        UITableView  = UITableView()
     let hightSpeedRailInfoTableView:  UITableView  = UITableView()
     let highSpeedRailOptionTableView: UITableView  = UITableView()
@@ -23,8 +26,9 @@ class MoreTableViewController: UIViewController {
         
         setupNavigationBar ()
         fetchAllTheData    ()
+        setTableView       ()
         
-        self.view.backgroundColor = Colors.brightGray
+        self.containerView.backgroundColor = Colors.orange
         
 
         
@@ -40,13 +44,13 @@ class MoreTableViewController: UIViewController {
         // Set up titleText color in appearance.
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = Colors.navigationBarColor
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: Colors.white]
         self.navigationItem.scrollEdgeAppearance = navigationBarAppearance
                
         // Set up titleView
         let hsrImageView = UIImageView(image: Images.hsrImage)
         self.navigationController?.isNavigationBarHidden      = false
-        self.navigationItem.titleView?.tintColor = .white
+        self.navigationItem.titleView?.tintColor = Colors.white
         self.navigationItem.titleView = hsrImageView
         
         // Set up UIBarButtonItem
@@ -63,11 +67,17 @@ class MoreTableViewController: UIViewController {
     }
     
     @objc func speakerBarButtonTapped () {
-        
+        print("speakerBarButtonTapped")
     }
     
     @objc func accountBarButtonTapped () {
-        
+        print("accountBarButtonTapped")
+    }
+    
+    func setTableView () {
+        setTableViewDelegate ()
+        setupTableView       ()
+        constraintsTableView ()
     }
     
     func setTableViewDelegate () {
@@ -77,19 +87,73 @@ class MoreTableViewController: UIViewController {
         hightSpeedRailInfoTableView.delegate   = self
         hightSpeedRailInfoTableView.dataSource = self
         
-        highSpeedRailOptionTableView.delegate = self
+        highSpeedRailOptionTableView.delegate   = self
         highSpeedRailOptionTableView.dataSource = self
     }
     
-    func setupFirstTableView () {
+    func setupTableView () {
+        // rowHeight
+        trainServiceTableView.rowHeight        = 55
+        hightSpeedRailInfoTableView.rowHeight  = 55
+        highSpeedRailOptionTableView.rowHeight = 55
+        
+        // separatorStyle
+        trainServiceTableView.separatorStyle        = .singleLine
+        hightSpeedRailInfoTableView.separatorStyle  = .singleLine
+        highSpeedRailOptionTableView.separatorStyle = .singleLine
+        
+        // backgroundColor
+        trainServiceTableView.backgroundColor        = Colors.black
+        hightSpeedRailInfoTableView.backgroundColor  = Colors.white
+        highSpeedRailOptionTableView.backgroundColor = Colors.white
+        
+        // register
+        trainServiceTableView.register(MoreTableViewCell.nib(), forCellReuseIdentifier: MoreTableViewCell.identifier)
+    }
+    
+    
+    func setupHightSpeedRailInfoTableView () {
+        
         
     }
     
-    func setupSecondTableView () {
+    func setupHighSpeedRailOptionTableView () {
+        
         
     }
     
-    func setupThirdTableView () {
+    func constraintsTableView () {
+        containerView.addSubview(trainServiceTableView)
+        containerView.addSubview(highSpeedRailOptionTableView)
+        
+        view.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+    
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trainServiceTableView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            trainServiceTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            trainServiceTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            trainServiceTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
+//        NSLayoutConstraint.activate([
+//            hightSpeedRailInfoTableView.topAnchor.constraint(equalTo: containerView.topAnchor),
+//            hightSpeedRailInfoTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+//            hightSpeedRailInfoTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+//        ])
+        
+//        NSLayoutConstraint.activate([
+//            hightSpeedRailInfoTableView.topAnchor.constraint(equalTo: containerView.topAnchor),
+//            trainServiceTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+//            trainServiceTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+//        ])
         
     }
 }
@@ -139,36 +203,22 @@ extension MoreTableViewController {
 }
 
 extension MoreTableViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == trainServiceTableView {
-            
-        } else if tableView == hightSpeedRailInfoTableView {
-            
-        } else if tableView == highSpeedRailOptionTableView {
-            
-        } else {
-            
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
     }
 }
 
 extension MoreTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int()
-    }
+            return trainServices.count
+        }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == trainServiceTableView {
-            
-        } else if tableView == hightSpeedRailInfoTableView {
-            
-        } else if tableView == highSpeedRailOptionTableView {
-            
-        } else {
-            
+            guard let cell = trainServiceTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
+            cell.serviceImageView.image = trainServices[indexPath.row].image
+            cell.serviceTitleLabel.text = trainServices[indexPath.row].title
+            return cell
         }
-        return UITableViewCell ()
-    }
 }
 
 

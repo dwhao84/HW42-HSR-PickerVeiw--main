@@ -77,7 +77,7 @@ class TickerOrderViewController: UIViewController {
     }
     
     func constraintTableView () {
-        backgroundView.backgroundColor = .white
+        backgroundView.backgroundColor = Colors.white
         backgroundView.addSubview(trainStatusTableView)
         backgroundView.addSubview(chooseStationTableView)
         backgroundView.addSubview(serviceTableView)

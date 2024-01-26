@@ -36,6 +36,7 @@
 		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
 		EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */; };
 		EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */; };
+		EBA8F8742B640B45000237A4 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
 		EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoreTableView+Model.swift"; sourceTree = "<group>"; };
+		EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,8 +155,9 @@
 				EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */,
 				D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */,
 				D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */,
-				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
 				D3F843EE2B57CB39001AF2D1 /* AccountTableViewCell */,
+				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
+				EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */,
 				D3407D572B39A55400D9DFA2 /* ViewController */,
 			);
 			path = "HW42-HSR(PickerVeiw)";
@@ -422,6 +425,7 @@
 				EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */,
 				D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */,
 				D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */,
+				EBA8F8742B640B45000237A4 /* MoreTableViewCell.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,
 				D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */,

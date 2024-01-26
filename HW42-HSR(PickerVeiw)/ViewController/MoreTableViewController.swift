@@ -32,7 +32,7 @@ class MoreTableViewController: UIViewController {
     
     func fetchAllTheData () {
         trainServices        = fetchTrainServiceData()
-        highSpeedRailInfos  = fetchHighSpeedRailInfoData()
+        highSpeedRailInfos   = fetchHighSpeedRailInfoData()
         highSpeedRailOptions = fetchHighSpeedRailOptionData()
     }
     

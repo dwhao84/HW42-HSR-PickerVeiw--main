@@ -33,7 +33,3 @@ let accountCenterSecInfo = [
     AccountCenterSec(image: Images.bell,              title: "推播通知"),
     AccountCenterSec(image: Images.speakerWaveBubble, title: "Siri 捷徑")
 ]
-
-//enum AccountCenterImage {
-//    static let imageOne: UIImage = UIImage(systemName: "Color")!
-//}

@@ -26,10 +26,10 @@ class ChooseStationTableViewCell: UITableViewCell {
         // Initialization code
         
         // fromLabel
-        fromLabel.text            = "起程點"
-        fromLabel.textColor       = Colors.pickerViewLightColorForLabel
-        fromLabel.numberOfLines   = 0
-        fromLabel.font            = .systemFont(ofSize: 13)
+        fromLabel.text               = "起程點"
+        fromLabel.textColor          = Colors.pickerViewLightColorForLabel
+        fromLabel.numberOfLines      = 0
+        fromLabel.font               = .systemFont(ofSize: 13)
         
         // arriveLabel
         departureLabel.text          = "到達站"

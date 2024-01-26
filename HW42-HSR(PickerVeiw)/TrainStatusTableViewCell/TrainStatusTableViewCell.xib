@@ -25,7 +25,6 @@
                                     <constraint firstAttribute="height" constant="35" id="Hp6-kd-UnE"/>
                                     <constraint firstAttribute="width" constant="147" id="dF4-Kv-ZbW"/>
                                 </constraints>
-                                <color key="tintColor" red="0.36078431370000003" green="0.51372549020000002" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system" title="全線正常營運" imagePadding="5">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>

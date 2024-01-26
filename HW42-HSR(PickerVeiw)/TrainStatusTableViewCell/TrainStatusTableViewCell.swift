@@ -16,6 +16,8 @@ class TrainStatusTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        statusButton.tintColor = Colors.green
 
         // drawLine for tableViewCell
         drawLineFromPoint(start: CGPoint(x: 0, y: 45), toPoint: CGPoint(x: 405, y: 45), ofColor: UIColor.systemGray4, inView: self.contentView)

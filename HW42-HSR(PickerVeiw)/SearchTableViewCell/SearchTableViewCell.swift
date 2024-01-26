@@ -16,13 +16,12 @@ class SearchTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-
-        self.backgroundColor = .white
-        searchButton.tintColor = UIColor(red: 222/255, green: 83/255, blue: 0/255, alpha: 1)
         
-        searchButton.setBackgroundColor(SystemColor.orangeBrandColor, for: .normal)
-        searchButton.setBackgroundColor(SystemColor.orangeBrandColorSelected, for: .highlighted)
+        // Initialization code
+        self.backgroundColor   = .white
+        searchButton.tintColor = Colors.orange
+        searchButton.setBackgroundColor(Colors.orangeBrandColor, for: .normal)
+        searchButton.setBackgroundColor(Colors.orangeBrandColorSelected, for: .highlighted)
     }
 
     static func nib () -> UINib {

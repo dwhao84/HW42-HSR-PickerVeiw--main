@@ -40,7 +40,7 @@ class RidingDatePickerView: UIView {
 
     func configureYearLabel () {
         yearLabel.text                      = "2024年"
-        yearLabel.textColor                 = SystemColor.lightGray
+        yearLabel.textColor                 = Colors.lightGray
         yearLabel.textAlignment             = .center
         yearLabel.numberOfLines             = 0
         yearLabel.adjustsFontSizeToFitWidth = true
@@ -48,9 +48,9 @@ class RidingDatePickerView: UIView {
     }
     
     func configureArrowButton () {
-        let arrowImage = UIImage(systemName: "arrowtriangle.forward.fill")
-        arrowButton.setImage(arrowImage, for: .normal)
-        arrowButton.tintColor                = SystemColor.navigationBarColor
+        
+        arrowButton.setImage(Images.arrow, for: .normal)
+        arrowButton.tintColor                = Colors.navigationBarColor
         arrowButton.isUserInteractionEnabled = true
         self.addSubview(arrowButton)
     }
@@ -67,7 +67,7 @@ class RidingDatePickerView: UIView {
     }
     
     func configureSecondView () {
-        secondView.backgroundColor = SystemColor.darkGray
+        secondView.backgroundColor = Colors.darkGray
         self.addSubview(secondView)
     }
     
@@ -134,5 +134,5 @@ class RidingDatePickerView: UIView {
 
 //        let bottomLine = CALayer()
 //        bottomLine.frame = CGRect(x: 0, y: Int(firstViewHeight), width: Int(datePickerWidth), height: 1)
-//        bottomLine.backgroundColor = SystemColor.systemGray5.cgColor
+//        bottomLine.backgroundColor = Colors.systemGray5.cgColor
 //        firstView.layer.addSublayer(bottomLine)

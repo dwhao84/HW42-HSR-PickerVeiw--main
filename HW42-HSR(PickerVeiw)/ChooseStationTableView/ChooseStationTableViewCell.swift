@@ -27,13 +27,13 @@ class ChooseStationTableViewCell: UITableViewCell {
         
         // fromLabel
         fromLabel.text            = "起程點"
-        fromLabel.textColor       = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+        fromLabel.textColor       = Colors.pickerViewLightColorForLabel
         fromLabel.numberOfLines   = 0
         fromLabel.font            = .systemFont(ofSize: 13)
         
         // arriveLabel
         departureLabel.text          = "到達站"
-        departureLabel.textColor     = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+        departureLabel.textColor     = Colors.pickerViewLightColorForLabel
         departureLabel.numberOfLines = 0
         departureLabel.font          = .systemFont(ofSize: 13)
         
@@ -45,7 +45,7 @@ class ChooseStationTableViewCell: UITableViewCell {
         fromStationButton.isUserInteractionEnabled      = true
         fromStationButton.sizeToFit()
         
-        fromStationButton.setTitleColor(SystemColor.lightGray, for: .highlighted)
+        fromStationButton.setTitleColor(Colors.lightGray, for: .highlighted)
         
         // departureStationButton
         departureStationButton.setTitle(stationName[11], for: .normal)
@@ -55,7 +55,7 @@ class ChooseStationTableViewCell: UITableViewCell {
         departureStationButton.isUserInteractionEnabled  = true
         departureStationButton.sizeToFit()
         
-        departureStationButton.setTitleColor(SystemColor.lightGray, for: .highlighted)
+        departureStationButton.setTitleColor(Colors.lightGray, for: .highlighted)
         
         let font = UIFont.boldSystemFont(ofSize: 16)
         ticketStatusSegmentendControl.selectedSegmentIndex = 0

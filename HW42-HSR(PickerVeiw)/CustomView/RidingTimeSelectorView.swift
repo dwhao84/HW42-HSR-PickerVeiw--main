@@ -65,19 +65,19 @@ class RidingTimeSelectorView: UIView {
     
     func configureTodayButton () {
         todayButton.setTitle("今天", for: .normal)
-        todayButton.backgroundColor    = SystemColor.white
-        todayButton.tintColor          = SystemColor.orangeBrandColor
+        todayButton.backgroundColor    = Colors.white
+        todayButton.tintColor          = Colors.orangeBrandColor
         todayButton.layer.cornerRadius = buttonHeight / 8
         todayButton.clipsToBounds      = true
-        todayButton.layer.borderColor  = SystemColor.orangeBrandColor.cgColor
+        todayButton.layer.borderColor  = Colors.orangeBrandColor.cgColor
         todayButton.layer.borderWidth  = 1
     }
 
     func configureFinishButton () {
         finishButton.setTitle("完成", for: .normal)
-        finishButton.setBackgroundColor(SystemColor.orangeBrandColor, for: .normal)
-        finishButton.setBackgroundColor(SystemColor.orangeBrandColorSelected, for: .highlighted)
-        finishButton.tintColor          = SystemColor.white
+        finishButton.setBackgroundColor(Colors.orangeBrandColor, for: .normal)
+        finishButton.setBackgroundColor(Colors.orangeBrandColorSelected, for: .highlighted)
+        finishButton.tintColor          = Colors.white
         finishButton.layer.cornerRadius = buttonHeight / 8
         finishButton.clipsToBounds      = true
         finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
@@ -85,7 +85,7 @@ class RidingTimeSelectorView: UIView {
     
     func configureFromTitleLabel () {
         fromTitleLabel.text          = "出發時間"
-        fromTitleLabel.textColor     = SystemColor.lightGray
+        fromTitleLabel.textColor     = Colors.lightGray
         fromTitleLabel.font          = UIFont.systemFont(ofSize: 17)
         fromTitleLabel.numberOfLines = 0
     }
@@ -95,7 +95,7 @@ class RidingTimeSelectorView: UIView {
 
         // Set up fromTimeTextField content.
         fromTimeTextField.text        = getCurrentTimeAndUpdateContext ()
-        fromTimeTextField.textColor   = SystemColor.darkGray
+        fromTimeTextField.textColor   = Colors.darkGray
         fromTimeTextField.borderStyle = .none
         fromTimeTextField.isUserInteractionEnabled = true
 
@@ -106,13 +106,13 @@ class RidingTimeSelectorView: UIView {
         
         // Set up arrowTriangleView as imageView.
         let arrowTriangleImageView = UIImageView(image: UIImage(systemName: "arrowtriangle.down.fill"))
-        arrowTriangleImageView.tintColor = SystemColor.navigationBarColor
+        arrowTriangleImageView.tintColor = Colors.navigationBarColor
         fromTimeTextField.rightView = arrowTriangleImageView
         
         // Add bottom line for UITextField.
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: Int(textFieldHeight) - 1, width: 345, height: 1)
-        bottomLine.backgroundColor = SystemColor.systemGray5.cgColor
+        bottomLine.backgroundColor = Colors.systemGray5.cgColor
         fromTimeTextField.layer.addSublayer(bottomLine)
         
         configureDatePicker ()
@@ -121,7 +121,7 @@ class RidingTimeSelectorView: UIView {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
-        doneButton.tintColor = SystemColor.orangeBrandColor
+        doneButton.tintColor = Colors.orangeBrandColor
         let flexibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBar.setItems([flexibleSpace, doneButton], animated: true)
         
@@ -192,11 +192,11 @@ class RidingTimeSelectorView: UIView {
     }
 
     @objc func todayButtonTouchDown() {
-        todayButton.layer.borderColor = SystemColor.orangeBrandColorSelected.cgColor
+        todayButton.layer.borderColor = Colors.orangeBrandColorSelected.cgColor
     }
 
     @objc func todayButtonTouchUp() {
-        todayButton.layer.borderColor = SystemColor.orangeBrandColor.cgColor
+        todayButton.layer.borderColor = Colors.orangeBrandColor.cgColor
     }
     
     // MARK: - Constraint Stack View.

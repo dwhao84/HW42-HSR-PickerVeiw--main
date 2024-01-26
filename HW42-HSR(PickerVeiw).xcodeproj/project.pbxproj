@@ -20,6 +20,7 @@
 		D3407D832B39F06100D9DFA2 /* ChooseStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */; };
 		D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */; };
 		D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05932B42D6E50098E0B9 /* StationName+Model.swift */; };
+		D3CC54CC2B636B3E00E236F7 /* ImagesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */; };
 		D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */; };
 		D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E62B57A654001AF2D1 /* AccountViewController.swift */; };
 		D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */; };
@@ -75,6 +76,7 @@
 		D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseStationTableViewCell.xib; sourceTree = "<group>"; };
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
+		D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesConstants.swift; sourceTree = "<group>"; };
 		D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
 		D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountTableViewCell+Model.swift"; sourceTree = "<group>"; };
@@ -189,8 +191,8 @@
 		D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D3407D5E2B39D17700D9DFA2 /* SearchTableViewCell.xib */,
 				D3407D5D2B39D17700D9DFA2 /* SearchTableViewCell.swift */,
+				D3407D5E2B39D17700D9DFA2 /* SearchTableViewCell.xib */,
 			);
 			path = SearchTableViewCell;
 			sourceTree = "<group>";
@@ -209,8 +211,8 @@
 		D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */ = {
 			isa = PBXGroup;
 			children = (
-				D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */,
 				D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */,
+				D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */,
 			);
 			path = ChooseStationTableView;
 			sourceTree = "<group>";
@@ -238,8 +240,8 @@
 		D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */,
 				D3F843FB2B5C28B6001AF2D1 /* ServiceTableViewCell.swift */,
+				D3F843FC2B5C28B6001AF2D1 /* ServiceTableViewCell.xib */,
 			);
 			path = ServiceTableViewCell;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 				EB83C6F42B4473B100C78859 /* UIView+Ext.swift */,
 				D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */,
 				EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */,
+				D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -266,8 +269,8 @@
 		EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */,
 				EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */,
+				EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */,
 			);
 			path = TrainStatusTableViewCell;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3F844022B5D341D001AF2D1 /* RidingTimeViewController.swift in Sources */,
+				D3CC54CC2B636B3E00E236F7 /* ImagesConstants.swift in Sources */,
 				D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */,
 				D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */,
 				EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */,

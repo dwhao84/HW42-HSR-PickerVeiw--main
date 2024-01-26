@@ -9,27 +9,27 @@ import UIKit
 
 class TickerOrderViewController: UIViewController {
     
-    let backgroundView: UIView       = UIView()
-    let stackView:       UIStackView = UIStackView()
-    let backgroundShadowView: UIView = UIView()
+    let backgroundView: UIView                = UIView()
+    let stackView:       UIStackView          = UIStackView()
+    let backgroundShadowView: UIView          = UIView()
     
     let segmentedControlContainerView: UIView = UIView()
     var segmentedControl: UISegmentedControl  = UISegmentedControl()
     let underlineView: UIView                 = UIView()
 
-    var hsrLogoImageView: UIImageView = UIImageView()
-
-    let fromLocationLabel: UILabel   = UILabel()
-    let departureLabel: UILabel      = UILabel()
-
-    let pickerView: UIPickerView     = UIPickerView()
-    let customToolbar: UIToolbar     = UIToolbar   ()
-    let pickerStackView: UIStackView = UIStackView ()
-        
-    let trainStatusTableView:    UITableView = UITableView()
-    let serviceTableView:        UITableView = UITableView()
-    let chooseStationTableView : UITableView = UITableView()
-    let searchTableView:         UITableView = UITableView()
+    var hsrLogoImageView: UIImageView         = UIImageView()
+ 
+    let fromLocationLabel: UILabel            = UILabel()
+    let departureLabel: UILabel               = UILabel()
+         
+    let pickerView: UIPickerView              = UIPickerView()
+    let customToolbar: UIToolbar              = UIToolbar   ()
+    let pickerStackView: UIStackView          = UIStackView ()
+         
+    let trainStatusTableView:    UITableView  = UITableView()
+    let serviceTableView:        UITableView  = UITableView()
+    let chooseStationTableView : UITableView  = UITableView()
+    let searchTableView:         UITableView  = UITableView()
     
     var selectedServiceIndex: IndexPath?
     var selectedIndex: Int?
@@ -46,7 +46,7 @@ class TickerOrderViewController: UIViewController {
     
     enum Constants {
         static let segmentedControlHeight: CGFloat = 45
-        static let underlineViewColor    : UIColor = SystemColor.orangeBrandColor
+        static let underlineViewColor    : UIColor = Colors.orangeBrandColor
         static let underlineViewHeight   : CGFloat = 5
         static let underlineViewWidth    : CGFloat = UIScreen.main.bounds.width / 10
     }
@@ -54,7 +54,7 @@ class TickerOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = SystemColor.brightGray
+        self.view.backgroundColor = Colors.brightGray
         setupUI ()
 //        tapTheViewController()
     }
@@ -162,26 +162,25 @@ class TickerOrderViewController: UIViewController {
     func customNavigationBar () {
         // scrollEdgeAppearance
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = SystemColor.navigationBarColor
+        appearance.backgroundColor = Colors.navigationBarColor
         self.navigationItem.scrollEdgeAppearance = appearance
         
         // Set up navigation item
-        self.navigationItem.titleView?.backgroundColor           = SystemColor.navigationBarColor
-        self.navigationController?.navigationBar.backgroundColor = SystemColor.navigationBarColor
-        self.navigationController?.navigationBar.barTintColor    = SystemColor.navigationBarColor
+        self.navigationItem.titleView?.backgroundColor           = Colors.navigationBarColor
+        self.navigationController?.navigationBar.backgroundColor = Colors.navigationBarColor
+        self.navigationController?.navigationBar.barTintColor    = Colors.navigationBarColor
         
         // Set up UIBarButtonItem
-        let speakerBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"speaker.wave.3.fill"), style: .plain, target: self, action: #selector(speakerBarButtonTapped))
-        let accountBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"person.fill"), style: .plain, target: self, action: #selector(accountBarButtonTapped))
+        let speakerBarButton: UIBarButtonItem = UIBarButtonItem(image: Images.speakerWave, style: .plain, target: self, action: #selector(speakerBarButtonTapped))
+        let accountBarButton: UIBarButtonItem = UIBarButtonItem(image: Images.personfill, style: .plain, target: self, action: #selector(accountBarButtonTapped))
         let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
         
         // Set up barButton's tintColor
-        speakerBarButton.tintColor = SystemColor.white
-        accountBarButton.tintColor = SystemColor.white
+        speakerBarButton.tintColor = Colors.white
+        accountBarButton.tintColor = Colors.white
 
         // hsrLogo Set up
-        let hsrlogoImage = UIImage(named: "hsrLogo") //Your logo url here
-        hsrLogoImageView = UIImageView(image: hsrlogoImage)
+        hsrLogoImageView = UIImageView(image: Images.hsrImage)
         hsrLogoImageView.contentMode = .scaleAspectFit
 
         // Set up navigationItem's rightBarButton
@@ -199,7 +198,7 @@ class TickerOrderViewController: UIViewController {
     func configurePickerView () {
         pickerView.backgroundColor = UIColor.white
         pickerView.selectedRow(inComponent: 0)
-        pickerView.tintColor = SystemColor.orangeBrandColor
+        pickerView.tintColor = Colors.orangeBrandColor
         
         // Set up selectRow in first row component zero in pickerView.
         let firstRowIndexInFirstComponent = stationName.startIndex
@@ -212,12 +211,12 @@ class TickerOrderViewController: UIViewController {
         
         fromLocationLabel.frame     = CGRect(x: 90, y: 3, width: 60, height: 20)
         fromLocationLabel.text      = "起程點"
-        fromLocationLabel.textColor = SystemColor.pickerViewLightColorForLabel
+        fromLocationLabel.textColor = Colors.pickerViewLightColorForLabel
         fromLocationLabel.font      = UIFont.systemFont(ofSize: 12)
         
         departureLabel.frame     = CGRect(x: 288, y: 3, width: 60, height: 20)
         departureLabel.text      = "到達站"
-        departureLabel.textColor = SystemColor.pickerViewLightColorForLabel
+        departureLabel.textColor = Colors.pickerViewLightColorForLabel
         departureLabel.font      = UIFont.systemFont(ofSize: 12)
         
         pickerView.addSubview(fromLocationLabel)
@@ -229,8 +228,8 @@ class TickerOrderViewController: UIViewController {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
         // Set up tintColor
-        switchStationBarButtton.tintColor = SystemColor.orangeBrandColor
-        doneBarButton.tintColor           = SystemColor.orangeBrandColor
+        switchStationBarButtton.tintColor = Colors.orangeBrandColor
+        doneBarButton.tintColor           = Colors.orangeBrandColor
         
         // customToolbar
         customToolbar.barStyle = UIBarStyle.default
@@ -249,11 +248,8 @@ class TickerOrderViewController: UIViewController {
     func constraintPickerView () {
         view.addSubview(pickerView)
         view.addSubview(customToolbar)
-        
-//        customToolbar.widthAnchor.constraint(equalToConstant: 393).isActive = true
+
         customToolbar.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-//        pickerView.widthAnchor.constraint(equalToConstant: 393).isActive  = false
         pickerView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
         pickerStackView.addArrangedSubview(customToolbar)
@@ -281,7 +277,7 @@ class TickerOrderViewController: UIViewController {
     func configureSegmentedControlContainerView () {
         
         // segmentedControlContainerView
-        segmentedControlContainerView.backgroundColor = SystemColor.navigationBarColor
+        segmentedControlContainerView.backgroundColor = Colors.navigationBarColor
         
         // segmentedControl's text
         segmentedControl.setTitleTextAttributes([
@@ -305,7 +301,7 @@ class TickerOrderViewController: UIViewController {
         segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
         // underline
-        underlineView.backgroundColor    = SystemColor.orangeBrandColor
+        underlineView.backgroundColor    = Colors.orangeBrandColor
         underlineView.layer.cornerRadius = Constants.underlineViewHeight / 2
     }
     
@@ -478,7 +474,7 @@ class TickerOrderViewController: UIViewController {
     @objc func accountBarButtonTapped (_ sender: UIButton) {
         print("accountBarButtonTapped")
         let accountVC = AccountViewController()
-        self.navigationController?.navigationBar.tintColor = SystemColor.white
+        self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
 }
@@ -590,7 +586,7 @@ extension TickerOrderViewController: UITableViewDelegate {
             print("serviceTableView's index is \(indexPath)")
             
             let ridingTimeVC = RidingTimeViewController()
-            self.navigationController?.navigationBar.tintColor = SystemColor.white
+            self.navigationController?.navigationBar.tintColor = Colors.white
             self.navigationController?.pushViewController(ridingTimeVC, animated: true)
             
         } else if tableView == searchTableView {

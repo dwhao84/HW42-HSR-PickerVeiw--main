@@ -17,14 +17,14 @@ class AccountViewController: UIViewController {
 
         setupNavigationBar   ()
         setupTableView       ()
-        self.view.backgroundColor = SystemColor.brightGray
+        self.view.backgroundColor = Colors.brightGray
     }
     
     
     func setupNavigationBar () {
         // Set up titleText color in appearance.
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = SystemColor.navigationBarColor
+        appearance.backgroundColor = Colors.navigationBarColor
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationItem.scrollEdgeAppearance = appearance
                 
@@ -65,8 +65,8 @@ class AccountViewController: UIViewController {
         infoSecTableView.separatorStyle  = .singleLine
         infoSecTableView.register(AccountTableViewCell.nib(), forCellReuseIdentifier: AccountTableViewCell.identifier)
         
-        infoTableView.backgroundColor    = SystemColor.brightGray
-        infoSecTableView.backgroundColor = SystemColor.brightGray
+        infoTableView.backgroundColor    = Colors.brightGray
+        infoSecTableView.backgroundColor = Colors.brightGray
     }
     
     // infoSecTableView
@@ -89,7 +89,6 @@ class AccountViewController: UIViewController {
             infoSecTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
 }
 
 extension AccountViewController: UITableViewDelegate{
@@ -117,12 +116,12 @@ extension AccountViewController: UITableViewDataSource {
         if tableView == infoTableView {
             guard let cell = infoTableView.dequeueReusableCell(withIdentifier: AccountTableViewCell.identifier, for: indexPath) as? AccountTableViewCell else { fatalError() }
             cell.serviceTitleLabel.text = accountCenterInfo[indexPath.row].title
-            cell.iconImageView.image    = UIImage(systemName: accountCenterInfo[indexPath.row].image)
+            cell.iconImageView.image    = accountCenterInfo[indexPath.row].image
             return cell
         } else if tableView == infoSecTableView {
             guard let secondCell = infoSecTableView.dequeueReusableCell(withIdentifier: AccountTableViewCell.identifier, for: indexPath) as? AccountTableViewCell else { fatalError() }
             secondCell.serviceTitleLabel.text = accountCenterSecInfo[indexPath.row].title
-            secondCell.iconImageView.image    = UIImage(systemName: accountCenterSecInfo[indexPath.row].image)
+            secondCell.iconImageView.image    =  accountCenterSecInfo[indexPath.row].image
             return secondCell
         }
         return UITableViewCell()

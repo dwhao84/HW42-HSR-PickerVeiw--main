@@ -30,10 +30,8 @@ class RidingTimeViewController: UIViewController {
         
     }
     
-    
         func dismissOrPopViewController() {
              self.dismiss(animated: true, completion: nil)
-
          }
 
     func addCustomView () {
@@ -46,7 +44,7 @@ class RidingTimeViewController: UIViewController {
     }
 
     func setupBackgroundView () {
-        backgroundView.backgroundColor = SystemColor.white
+        backgroundView.backgroundColor = Colors.white
         backgroundView.layer.cornerRadius = 10
         backgroundView.layer.borderColor  = UIColor.lightGray.cgColor
         backgroundView.layer.borderWidth  = 0.2
@@ -65,7 +63,7 @@ class RidingTimeViewController: UIViewController {
         backgroundStackView.distribution = .fillEqually
         backgroundStackView.alignment = .center
         
-        backgroundStackView.backgroundColor = SystemColor.white
+        backgroundStackView.backgroundColor = Colors.white
         backgroundStackView.layer.cornerRadius = 10
         backgroundStackView.clipsToBounds      = true
         backgroundStackView.dropShadow()
@@ -83,14 +81,14 @@ class RidingTimeViewController: UIViewController {
     }
     
     func setupBackgroundColor () {
-        self.view.backgroundColor = SystemColor.brightGray
+        self.view.backgroundColor = Colors.brightGray
     }
 
     func setupNavigationBar () {
         // Set up titleText color in appearance.
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = SystemColor.navigationBarColor
-        appearance.titleTextAttributes = [.foregroundColor: SystemColor.white]
+        appearance.backgroundColor = Colors.navigationBarColor
+        appearance.titleTextAttributes = [.foregroundColor: Colors.white]
         self.navigationItem.scrollEdgeAppearance = appearance
 
         self.navigationController?.isNavigationBarHidden      = false

@@ -21,7 +21,7 @@ class ServiceTableViewCell: UITableViewCell {
         
        serviceStatusLabel.text          = "座位偏好"
        serviceStatusLabel.textAlignment = .left
-       serviceStatusLabel.textColor     = .lightGray
+       serviceStatusLabel.textColor     = Colors.lightGray
        serviceStatusLabel.font          = UIFont.systemFont(ofSize: 15)
        
        statusLabel.text                 = "無偏好"
@@ -29,8 +29,8 @@ class ServiceTableViewCell: UITableViewCell {
        statusLabel.textColor            = .black
        statusLabel.font                 = UIFont.boldSystemFont(ofSize: 16)
 
-        serviceImageView.tintColor = SystemColor.lightGray
-        serviceImageView.alpha     = 0.4
+       serviceImageView.tintColor       = Colors.lightGray
+       serviceImageView.alpha           = 0.4
         
        // drawLine for tableViewCell
        drawLineFromPoint(start: CGPoint(x: 40, y: 75), toPoint: CGPoint(x: 365, y: 75), ofColor: UIColor.systemGray4, inView: self.contentView)

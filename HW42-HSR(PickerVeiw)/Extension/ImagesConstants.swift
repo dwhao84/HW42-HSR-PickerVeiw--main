@@ -8,7 +8,7 @@
 import UIKit
 
 struct Images {
-    
+    // hsr icon
     static let hsrImage           = UIImage(named: "hsrLogo")!
     
     // AccountCenter Infomation cell use:
@@ -43,6 +43,4 @@ struct Images {
     static let questionMark      = UIImage(systemName: "questionmark.circle")!
     static let wheelChair        = UIImage(systemName: "figure.roll")!
     static let arrowForward      = UIImage(systemName: "ipad.and.arrow.forward")!
-    
-    
 }

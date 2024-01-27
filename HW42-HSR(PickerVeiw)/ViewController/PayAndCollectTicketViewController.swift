@@ -54,3 +54,7 @@ class PayAndCollectTicketViewController: UIViewController {
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
 }
+
+#Preview {
+    UINavigationController(rootViewController: PayAndCollectTicketViewController())
+}

@@ -55,3 +55,7 @@ class LoadReservationViewController: UIViewController {
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
 }
+
+#Preview {
+    UINavigationController(rootViewController: LoadReservationViewController())
+}

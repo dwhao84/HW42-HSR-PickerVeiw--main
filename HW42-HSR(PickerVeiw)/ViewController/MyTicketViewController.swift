@@ -56,3 +56,7 @@ class MyTicketViewController: UIViewController {
     }
 
 }
+
+#Preview {
+    UINavigationController(rootViewController: MyTicketViewController())
+}

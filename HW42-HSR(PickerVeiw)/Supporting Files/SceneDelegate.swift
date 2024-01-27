@@ -13,14 +13,69 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        let ticketVC = TickerOrderViewController()
-        let navigationVC = UINavigationController(rootViewController: ticketVC)
-        window.rootViewController = navigationVC
-        self.window = window
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = createTabBarController()
         self.window?.makeKeyAndVisible()
     }
 
+    func createMyTicketViewController () -> UINavigationController {
+        let myTicketVC = MyTicketViewController()
+        myTicketVC.tabBarItem = UITabBarItem(title: "我的車票", image: Images.ticket, tag: 1)
+        myTicketVC.tabBarItem.badgeColor = Colors.brightGray
+        let myTicketNC = UINavigationController(rootViewController: myTicketVC)
+        return myTicketNC
+    }
+    
+    func createTicketOrderViewController () -> UINavigationController {
+        let ticketVC = TickerOrderViewController()
+        ticketVC.tabBarItem = UITabBarItem(title: "訂票", image: Images.seatsIconForTabBar, tag: 2)
+        ticketVC.tabBarItem.badgeColor = Colors.brightGray
+        let ticketNC = UINavigationController(rootViewController: ticketVC)
+        return ticketNC
+    }
+    
+    func createPayAndCollectViewController () -> UINavigationController {
+        let payAndCollectTicketVC = PayAndCollectTicketViewController()
+        payAndCollectTicketVC.tabBarItem = UITabBarItem(title: "付款/取票", image: Images.payAndLoad, tag: 2)
+        payAndCollectTicketVC.tabBarItem.badgeColor = Colors.brightGray
+        let payAndCollectTicketNC = UINavigationController(rootViewController: payAndCollectTicketVC)
+        return payAndCollectTicketNC
+    }
+    
+    func createLoadReservationViewController () -> UINavigationController {
+        let loadReservationVC = LoadReservationViewController()
+        loadReservationVC.tabBarItem = UITabBarItem(title: "載入訂位", image: Images.loadReservation, tag: 2)
+        loadReservationVC.tabBarItem.badgeColor = Colors.brightGray
+        let loadReservationNC = UINavigationController(rootViewController: loadReservationVC)
+        return loadReservationNC
+    }
+
+    
+    func createMoreTableViewController () -> UINavigationController {
+        let moreTableVC = MoreTableViewController()
+        moreTableVC.tabBarItem = UITabBarItem(title: "其他", image: Images.more, tag: 4)
+        moreTableVC.tabBarItem.badgeColor = Colors.brightGray
+        let moreTableNC = UINavigationController(rootViewController: moreTableVC)
+        return moreTableNC
+    }
+    
+    func createTabBarController () -> UITabBarController {
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.barTintColor  = Colors.white
+        tabBarController.viewControllers      = [createMyTicketViewController(),
+                                                 createTicketOrderViewController(),
+                                                 createPayAndCollectViewController(),
+                                                 createLoadReservationViewController(),
+                                                 createMoreTableViewController()]
+        tabBarController.tabBar.tintColor     = Colors.orange
+        tabBarController.tabBar.isTranslucent = true
+        let standardAppearance = UITabBarAppearance()
+        tabBarController.tabBar.standardAppearance = standardAppearance
+        tabBarController.tabBar.scrollEdgeAppearance = standardAppearance
+        return tabBarController
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -51,4 +106,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
+//
+//#Preview(
+//    UITabBarController(
+//)

@@ -30,7 +30,9 @@ class MoreTableViewController: UIViewController {
         
         self.containerView.backgroundColor = Colors.orange
         
-
+        print("trainServices is \(trainServices.count)")
+        print("highSpeedRailInfos is \(highSpeedRailInfos.count)")
+        print("highSpeedRailOptions is \(highSpeedRailOptions.count)")
         
     }
     
@@ -55,7 +57,7 @@ class MoreTableViewController: UIViewController {
         
         // Set up UIBarButtonItem
         let speakerBarButton: UIBarButtonItem = UIBarButtonItem(image: Images.speakerWave, style: .plain, target: self, action: #selector(speakerBarButtonTapped))
-        let accountBarButton: UIBarButtonItem = UIBarButtonItem(image: Images.personCircle, style: .plain, target: self, action: #selector(accountBarButtonTapped))
+        let accountBarButton: UIBarButtonItem = UIBarButtonItem(image: Images.personfill, style: .plain, target: self, action: #selector(accountBarButtonTapped))
         let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
         
         // Set up UIBarButtonItem's tintColor
@@ -72,6 +74,9 @@ class MoreTableViewController: UIViewController {
     
     @objc func accountBarButtonTapped () {
         print("accountBarButtonTapped")
+        let accountVC = AccountViewController()
+        self.navigationController?.navigationBar.tintColor = Colors.white
+        self.navigationController?.pushViewController(accountVC, animated: true)
     }
     
     func setTableView () {
@@ -109,52 +114,37 @@ class MoreTableViewController: UIViewController {
         
         // register
         trainServiceTableView.register(MoreTableViewCell.nib(), forCellReuseIdentifier: MoreTableViewCell.identifier)
-    }
-    
-    
-    func setupHightSpeedRailInfoTableView () {
-        
-        
-    }
-    
-    func setupHighSpeedRailOptionTableView () {
-        
-        
+        hightSpeedRailInfoTableView.register(MoreTableViewCell.nib(), forCellReuseIdentifier: MoreTableViewCell.identifier)
+        highSpeedRailOptionTableView.register(MoreTableViewCell.nib(), forCellReuseIdentifier: MoreTableViewCell.identifier)
     }
     
     func constraintsTableView () {
         containerView.addSubview(trainServiceTableView)
         containerView.addSubview(highSpeedRailOptionTableView)
-        
+
         view.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
-    
+
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
             trainServiceTableView.topAnchor.constraint(equalTo: containerView.topAnchor),
             trainServiceTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             trainServiceTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            trainServiceTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            trainServiceTableView.heightAnchor.constraint(equalToConstant: 175)
         ])
-        
-//        NSLayoutConstraint.activate([
-//            hightSpeedRailInfoTableView.topAnchor.constraint(equalTo: containerView.topAnchor),
-//            hightSpeedRailInfoTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//            hightSpeedRailInfoTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-//        ])
-        
-//        NSLayoutConstraint.activate([
-//            hightSpeedRailInfoTableView.topAnchor.constraint(equalTo: containerView.topAnchor),
-//            trainServiceTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//            trainServiceTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-//        ])
-        
+
+        NSLayoutConstraint.activate([
+            highSpeedRailOptionTableView.topAnchor.constraint(equalTo: trainServiceTableView.bottomAnchor),
+            highSpeedRailOptionTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            highSpeedRailOptionTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            highSpeedRailOptionTableView.heightAnchor.constraint(equalToConstant: 330)
+        ])
     }
 }
 
@@ -208,19 +198,41 @@ extension MoreTableViewController: UITableViewDelegate {
 }
 
 extension MoreTableViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == trainServiceTableView {
             return trainServices.count
+        } else if tableView == hightSpeedRailInfoTableView {
+            return highSpeedRailInfos.count
+        } else if tableView == highSpeedRailOptionTableView {
+            return highSpeedRailOptions.count
+        } else {
+            return 1
         }
-
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == trainServiceTableView {
             guard let cell = trainServiceTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
             cell.serviceImageView.image = trainServices[indexPath.row].image
             cell.serviceTitleLabel.text = trainServices[indexPath.row].title
             return cell
+        } else if tableView == hightSpeedRailInfoTableView {
+            guard let hightSpeedRailInfoCell = hightSpeedRailInfoTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
+            hightSpeedRailInfoCell.serviceImageView.image = trainServices[indexPath.row].image
+            hightSpeedRailInfoCell.serviceTitleLabel.text = trainServices[indexPath.row].title
+            return hightSpeedRailInfoCell
+        } else if tableView == highSpeedRailOptionTableView {
+            guard let highSpeedRailOptionCell = highSpeedRailOptionTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
+            highSpeedRailOptionCell.serviceImageView.image = trainServices[indexPath.row].image
+            highSpeedRailOptionCell.serviceTitleLabel.text = trainServices[indexPath.row].title
+            return highSpeedRailOptionCell
+        } else {
+            return UITableViewCell()
         }
+    }
 }
-
 
 #Preview {
     UINavigationController(rootViewController: MoreTableViewController())

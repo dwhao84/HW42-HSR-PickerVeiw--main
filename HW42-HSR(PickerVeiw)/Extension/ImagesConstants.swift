@@ -43,4 +43,12 @@ struct Images {
     static let questionMark      = UIImage(systemName: "questionmark.circle")!
     static let wheelChair        = UIImage(systemName: "figure.roll")!
     static let arrowForward      = UIImage(systemName: "ipad.and.arrow.forward")!
+    
+    
+    static let more               = UIImage(systemName: "ellipsis")!
+    static let seatsIconForTabBar = UIImage(systemName: "carseat.left.massage")!
+    static let ticket             = UIImage(systemName: "ticket")!
+    static let payAndLoad         = UIImage(systemName: "creditcard")!
+    static let loadReservation    = UIImage(systemName: "square.and.arrow.down")!
+    
 }

@@ -383,12 +383,14 @@ class TickerOrderViewController: UIViewController {
         print("showFromLocationPickerView")
         configurePickerView()
         pickerStackView.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func showDepartureLocationPickerView (_ sender: UIButton) {
         print("showDepartureLocationPickerView")
         configurePickerView()
         pickerStackView.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     //MARK: -  ServiceTableViewCell Action:
@@ -443,6 +445,7 @@ class TickerOrderViewController: UIViewController {
         pickerStackView.removeFromSuperview()
         chooseStationTableView.reloadData  ()
         print("doneButtonTapped")
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc func tapTheView (_ sender: UITapGestureRecognizer) {

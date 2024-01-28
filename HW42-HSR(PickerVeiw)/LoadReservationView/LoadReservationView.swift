@@ -34,16 +34,6 @@ class LoadReservationView: UIView {
 
     }
     
-
-    
-    func addBottomLineToStackView() {
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: reservationNumberStackView.frame.height - 1, width: reservationNumberStackView.frame.width, height: 1.0)
-        bottomLine.backgroundColor = Colors.lightGray.cgColor
-        reservationNumberStackView.layer.addSublayer(bottomLine)
-    }
-
-
     func setupUI () {
         self.backgroundColor = Colors.white
         configureDescriptionTextView         ()
@@ -93,6 +83,11 @@ class LoadReservationView: UIView {
         reservationNumberTextField.font          = UIFont.systemFont(ofSize: 19)
         reservationNumberTextField.borderStyle   = .none
         reservationNumberTextField.delegate = self
+        
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0, y: Int(reservationNumberTextField.bounds.height + 25) , width: 320, height: 1)
+        bottomLine.backgroundColor = Colors.systemGray4.cgColor
+        reservationNumberTextField.layer.addSublayer(bottomLine)
         self.addSubview(reservationNumberTextField)
         
         identificationCodeTextField.placeholder  = "驗證碼或身分證/護照/居留證號末4碼"
@@ -100,8 +95,12 @@ class LoadReservationView: UIView {
         identificationCodeTextField.textColor    = Colors.black
         identificationCodeTextField.font         = UIFont.systemFont(ofSize: 19)
         identificationCodeTextField.borderStyle  = .none
-        identificationCodeTextField.addBottomBorder()
         identificationCodeTextField.delegate = self
+        
+        let secondBottomLine = CALayer()
+        secondBottomLine.frame = CGRect(x: 0, y: Int(identificationCodeTextField.bounds.height + 25) , width: 320, height: 1)
+        secondBottomLine.backgroundColor = Colors.systemGray4.cgColor
+        identificationCodeTextField.layer.addSublayer(secondBottomLine)
         self.addSubview(identificationCodeTextField)
     }
     
@@ -156,11 +155,7 @@ class LoadReservationView: UIView {
         identificationCodeStackView.distribution = .fill
         identificationCodeStackView.spacing      = 5
         identificationCodeStackView.alignment    = .leading
-        
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: identificationCodeStackView.frame.width - 1, width: identificationCodeStackView.frame.width, height: 1.0)
-        bottomLine.backgroundColor = Colors.lightGray.cgColor
-        identificationCodeStackView.layer.addSublayer(bottomLine)
+        self.addSubview(identificationCodeStackView)
     }
     
     func constraintsSecondStackView () {

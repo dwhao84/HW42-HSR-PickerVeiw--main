@@ -36,6 +36,9 @@
 		EB9FEA362B64F78900E1517E /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */; };
 		EB9FEA382B64F87D00E1517E /* PayAndCollectTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */; };
 		EB9FEA3A2B64F8DA00E1517E /* LoadReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA392B64F8DA00E1517E /* LoadReservationViewController.swift */; };
+		EB9FEA3C2B655B3D00E1517E /* LoadReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */; };
+		EB9FEA3E2B66428500E1517E /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA3D2B66428500E1517E /* UITextField+Ext.swift */; };
+		EB9FEA402B664D9F00E1517E /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA3F2B664D9F00E1517E /* UIViewController+Ext.swift */; };
 		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
 		EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */; };
 		EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */; };
@@ -96,6 +99,9 @@
 		EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
 		EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayAndCollectTicketViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/PayAndCollectTicketViewController.swift"; sourceTree = SOURCE_ROOT; };
 		EB9FEA392B64F8DA00E1517E /* LoadReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadReservationViewController.swift; sourceTree = "<group>"; };
+		EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadReservationView.swift; sourceTree = "<group>"; };
+		EB9FEA3D2B66428500E1517E /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		EB9FEA3F2B664D9F00E1517E /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoreTableView+Model.swift"; sourceTree = "<group>"; };
@@ -163,7 +169,9 @@
 				D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */,
 				D3F843EE2B57CB39001AF2D1 /* AccountTableViewCell */,
 				D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */,
-				EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */,
+				EB9FEA432B665DAB00E1517E /* MoreTableView */,
+				EB9FEA422B665D7300E1517E /* RidingTimeSelectorView */,
+				EB9FEA412B665D5A00E1517E /* LoadReservationView */,
 				D3407D572B39A55400D9DFA2 /* ViewController */,
 			);
 			path = "HW42-HSR(PickerVeiw)";
@@ -191,11 +199,8 @@
 			children = (
 				EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */,
 				EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */,
-				EB9FEA392B64F8DA00E1517E /* LoadReservationViewController.swift */,
 				EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */,
-				EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */,
 				D3F843E62B57A654001AF2D1 /* AccountViewController.swift */,
-				D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -264,16 +269,44 @@
 				EB83C6F42B4473B100C78859 /* UIView+Ext.swift */,
 				D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */,
 				EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */,
+				EB9FEA3D2B66428500E1517E /* UITextField+Ext.swift */,
+				EB9FEA3F2B664D9F00E1517E /* UIViewController+Ext.swift */,
 				D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		EB9FEA412B665D5A00E1517E /* LoadReservationView */ = {
+			isa = PBXGroup;
+			children = (
+				EB9FEA392B64F8DA00E1517E /* LoadReservationViewController.swift */,
+				EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */,
+			);
+			path = LoadReservationView;
+			sourceTree = "<group>";
+		};
+		EB9FEA422B665D7300E1517E /* RidingTimeSelectorView */ = {
+			isa = PBXGroup;
+			children = (
+				D3F844012B5D341D001AF2D1 /* RidingTimeViewController.swift */,
+				D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */,
+				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
+			);
+			path = RidingTimeSelectorView;
+			sourceTree = "<group>";
+		};
+		EB9FEA432B665DAB00E1517E /* MoreTableView */ = {
+			isa = PBXGroup;
+			children = (
+				EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */,
+				EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */,
+			);
+			path = MoreTableView;
+			sourceTree = "<group>";
+		};
 		EBA8F8632B62D2D3000237A4 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */,
-				D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -424,6 +457,7 @@
 			files = (
 				D3F844022B5D341D001AF2D1 /* RidingTimeViewController.swift in Sources */,
 				D3CC54CC2B636B3E00E236F7 /* ImagesConstants.swift in Sources */,
+				EB9FEA402B664D9F00E1517E /* UIViewController+Ext.swift in Sources */,
 				D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */,
 				EB9FEA3A2B64F8DA00E1517E /* LoadReservationViewController.swift in Sources */,
 				D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */,
@@ -441,12 +475,14 @@
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,
 				EB9FEA382B64F87D00E1517E /* PayAndCollectTicketViewController.swift in Sources */,
 				D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */,
+				EB9FEA3E2B66428500E1517E /* UITextField+Ext.swift in Sources */,
 				D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */,
 				D3F843EC2B57CB2B001AF2D1 /* AccountTableViewCell.swift in Sources */,
 				D3407D5F2B39D17700D9DFA2 /* SearchTableViewCell.swift in Sources */,
 				EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */,
 				EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */,
 				D3F844042B5DEC48001AF2D1 /* RidingTimeSelectorView.swift in Sources */,
+				EB9FEA3C2B655B3D00E1517E /* LoadReservationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

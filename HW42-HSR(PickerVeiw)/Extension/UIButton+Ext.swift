@@ -18,4 +18,10 @@ extension UIButton {
     UIGraphicsEndImageContext()
     setBackgroundImage(colorImage, for: state)
   }
+   func addButtonBottomBorder() {
+       let frame = CGRect(x: 0, y: 45, width: 300, height: 2)
+       let borderBottom = UIView(frame: frame)
+       borderBottom.backgroundColor = Colors.black
+       self.addSubview(borderBottom)
+  }
 }

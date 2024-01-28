@@ -13,7 +13,6 @@ class MyTicketViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigationBar ()
-        
         self.view.backgroundColor = Colors.brightGray
     }
     

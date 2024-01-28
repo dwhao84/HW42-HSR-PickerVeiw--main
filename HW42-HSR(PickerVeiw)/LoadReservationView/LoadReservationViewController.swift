@@ -12,7 +12,7 @@ class LoadReservationViewController: UIViewController {
     let finishButton: UIButton                 = UIButton(type: .system)
     let inquireReservationCodeButton: UIButton = UIButton(type: .system)
     
-    let loadReservationView: UIView = LoadReservationView()
+    let loadReservationView: LoadReservationView = LoadReservationView()
     
     let stackView: UIStackView           = UIStackView()
     let secondStackView: UIStackView     = UIStackView()
@@ -29,6 +29,11 @@ class LoadReservationViewController: UIViewController {
         self.view.backgroundColor = Colors.brightGray
         
         setupTapGesture                       ()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureBottomLine()
     }
     
     func setupNavigationBar () {
@@ -79,10 +84,21 @@ class LoadReservationViewController: UIViewController {
         inquireReservationCodeButton.clipsToBounds      = true
         inquireReservationCodeButton.addTarget(self, action: #selector(inquireReservationCodeButtonTapped), for: .touchUpInside)
         view.addSubview(inquireReservationCodeButton)
+        
+        configureBottomLine()
+    }
+    
+    func configureBottomLine() {
+        let bottomLine = CALayer()
+        let lineHeight: CGFloat = 1
+        bottomLine.frame = CGRect(x: inquireReservationCodeButton.frame.width / 2.9, y: inquireReservationCodeButton.frame.height - 16, width: inquireReservationCodeButton.frame.width / 3.25, height: lineHeight)
+        bottomLine.backgroundColor = Colors.black.cgColor
+        inquireReservationCodeButton.layer.addSublayer(bottomLine)
     }
     
     func setupStackView () {
-        loadReservationView.backgroundColor = Colors.white
+        view.addSubview(loadReservationView)
+        loadReservationView.backgroundColor    = Colors.white
         loadReservationView.layer.cornerRadius = 9
         loadReservationView.clipsToBounds      = true
         loadReservationView.heightAnchor.constraint(equalToConstant: 295).isActive = true
@@ -139,13 +155,30 @@ class LoadReservationViewController: UIViewController {
     
     @objc func inquireReservationCodeButtonTapped (_ sender: UIButton) {
         print("inquireReservationCodeButtonTapped")
+        
     }
     
     @objc func finishButtonTapped (_ sender: UIButton) {
+        let reservationNumberTextFieldContent = loadReservationView.reservationNumberTextField.text ?? ""
+        let identificationCodeTextFieldContent = loadReservationView.identificationCodeTextField.text ?? ""
+        
+        if reservationNumberTextFieldContent.count == 8  && identificationCodeTextFieldContent.count == 4 {
+            print("Search Success")
+        } else {
+            showErrorAlertController()
+            print("Search Failed")
+        }
         print("finishButtonTapped")
     }
     
-    private func setupTapGesture() {
+    func showErrorAlertController () {
+        let alertVC = AlertViewController()
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.modalTransitionStyle   = .coverVertical
+        self.present(alertVC, animated: true)
+    }
+    
+    func setupTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.addGestureRecognizer(tapGesture)
     }

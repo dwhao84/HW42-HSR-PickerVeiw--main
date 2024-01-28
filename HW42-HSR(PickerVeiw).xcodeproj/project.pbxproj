@@ -39,6 +39,7 @@
 		EB9FEA3C2B655B3D00E1517E /* LoadReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */; };
 		EB9FEA3E2B66428500E1517E /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA3D2B66428500E1517E /* UITextField+Ext.swift */; };
 		EB9FEA402B664D9F00E1517E /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA3F2B664D9F00E1517E /* UIViewController+Ext.swift */; };
+		EB9FEA472B66B46900E1517E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA462B66B46900E1517E /* AlertViewController.swift */; };
 		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
 		EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */; };
 		EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */; };
@@ -102,6 +103,7 @@
 		EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadReservationView.swift; sourceTree = "<group>"; };
 		EB9FEA3D2B66428500E1517E /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		EB9FEA3F2B664D9F00E1517E /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		EB9FEA462B66B46900E1517E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoreTableView+Model.swift"; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				EB9FEA392B64F8DA00E1517E /* LoadReservationViewController.swift */,
 				EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */,
+				EB9FEA462B66B46900E1517E /* AlertViewController.swift */,
 			);
 			path = LoadReservationView;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
 				EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */,
+				EB9FEA472B66B46900E1517E /* AlertViewController.swift in Sources */,
 				D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */,
 				D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */,
 				EBA8F8742B640B45000237A4 /* MoreTableViewCell.swift in Sources */,

@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,19 +73,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoadReservation" translatesAutoresizingMaskIntoConstraints="NO" id="hbf-oj-4VB">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DataError" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-EH-0Ma">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-Ib-CzR">
-                                <rect key="frame" x="47" y="514" width="335" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YYk-ZF-ean"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.20784313730000001" green="0.21960784310000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YYk-ZF-ean" firstAttribute="bottom" secondItem="pKG-EH-0Ma" secondAttribute="bottom" id="9VT-Jo-aqW"/>
+                            <constraint firstItem="pKG-EH-0Ma" firstAttribute="leading" secondItem="YYk-ZF-ean" secondAttribute="leading" id="Mia-Fu-h6b"/>
+                            <constraint firstItem="pKG-EH-0Ma" firstAttribute="top" secondItem="YYk-ZF-ean" secondAttribute="top" id="ZPN-hE-lhK"/>
+                            <constraint firstItem="YYk-ZF-ean" firstAttribute="trailing" secondItem="pKG-EH-0Ma" secondAttribute="trailing" id="eU7-R1-9i4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nz4-fp-tim" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -95,12 +94,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DataError" width="1284" height="2778"/>
         <image name="Launch Screen BackgroundColor" width="912" height="1962"/>
         <image name="Launch Screen Middle logo" width="438" height="103"/>
         <image name="Launch Screen Top logo" width="272" height="168"/>
-        <image name="LoadReservation" width="1284" height="2778"/>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

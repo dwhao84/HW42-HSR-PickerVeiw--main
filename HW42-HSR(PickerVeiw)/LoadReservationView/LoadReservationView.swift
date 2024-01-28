@@ -26,6 +26,8 @@ class LoadReservationView: UIView {
     let reservationNumberMaxCount: Int = 8
     let identifcationCodeMaxCount: Int = 4
     
+    private let bottomLine = CALayer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI ()
@@ -35,6 +37,7 @@ class LoadReservationView: UIView {
         super.init(coder: coder)
         setupUI ()
     }
+    
     
     func setupUI () {
         self.backgroundColor = Colors.white
@@ -47,7 +50,7 @@ class LoadReservationView: UIView {
         constraintsSecondStackView           ()
         constraintsThirdStackView            ()
     }
-    
+
     func configureDescriptionTextView () {
         descriptionTextView.text = "提供網路訂票、TGo會員及其他適用專案之訂位紀錄載入 T Express 進行付款/取票；如欲取得他人TExpress 分票之手機票證，請輸入分票人提供之取票驗證碼進行取票。"
         descriptionTextView.font = UIFont.systemFont(ofSize: 17)
@@ -84,12 +87,7 @@ class LoadReservationView: UIView {
         reservationNumberTextField.textColor     = Colors.black
         reservationNumberTextField.font          = UIFont.systemFont(ofSize: 19)
         reservationNumberTextField.borderStyle   = .none
-        reservationNumberTextField.delegate = self
-        
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: Int(reservationNumberTextField.bounds.height + 25) , width: 320, height: 1)
-        bottomLine.backgroundColor = Colors.systemGray4.cgColor
-        reservationNumberTextField.layer.addSublayer(bottomLine)
+        reservationNumberTextField.delegate      = self
         self.addSubview(reservationNumberTextField)
         
         identificationCodeTextField.placeholder  = "驗證碼或身分證/護照/居留證號末4碼"
@@ -97,15 +95,10 @@ class LoadReservationView: UIView {
         identificationCodeTextField.textColor    = Colors.black
         identificationCodeTextField.font         = UIFont.systemFont(ofSize: 19)
         identificationCodeTextField.borderStyle  = .none
-        identificationCodeTextField.delegate = self
-        
-        let secondBottomLine = CALayer()
-        secondBottomLine.frame = CGRect(x: 0, y: Int(identificationCodeTextField.bounds.height + 25) , width: 320, height: 1)
-        secondBottomLine.backgroundColor = Colors.systemGray4.cgColor
-        identificationCodeTextField.layer.addSublayer(secondBottomLine)
+        identificationCodeTextField.delegate     = self
         self.addSubview(identificationCodeTextField)
     }
-    
+
     func constraintStactView () {
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -139,11 +132,10 @@ class LoadReservationView: UIView {
         reservationNumberStackView.spacing      = 0
         reservationNumberStackView.alignment    = .leading
         
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: reservationNumberStackView.frame.width - 1, width: reservationNumberStackView.frame.width, height: 1.0)
-        bottomLine.backgroundColor = Colors.lightGray.cgColor
+        let bottomLine             = CALayer()
+        bottomLine.frame           = CGRect(x: 0, y: 45, width: 320, height: 1)
+        bottomLine.backgroundColor = Colors.systemGray4.cgColor
         reservationNumberStackView.layer.addSublayer(bottomLine)
-       
     }
     
     func constriantIdentificationCodeStackView () {
@@ -158,6 +150,11 @@ class LoadReservationView: UIView {
         identificationCodeStackView.spacing      = 5
         identificationCodeStackView.alignment    = .leading
         self.addSubview(identificationCodeStackView)
+        
+        let bottomLine             = CALayer()
+        bottomLine.frame           = CGRect(x: 0, y: 45, width: 320, height: 1)
+        bottomLine.backgroundColor = Colors.systemGray4.cgColor
+        identificationCodeStackView.layer.addSublayer(bottomLine)
     }
     
     func constraintsSecondStackView () {
@@ -197,7 +194,6 @@ class LoadReservationView: UIView {
 extension LoadReservationView: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        // 特定的邏輯處理（如果有的話）
         switch textField {
         case reservationNumberTextField:
             print("reservationNumberTextField will begin editing")
@@ -206,7 +202,6 @@ extension LoadReservationView: UITextFieldDelegate {
         default:
             break
         }
-        // 允許編輯開始
         return true
     }
     
@@ -218,7 +213,7 @@ extension LoadReservationView: UITextFieldDelegate {
         case identificationCodeTextField:
             identificationCodeTextField.resignFirstResponder()
         default:
-            break
+            textField.resignFirstResponder()
         }
         return false
     }

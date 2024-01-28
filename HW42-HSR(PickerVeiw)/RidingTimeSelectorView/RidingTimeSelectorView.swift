@@ -112,7 +112,7 @@ class RidingTimeSelectorView: UIView {
         // Add bottom line for UITextField.
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: Int(textFieldHeight) - 1, width: 345, height: 1)
-        bottomLine.backgroundColor = Colors.systemGray5.cgColor
+        bottomLine.backgroundColor = Colors.systemGray4.cgColor
         fromTimeTextField.layer.addSublayer(bottomLine)
         
         configureDatePicker ()

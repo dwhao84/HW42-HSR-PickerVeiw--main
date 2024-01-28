@@ -23,6 +23,9 @@ class LoadReservationView: UIView {
     let secondStackView: UIStackView             = UIStackView()
     let thirdStackView:  UIStackView             = UIStackView()
     
+    let reservationNumberMaxCount: Int = 8
+    let identifcationCodeMaxCount: Int = 4
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI ()
@@ -31,7 +34,6 @@ class LoadReservationView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI ()
-
     }
     
     func setupUI () {
@@ -220,6 +222,27 @@ extension LoadReservationView: UITextFieldDelegate {
         }
         return false
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Get the current text of the text field that is being edited
+        let currentText = textField.text ?? ""
+        // Convert NSRange to a Swift range
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        // Get the updated text after the change
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        // Check which text field is being edited and apply the respective character limit
+        if textField == reservationNumberTextField {
+            print("reservationNumberTextField is \(updatedText.count)")
+            return updatedText.count <= reservationNumberMaxCount
+        } else if textField == identificationCodeTextField {
+            print("identificationCodeTextField is \(updatedText.count)")
+            return updatedText.count <= identifcationCodeMaxCount
+        }
+        
+        return true
+    }
+
 }
 
 #Preview(traits: .fixedLayout(width: 360, height: 295), body: {

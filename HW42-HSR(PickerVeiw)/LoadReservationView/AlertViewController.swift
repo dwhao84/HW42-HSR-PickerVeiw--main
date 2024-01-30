@@ -10,14 +10,18 @@ import UIKit
 class AlertViewController: UIViewController {
     
     let backgroundView: UIView   = UIView()
-    let containerView: UIView    = UIView()
-    let topContainerView: UIView = UIView()
+
+
+
     
     let dataErrorTitleLabel: UILabel   = UILabel()
-    let dataErrorContentLabel: UILabel = UILabel()
     
+    let dataErrorContentLabel: UILabel = UILabel()
     let confirmButton:     UIButton           = UIButton(type: .system)
+    
+    let topContainerView: UIView    = UIView()
     let topContainerStackView: UIStackView    = UIStackView()
+    let bottomContainerView: UIView = UIView()
     let bottomContainerStackView: UIStackView = UIStackView()
     let containerStackView: UIStackView       = UIStackView()
     
@@ -29,8 +33,11 @@ class AlertViewController: UIViewController {
         configureDataErrorTitleLabel ()
         configureDataErrorContentLabel ()
         
-        configureTopContainerView    ()
-        configureBottomContainerStackView  ()
+
+        configureTopContainerView         ()
+        configureTopContainerStackView    ()
+        configureBottomContainerView      ()
+        configureBottomContainerStackView ()
         configureContainerStackView       ()
     }
 
@@ -49,16 +56,6 @@ class AlertViewController: UIViewController {
              backgroundView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor)
             ])
-    }
-    
-    func configureTopContainerView () {
-        topContainerView.backgroundColor = Colors.white
-        topContainerView.addSubview(dataErrorTitleLabel)
-        dataErrorTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            dataErrorTitleLabel.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            dataErrorTitleLabel.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor)
-        ])
     }
 
     func configureDataErrorTitleLabel () {
@@ -85,52 +82,79 @@ class AlertViewController: UIViewController {
         dataErrorContentLabel.textColor     = Colors.darkGray
         dataErrorContentLabel.textAlignment = .justified
         dataErrorContentLabel.numberOfLines = 0
+//        dataErrorContentLabel.backgroundColor = Colors.systemGray2
     }
         
-
-    func configureBottomContainerStackView () {
-        confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        dataErrorContentLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
-
-        view.addSubview(bottomContainerStackView)
-        bottomContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+    func configureTopContainerView () {
+        topContainerView.backgroundColor = Colors.white
+        topContainerView.addSubview(dataErrorTitleLabel)
         
-        bottomContainerStackView.backgroundColor = Colors.white
+        let bottomLine   = CALayer()
+        bottomLine.frame = CGRect(x: 0, y: 25, width: 500, height: 1)
+        bottomLine.backgroundColor = Colors.systemGray4.cgColor
+        topContainerView.layer.addSublayer(bottomLine)
         
-        bottomContainerStackView.axis = .vertical
-        bottomContainerStackView.distribution = .fill
-        bottomContainerStackView.spacing = 15
-        bottomContainerStackView.addArrangedSubview(dataErrorContentLabel)
-        bottomContainerStackView.addArrangedSubview(confirmButton)
+        view.addSubview(topContainerView)
+        dataErrorTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dataErrorTitleLabel.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
+            dataErrorTitleLabel.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor)
+        ])
     }
     
     func configureTopContainerStackView () {
-        dataErrorTitleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        dataErrorTitleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
         view.addSubview(topContainerStackView)
         topContainerStackView.translatesAutoresizingMaskIntoConstraints = false
-
-        topContainerStackView.axis = .horizontal
-        topContainerStackView.alignment = .center
-        topContainerStackView.distribution = .fill
+        topContainerStackView.axis         = .horizontal
+        topContainerStackView.alignment    = .center
+        topContainerStackView.distribution = .equalSpacing
         topContainerStackView.spacing      = 5
-        topContainerStackView.addArrangedSubview(dataErrorTitleLabel)
+        topContainerStackView.addArrangedSubview(topContainerView)
+    }
+    
+    func configureBottomContainerView () {
+        view.addSubview(bottomContainerView)
+        bottomContainerView.backgroundColor = Colors.white
+        
+        bottomContainerView.addSubview(dataErrorContentLabel)
+        bottomContainerView.addSubview(confirmButton)
+
+        dataErrorContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        confirmButton.translatesAutoresizingMaskIntoConstraints         = false
+        
+        NSLayoutConstraint.activate([
+            dataErrorContentLabel.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 20),
+            dataErrorContentLabel.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 20),
+            dataErrorContentLabel.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -20),
+            dataErrorContentLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            confirmButton.topAnchor.constraint(equalTo: dataErrorContentLabel.bottomAnchor, constant: 20),
+            confirmButton.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 20),
+            confirmButton.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -20),
+            confirmButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    func configureBottomContainerStackView () {
+        view.addSubview(bottomContainerStackView)
+        bottomContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        bottomContainerStackView.axis = .vertical
+        bottomContainerStackView.distribution = .equalSpacing
+        bottomContainerStackView.spacing = 0
+        bottomContainerStackView.addArrangedSubview(bottomContainerView)
     }
     
     func configureContainerStackView () {
         view.addSubview(containerStackView)
         containerStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let bottomLine   = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: 69, width: 1000, height: 1)
-        bottomLine.backgroundColor = Colors.systemGray4.cgColor
-        topContainerView.layer.addSublayer(bottomLine)
-        
         containerStackView.backgroundColor = Colors.green
         
         containerStackView.axis = .vertical
-        containerStackView.spacing = 5
+        containerStackView.spacing = 0
         containerStackView.distribution = .fill
         containerStackView.addArrangedSubview(topContainerStackView)
         containerStackView.addArrangedSubview(bottomContainerStackView)
@@ -138,18 +162,20 @@ class AlertViewController: UIViewController {
         containerStackView.layer.cornerRadius = 5
         containerStackView.clipsToBounds      = true
         
+        topContainerStackView.backgroundColor = Colors.white
+        
+        NSLayoutConstraint.activate([
+            topContainerStackView.topAnchor.constraint(equalTo: containerStackView.topAnchor),
+            topContainerStackView.centerXAnchor.constraint(equalTo: containerStackView.centerXAnchor),
+            topContainerStackView.heightAnchor.constraint(equalTo: containerStackView.heightAnchor, multiplier: 1/4)
+        ])
+    
         NSLayoutConstraint.activate([
             containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             containerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             containerStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4)
-        ])
-        
-        NSLayoutConstraint.activate([
-            topContainerStackView.leadingAnchor.constraint(equalTo: containerStackView.leadingAnchor, constant: 20),
-            topContainerStackView.trailingAnchor.constraint(equalTo: containerStackView.trailingAnchor, constant: 20),
-            topContainerStackView.centerXAnchor.constraint(equalTo: containerStackView.centerXAnchor)
         ])
     }
     

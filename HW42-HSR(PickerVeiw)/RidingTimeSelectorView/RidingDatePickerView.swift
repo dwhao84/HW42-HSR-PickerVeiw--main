@@ -7,17 +7,13 @@
 
 import UIKit
 
-class RidingDatePickerView: UIView {
+class RidingDatePickerView: UIView, UICalendarSelectionSingleDateDelegate {
     
-    let yearLabel: UILabel    = UILabel()
-    let arrowButton: UIButton = UIButton(type: .system)
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+    }
     
-    let datePicker: UIDatePicker   = UIDatePicker(frame: .zero)
-    
-    let secondView: UIView = UIView()
-
-    let stackViewOne:   UIStackView = UIStackView()
-    let stackViewTwo:   UIStackView = UIStackView()
+    let calendarView: UICalendarView = UICalendarView()
+    let stackView: UIStackView       = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,99 +26,49 @@ class RidingDatePickerView: UIView {
     }
     
     func setupUI () {
-//        configureDatePicker ()
-        configureArrowButton()
-        configureYearLabel  ()
-        configureSecondView ()
-        
-        constriantStackView ()
+        configureCalendarView ()
+//        constriantStackView   ()
+        constraintCalendarView()
     }
 
-    func configureYearLabel () {
-        yearLabel.text                      = "2024年"
-        yearLabel.textColor                 = Colors.lightGray
-        yearLabel.textAlignment             = .center
-        yearLabel.numberOfLines             = 0
-        yearLabel.adjustsFontSizeToFitWidth = true
-        self.addSubview(yearLabel)
-    }
-    
-    func configureArrowButton () {
+    func configureCalendarView () {
+        let gregorianCalendar = Calendar(identifier: .gregorian)
+        calendarView.calendar = gregorianCalendar
+        calendarView.locale = Locale(identifier: "zh_TW")
+        calendarView.fontDesign = .rounded
+        calendarView.tintColor = Colors.orange
         
-        arrowButton.setImage(Images.arrow, for: .normal)
-        arrowButton.tintColor                = Colors.navigationBarColor
-        arrowButton.isUserInteractionEnabled = true
-        self.addSubview(arrowButton)
-    }
-    
-    // Set up Date picker.
-    func configureDatePicker () {
-        datePicker.preferredDatePickerStyle = .inline
-        datePicker.minimumDate = Date()
-        datePicker.minuteInterval = 5
-        datePicker.date = Date()
+        let today = Date()
+        let calendar = Calendar.current        
         
-        datePicker.locale = Locale(identifier: "zh-TW")
-        self.addSubview(datePicker)
+        let year    = calendar.component(.year,    from: today)
+        let month   = calendar.component(.month,   from: today)
+        let date    = calendar.component(.day,     from: today)
+        
+        calendarView.visibleDateComponents = DateComponents(calendar: Calendar(identifier: .gregorian), year: year, month: month, day: date)
+        
+        let dateSelection = UICalendarSelectionSingleDate(delegate: self)
+        calendarView.selectionBehavior = dateSelection
     }
     
-    func configureSecondView () {
-        secondView.backgroundColor = Colors.darkGray
-        self.addSubview(secondView)
-    }
-    
-    // Constraint Stack View.
     func constriantStackView () {
-        
-        // Set yearLabel's width & height.
-        yearLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        yearLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
-        // Set datePicker's width & height.
-        arrowButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        arrowButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
-        // Set secondView for test.
-        secondView.widthAnchor.constraint(equalToConstant: 390).isActive = true
-        secondView.heightAnchor.constraint(equalToConstant: 275).isActive = true
-        
-
-        // Set stackViewOne
-         self.addSubview(stackViewOne)
-         stackViewOne.translatesAutoresizingMaskIntoConstraints = false
-         stackViewOne.addArrangedSubview(yearLabel)
-         stackViewOne.addArrangedSubview(arrowButton)
-
-         stackViewOne.axis = .horizontal
-         stackViewOne.alignment = .fill
-         stackViewOne.distribution = .equalSpacing
-         stackViewOne.spacing = 15
-//         stackViewOne.layer.borderColor = UIColor.black.cgColor
-//         stackViewOne.layer.borderWidth = 1
-
+        self.addSubview(stackView)
+        stackView.addArrangedSubview(calendarView)
+        stackView.axis         = .horizontal
+        stackView.spacing      = 0
+        stackView.distribution = .fill
+        stackView.alignment    = .center
+    }
+    
+    func constraintCalendarView () {
+        self.addSubview(calendarView)
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackViewOne.topAnchor.constraint(equalTo: self.topAnchor),
-            stackViewOne.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackViewOne.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackViewOne.widthAnchor.constraint(equalToConstant: 390),
-            stackViewOne.heightAnchor.constraint(equalToConstant: 45)
-        ])
-        
-        self.addSubview(stackViewTwo)
-        stackViewTwo.translatesAutoresizingMaskIntoConstraints = false
-        
-        stackViewTwo.addArrangedSubview(secondView)
-        stackViewTwo.axis = .horizontal
-        stackViewTwo.alignment = .fill
-        stackViewTwo.distribution = .equalSpacing
-        stackViewTwo.spacing = 15
-        
-        NSLayoutConstraint.activate([
-            stackViewTwo.topAnchor.constraint(equalTo: stackViewOne.bottomAnchor),
-            stackViewTwo.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackViewTwo.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackViewTwo.widthAnchor.constraint(equalToConstant: 390),
-            stackViewTwo.heightAnchor.constraint(equalToConstant: 270)
+            calendarView.topAnchor.constraint(equalTo: self.topAnchor),
+            calendarView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            calendarView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            calendarView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            calendarView.heightAnchor.constraint(equalToConstant: 350)
         ])
     }
 }
@@ -131,8 +77,3 @@ class RidingDatePickerView: UIView {
     let ridingDatePickerView = RidingDatePickerView()
     return ridingDatePickerView
    })
-
-//        let bottomLine = CALayer()
-//        bottomLine.frame = CGRect(x: 0, y: Int(firstViewHeight), width: Int(datePickerWidth), height: 1)
-//        bottomLine.backgroundColor = Colors.systemGray5.cgColor
-//        firstView.layer.addSublayer(bottomLine)

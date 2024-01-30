@@ -59,8 +59,8 @@ class RidingTimeViewController: UIViewController {
         backgroundStackView.addArrangedSubview(RidingTimeSelectorView())
         
         backgroundStackView.axis = .vertical
-        backgroundStackView.spacing = 20
-        backgroundStackView.distribution = .fillEqually
+        backgroundStackView.spacing = 0
+        backgroundStackView.distribution = .equalSpacing
         backgroundStackView.alignment = .center
         
         backgroundStackView.backgroundColor = Colors.white

@@ -165,7 +165,6 @@
 				D3407D332B39A4AA00D9DFA2 /* Info.plist */,
 				D38C061A2B43E70D0098E0B9 /* Model */,
 				EB83C6F62B44747A00C78859 /* Extension */,
-				EBA8F8632B62D2D3000237A4 /* CustomView */,
 				EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */,
 				D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */,
 				D3F844002B5C2D23001AF2D1 /* ServiceTableViewCell */,
@@ -305,13 +304,6 @@
 				EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */,
 			);
 			path = MoreTableView;
-			sourceTree = "<group>";
-		};
-		EBA8F8632B62D2D3000237A4 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomView;
 			sourceTree = "<group>";
 		};
 		EBFEBF412B3B07EF00B9B3E1 /* TrainStatusTableViewCell */ = {

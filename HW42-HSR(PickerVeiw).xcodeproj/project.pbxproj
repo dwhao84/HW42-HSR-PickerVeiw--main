@@ -20,6 +20,7 @@
 		D3407D832B39F06100D9DFA2 /* ChooseStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */; };
 		D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */; };
 		D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05932B42D6E50098E0B9 /* StationName+Model.swift */; };
+		D3B2D1842B69F882002E3380 /* NonReservedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2D1832B69F882002E3380 /* NonReservedView.swift */; };
 		D3CC54CC2B636B3E00E236F7 /* ImagesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */; };
 		D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */; };
 		D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F843E62B57A654001AF2D1 /* AccountViewController.swift */; };
@@ -84,6 +85,7 @@
 		D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseStationTableViewCell.xib; sourceTree = "<group>"; };
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
+		D3B2D1832B69F882002E3380 /* NonReservedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonReservedView.swift; sourceTree = "<group>"; };
 		D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesConstants.swift; sourceTree = "<group>"; };
 		D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -142,6 +144,7 @@
 			children = (
 				D3407D632B39E00200D9DFA2 /* README.md */,
 				D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */,
+				D3B2D1832B69F882002E3380 /* NonReservedView.swift */,
 				D3407D3B2B39A4AA00D9DFA2 /* HW42-HSR(PickerVeiw)Tests */,
 				D3407D452B39A4AA00D9DFA2 /* HW42-HSR(PickerVeiw)UITests */,
 				D3407D232B39A49800D9DFA2 /* Products */,
@@ -460,6 +463,7 @@
 				EB9FEA362B64F78900E1517E /* MyTicketViewController.swift in Sources */,
 				EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */,
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
+				D3B2D1842B69F882002E3380 /* NonReservedView.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
 				EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */,

@@ -51,4 +51,7 @@ struct Images {
     static let payAndLoad         = UIImage(systemName: "creditcard")!
     static let loadReservation    = UIImage(systemName: "square.and.arrow.down")!
     
+    
+    static let bluetoothIcon  = UIImage(named: "bluetooth-Icon")!
+    static let circle         = UIImage(systemName: "circle")!
 }

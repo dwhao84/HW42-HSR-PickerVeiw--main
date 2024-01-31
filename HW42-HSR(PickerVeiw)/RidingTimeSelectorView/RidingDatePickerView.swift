@@ -27,7 +27,6 @@ class RidingDatePickerView: UIView, UICalendarSelectionSingleDateDelegate {
     
     func setupUI () {
         configureCalendarView ()
-//        constriantStackView   ()
         constraintCalendarView()
     }
 
@@ -68,12 +67,12 @@ class RidingDatePickerView: UIView, UICalendarSelectionSingleDateDelegate {
             calendarView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             calendarView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             calendarView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            calendarView.heightAnchor.constraint(equalToConstant: 350)
+            calendarView.heightAnchor.constraint(equalToConstant: 360)
         ])
     }
 }
 
-#Preview(traits: .fixedLayout(width: 390, height: 315), body: {
+#Preview(traits: .fixedLayout(width: 390, height: 360), body: {
     let ridingDatePickerView = RidingDatePickerView()
     return ridingDatePickerView
    })

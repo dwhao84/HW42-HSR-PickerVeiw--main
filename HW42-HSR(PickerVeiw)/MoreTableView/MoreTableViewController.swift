@@ -33,7 +33,6 @@ class MoreTableViewController: UIViewController {
         print("trainServices is \(trainServices.count)")
         print("highSpeedRailInfos is \(highSpeedRailInfos.count)")
         print("highSpeedRailOptions is \(highSpeedRailOptions.count)")
-        
     }
     
     func fetchAllTheData () {
@@ -75,6 +74,7 @@ class MoreTableViewController: UIViewController {
     @objc func accountBarButtonTapped () {
         print("accountBarButtonTapped")
         let accountVC = AccountViewController()
+        accountVC.modalTransitionStyle = .crossDissolve
         self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
@@ -194,9 +194,17 @@ extension MoreTableViewController {
 
 extension MoreTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("DeselectRow is\(indexPath)")
+        
+        
+        if let url = URL(string: "") {
+            
+            let safariServiceVC = SFSafariViewController(url: URL(fileURLWithPath: ""))
+            present(safariServiceVC, animated: true)
+        }
     }
 }
-
 extension MoreTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -212,12 +220,11 @@ extension MoreTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if tableView == trainServiceTableView {
-            guard let cell = trainServiceTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
-            cell.serviceImageView.image = trainServices[indexPath.row].image
-            cell.serviceTitleLabel.text = trainServices[indexPath.row].title
-            return cell
+            guard let trainServiceCell = trainServiceTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
+            trainServiceCell.serviceImageView.image = trainServices[indexPath.row].image
+            trainServiceCell.serviceTitleLabel.text = trainServices[indexPath.row].title
+            return trainServiceCell
         } else if tableView == hightSpeedRailInfoTableView {
             guard let hightSpeedRailInfoCell = hightSpeedRailInfoTableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier, for: indexPath) as? MoreTableViewCell else { fatalError() }
             hightSpeedRailInfoCell.serviceImageView.image = trainServices[indexPath.row].image

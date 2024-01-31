@@ -64,7 +64,9 @@ class LoadReservationViewController: UIViewController {
     
     func configureFinishButton () {
         let height: CGFloat = 45
-        finishButton.setTitle("完成", for: .normal)
+        
+        let attributedText = NSAttributedString(string: "完成", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
+        finishButton.setAttributedTitle(attributedText, for: .normal)
         finishButton.tintColor          = Colors.white
         finishButton.backgroundColor    = Colors.orangeBrandColor
         finishButton.layer.cornerRadius = height / 5

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "nonReservedSeatView.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CleanShot 2023-12-25 at 23.07.01@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

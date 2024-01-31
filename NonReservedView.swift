@@ -25,9 +25,10 @@ class NonReservedView: UIView {
     let firstTextView: UITextView          = UITextView()
     let secondTextView: UITextView          = UITextView()
     let textViewStackView: UIStackView     = UIStackView()
+    let bottomInnerStackView: UIStackView  = UIStackView()
     
     let bottomStackView: UIStackView       = UIStackView()
-    
+
       
     
     override init(frame: CGRect) {
@@ -54,11 +55,11 @@ class NonReservedView: UIView {
     func setupBottomContainerView () {
         configureBlueToothIcon        ()
         configureStatusLabel          ()
-        configureInnerBottomStackView ()
         
-        cofigureFirstTextView()
-        configureSecondTextView()
-        configureTextViewStackView ()
+        cofigureFirstTextView        ()
+        configureSecondTextView      ()
+        configureTextViewStackView   ()
+        setBottomInnerStackView      ()
     }
 
     // MARK: - Top Container View
@@ -108,56 +109,46 @@ class NonReservedView: UIView {
         statusLabel.textColor     = Colors.darkGray
         statusLabel.numberOfLines = 1
         statusLabel.textAlignment = .center
+        
+        statusLabel.layer.borderWidth = 1
+        statusLabel.layer.borderColor = Colors.black.cgColor
     }
     
     func configureBlueToothIcon () {
         bluetoothImageView.image = Images.bluetoothIcon
         bluetoothImageView.contentMode = .scaleAspectFit
+        
+        bluetoothImageView.layer.borderWidth = 1
+        bluetoothImageView.layer.borderColor = Colors.black.cgColor
     }
 
-    func configureInnerBottomStackView () {
-        
-        bluetoothImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
-        bluetoothImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        
-        self.addSubview(innerBottomStackView)
-        innerBottomStackView.translatesAutoresizingMaskIntoConstraints = false
-    
-        innerBottomStackView.addArrangedSubview(bluetoothImageView)
-        innerBottomStackView.addArrangedSubview(statusLabel)
-        innerBottomStackView.addArrangedSubview(firstTextView)
-    
-        innerBottomStackView.layer.borderColor = Colors.black.cgColor
-        innerBottomStackView.layer.borderWidth = 1
-
-        innerBottomStackView.alignment    = .center
-        innerBottomStackView.spacing      = 5
-        innerBottomStackView.distribution = .equalSpacing
-        innerBottomStackView.axis         = .vertical
-    }
     
     func cofigureFirstTextView () {
-        firstTextView.text = "本功能僅限於高鐵車站內使用，請開啟藍牙\n功能後即可開始購票，如末能啟用購票功\n能，建議移動至車站售票區域操作，或改由\n自動售票機購票。"
+        firstTextView.text = "本功能僅限於高鐵車站內使用，請開啟藍牙功能後即可開始購票，如末能啟用購票功能，建議移動至車站售票區域操作，或改由自動售票機購票。"
         firstTextView.textColor = Colors.darkGray
-        firstTextView.font = UIFont.systemFont(ofSize: 12)
+        firstTextView.font = UIFont.systemFont(ofSize: 15)
         firstTextView.backgroundColor = Colors.clear
+        firstTextView.textAlignment   = .justified
+        firstTextView.textContainer.maximumNumberOfLines = 0
     }
     
     func configureSecondTextView () {
-        secondTextView.text = "本功能服務時間為每日05:00~23:59(特殊狀\n況除外)，若仍有購票需求請洽車站窗口或\n自動售票機。"
+        secondTextView.text = "本功能服務時間為每日05:00~23:59(特殊狀況除外)，若仍有購票需求請洽車站窗口或自動售票機。"
         secondTextView.textColor = Colors.darkGray
-        secondTextView.font = UIFont.systemFont(ofSize: 12)
+        secondTextView.font = UIFont.systemFont(ofSize: 15)
         secondTextView.backgroundColor = Colors.clear
+        secondTextView.textAlignment   = .natural
+        secondTextView.textContainer.maximumNumberOfLines = 0
     }
     
     func configureTextViewStackView () {
         self.addSubview(textViewStackView)
         textViewStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        firstTextView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        firstTextView.widthAnchor.constraint(equalToConstant: 310).isActive = true
         firstTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-        secondTextView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        secondTextView.widthAnchor.constraint(equalToConstant: 310).isActive = true
         secondTextView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         textViewStackView.addArrangedSubview(firstTextView)
@@ -166,9 +157,38 @@ class NonReservedView: UIView {
         textViewStackView.axis         = .vertical
         textViewStackView.alignment    = .center
         textViewStackView.spacing      = 5
-        textViewStackView.distribution = .equalSpacing
+        textViewStackView.distribution = .equalCentering
+        
+        textViewStackView.layer.borderColor = Colors.black.cgColor
+        textViewStackView.layer.borderWidth = 1
     }
     
+    func setBottomInnerStackView () {
+        bluetoothImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
+        bluetoothImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        
+        self.addSubview(bottomInnerStackView)
+        bottomInnerStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        bottomInnerStackView.axis = .vertical
+        bottomInnerStackView.distribution = .fill
+        bottomInnerStackView.alignment    = .center
+        bottomInnerStackView.spacing = 10
+        bottomInnerStackView.addArrangedSubview(bluetoothImageView)
+        bottomInnerStackView.addArrangedSubview(statusLabel)
+        bottomInnerStackView.addArrangedSubview(textViewStackView)
+        
+        bottomInnerStackView.layer.borderColor = Colors.black.cgColor
+        bottomInnerStackView.layer.borderWidth = 1
+        
+        NSLayoutConstraint.activate([
+            bottomInnerStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            bottomInnerStackView.widthAnchor.constraint(equalToConstant:  350),
+            bottomInnerStackView.heightAnchor.constraint(equalToConstant: 350)
+        ])
+
+        
+    }
     
     
 }

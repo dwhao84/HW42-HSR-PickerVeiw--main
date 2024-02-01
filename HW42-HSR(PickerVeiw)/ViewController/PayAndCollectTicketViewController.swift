@@ -12,13 +12,27 @@ class PayAndCollectTicketViewController: UIViewController {
     let backgroundView: UIView = UIView()
     let nonReservedView: NonReservedView = NonReservedView()
     
+    let segmentedControl: UISegmentedControl = UISegmentedControl()
+    let segmentedControlContainerView: UIView = UIView()
+    let underlineView: UIView = UIView()
+    
+    enum Constants {
+        static let segmentedControlHeight: CGFloat = 45
+        static let underlineViewColor    : UIColor = Colors.orangeBrandColor
+        static let underlineViewHeight   : CGFloat = 5
+        static let underlineViewWidth    : CGFloat = UIScreen.main.bounds.width / 5
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigationBar ()
         self.view.backgroundColor = Colors.brightGray
-        configureBackgroundView ()
+//        configureBackgroundView ()
+        configureSegmentedControlContainerView ()
+        constraintSegmentedControl ()
+        changeSegmentedControlLinePosition()
+        
     }
     
     func setupNavigationBar () {
@@ -47,8 +61,79 @@ class PayAndCollectTicketViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [accountBarButton, fixedSpace, speakerBarButton]
     }
     
-    func configureBackgroundView () {
+    func configureSegmentedControlContainerView () {
+        // segmentedControlContainerView
+        segmentedControlContainerView.backgroundColor = Colors.navigationBarColor
         
+        // segmentedControl's text
+        segmentedControl.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)], for: .normal)
+        
+        segmentedControl.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .selected)
+        segmentedControl.insertSegment(withTitle: "付款 (0)", at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: "取票 (0)", at: 1, animated: true)
+        
+        segmentedControl.sizeToFit()
+        segmentedControl.backgroundColor         = .clear
+        segmentedControl.tintColor               = .white
+        segmentedControl.selectedSegmentIndex    = 0
+        segmentedControl.isEnabled               = true
+        segmentedControl.addTarget(self, action: #selector(segmentedControlTapped), for: .valueChanged)
+        segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
+        segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        
+        // underline
+        underlineView.backgroundColor    = Colors.orangeBrandColor
+        underlineView.layer.cornerRadius = Constants.underlineViewHeight / 2
+    }
+    
+    func constraintSegmentedControl () {
+        view.addSubview(segmentedControlContainerView)
+        segmentedControlContainerView.addSubview(segmentedControl)
+        view.addSubview(underlineView)
+        
+        segmentedControlContainerView.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.translatesAutoresizingMaskIntoConstraints              = false
+        underlineView.translatesAutoresizingMaskIntoConstraints                 = false
+        
+        NSLayoutConstraint.activate([
+            segmentedControlContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentedControlContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            segmentedControlContainerView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            segmentedControlContainerView.heightAnchor.constraint(equalToConstant: Constants.segmentedControlHeight),
+        ])
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.centerXAnchor.constraint(equalTo: segmentedControlContainerView.centerXAnchor),
+            segmentedControl.centerYAnchor.constraint(equalTo: segmentedControlContainerView.centerYAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: segmentedControlContainerView.leadingAnchor),
+            segmentedControl.heightAnchor.constraint(equalToConstant: Constants.segmentedControlHeight)
+        ])
+        
+        NSLayoutConstraint.activate([
+            underlineView.bottomAnchor.constraint(equalTo: segmentedControlContainerView.bottomAnchor),
+            underlineView.leadingAnchor.constraint(equalTo: segmentedControlContainerView.leadingAnchor, constant: 70),
+            underlineView.heightAnchor.constraint(equalToConstant: Constants.underlineViewHeight),
+            underlineView.widthAnchor.constraint(equalToConstant:  Constants.underlineViewWidth)
+        ])
+    }
+    
+    func changeSegmentedControlLinePosition() {
+        UIView.animate(withDuration: 0.3) {
+            let segmentWidth = self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)
+            let offsetX = segmentWidth * CGFloat(self.segmentedControl.selectedSegmentIndex) + 70
+            self.underlineView.frame.origin.x = offsetX + self.segmentedControl.frame.minX
+        }
+    }
+    
+    @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
+        changeSegmentedControlLinePosition()
+    }
+    
+    func configureBackgroundView () {
         backgroundView.backgroundColor = Colors.white
         backgroundView.addSubview(nonReservedView)
 
@@ -64,7 +149,6 @@ class PayAndCollectTicketViewController: UIViewController {
         NSLayoutConstraint.activate([
             nonReservedView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
             nonReservedView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor)
-        
         ])
         
         NSLayoutConstraint.activate([

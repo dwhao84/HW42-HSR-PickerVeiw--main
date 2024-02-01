@@ -67,7 +67,7 @@ class RidingDatePickerView: UIView, UICalendarSelectionSingleDateDelegate {
             calendarView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             calendarView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             calendarView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            calendarView.heightAnchor.constraint(equalToConstant: 360)
+            calendarView.heightAnchor.constraint(greaterThanOrEqualToConstant: 360)
         ])
     }
 }

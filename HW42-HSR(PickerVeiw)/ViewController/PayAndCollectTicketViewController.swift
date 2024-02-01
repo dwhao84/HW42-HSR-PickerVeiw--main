@@ -49,15 +49,14 @@ class PayAndCollectTicketViewController: UIViewController {
     
     func configureBackgroundView () {
         
-        backgroundView.backgroundColor = Colors.brightGray
+        backgroundView.backgroundColor = Colors.white
         backgroundView.addSubview(nonReservedView)
+
+        backgroundView.layer.cornerRadius = 5
+        backgroundView.clipsToBounds      = true
+        backgroundView.dropShadow()
         
-        
-        backgroundView.layer.borderWidth = 1
-        backgroundView.layer.borderColor = Colors.black.cgColor
-        
-        backgroundView.heightAnchor.constraint(equalToConstant: 555).isActive = true
-        
+        backgroundView.heightAnchor.constraint(equalToConstant: 505).isActive = true
         view.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         nonReservedView.translatesAutoresizingMaskIntoConstraints = false

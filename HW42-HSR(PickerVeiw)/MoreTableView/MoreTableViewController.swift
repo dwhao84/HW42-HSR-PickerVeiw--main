@@ -219,15 +219,15 @@ extension MoreTableViewController {
             title: "前往高鐵網站",
             url:   "https://www.thsrc.com.tw")
         let highSpeedRailInfoFour = HighSpeedRailInfo(
-            image:  Images.checkmark,
+            image:  Images.hsrLogo,
             title: "前往台灣高鐵App",
             url:   "https://apps.apple.com/tw/app/%E5%8F%B0%E7%81%A3%E9%AB%98%E9%90%B5/id1266626655?l=en-GB")
         let highSpeedRailInfoFive = HighSpeedRailInfo(
-            image:  Images.checkmark,
+            image:  Images.tifeLogo,
             title: "前往高鐵 TLife 網站",
             url:   "https://tlife.thsrc.com.tw/tw")
         let highSpeedRailInfoSix = HighSpeedRailInfo(
-            image:  Images.checkmark,
+            image:  Images.co2Logo,
             title: "高鐵運輸服務碳足跡",
             url:   "https://www.thsrc.com.tw/t/carbonFootprint#stations")
         return [highSpeedRailInfoOne, highSpeedRailInfoTwo, highSpeedRailInfoThree, highSpeedRailInfoFour, highSpeedRailInfoFive, highSpeedRailInfoSix]

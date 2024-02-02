@@ -10,7 +10,6 @@ import SafariServices
 
 class MoreTableViewController: UIViewController, SFSafariViewControllerDelegate {
 
-    let stackView: UIStackView   = UIStackView()
     let scrollView: UIScrollView = UIScrollView()
     let containerView: UIView    = UIView()
     
@@ -184,8 +183,8 @@ class MoreTableViewController: UIViewController, SFSafariViewControllerDelegate 
         
         // Set the fixed heights for the table views
         highSpeedRailOptionTableView.heightAnchor.constraint(equalToConstant: 165).isActive = true
-        trainServiceTableView.heightAnchor.constraint(equalToConstant: 165).isActive        = true
-        highSpeedRailInfoTableView.heightAnchor.constraint(equalToConstant: 330).isActive   = true
+        trainServiceTableView.heightAnchor.constraint(equalToConstant:        165).isActive = true
+        highSpeedRailInfoTableView.heightAnchor.constraint(equalToConstant:   330).isActive = true
     }
 
 }

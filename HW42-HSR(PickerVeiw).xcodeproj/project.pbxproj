@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D32445B72B6B81F100F209B1 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32445B52B6B81F100F209B1 /* MoreTableViewCell.swift */; };
+		D32445B82B6B81F100F209B1 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D32445B62B6B81F100F209B1 /* MoreTableViewCell.xib */; };
 		D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D252B39A49800D9DFA2 /* AppDelegate.swift */; };
 		D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D272B39A49800D9DFA2 /* SceneDelegate.swift */; };
 		D3407D2F2B39A4AA00D9DFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3407D2E2B39A4AA00D9DFA2 /* Assets.xcassets */; };
@@ -44,7 +46,6 @@
 		EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */; };
 		EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */; };
 		EBA8F8652B62D696000237A4 /* MoreTableView+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */; };
-		EBA8F8742B640B45000237A4 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */; };
 		EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */; };
 		EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D32445B52B6B81F100F209B1 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		D32445B62B6B81F100F209B1 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
 		D3407D222B39A49800D9DFA2 /* HW42-HSR(PickerVeiw).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW42-HSR(PickerVeiw).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3407D252B39A49800D9DFA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3407D272B39A49800D9DFA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +112,6 @@
 		EBA8F85F2B62ADF0000237A4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		EBA8F8642B62D696000237A4 /* MoreTableView+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoreTableView+Model.swift"; sourceTree = "<group>"; };
-		EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3D2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStatusTableViewCell.swift; sourceTree = "<group>"; };
 		EBFEBF3E2B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -304,7 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				EBA8F8612B62D2CA000237A4 /* MoreTableViewController.swift */,
-				EBA8F8732B640B45000237A4 /* MoreTableViewCell.swift */,
+				D32445B52B6B81F100F209B1 /* MoreTableViewCell.swift */,
+				D32445B62B6B81F100F209B1 /* MoreTableViewCell.xib */,
 			);
 			path = MoreTableView;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				D3407D322B39A4AA00D9DFA2 /* LaunchScreen.storyboard in Resources */,
 				EBFEBF402B3B07E900B9B3E1 /* TrainStatusTableViewCell.xib in Resources */,
 				D3407D2F2B39A4AA00D9DFA2 /* Assets.xcassets in Resources */,
+				D32445B82B6B81F100F209B1 /* MoreTableViewCell.xib in Resources */,
 				D3F843FE2B5C28B6001AF2D1 /* ServiceTableViewCell.xib in Resources */,
 				D3F843ED2B57CB2B001AF2D1 /* AccountTableViewCell.xib in Resources */,
 				D3407D602B39D17700D9DFA2 /* SearchTableViewCell.xib in Resources */,
@@ -463,6 +467,7 @@
 				EB9FEA362B64F78900E1517E /* MyTicketViewController.swift in Sources */,
 				EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */,
 				D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */,
+				D32445B72B6B81F100F209B1 /* MoreTableViewCell.swift in Sources */,
 				D3B2D1842B69F882002E3380 /* NonReservedView.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
@@ -470,7 +475,6 @@
 				EB9FEA472B66B46900E1517E /* AlertViewController.swift in Sources */,
 				D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */,
 				D3F843FD2B5C28B6001AF2D1 /* ServiceTableViewCell.swift in Sources */,
-				EBA8F8742B640B45000237A4 /* MoreTableViewCell.swift in Sources */,
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,
 				EB9FEA382B64F87D00E1517E /* PayAndCollectTicketViewController.swift in Sources */,

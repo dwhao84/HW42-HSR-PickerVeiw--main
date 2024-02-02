@@ -57,4 +57,7 @@ struct Images {
     static let hsrLogo        = UIImage(named: "HSRIcon")!
     static let tifeLogo       = UIImage(named: "TLifeIcon")!
     static let co2Logo        = UIImage(named: "Co2Icon")!
+    
+    static let forwardImage   = UIImage(systemName: "chevron.forward")!
+    static let backwardImage  = UIImage(systemName: "chevron.backward")!
 }

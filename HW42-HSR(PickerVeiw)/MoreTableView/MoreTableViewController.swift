@@ -8,22 +8,21 @@
 import UIKit
 import SafariServices
 
-class MoreTableViewController: UIViewController {
-    
-    let containerView: UIView  = UIView()
-    let stackView: UIStackView = UIStackView()
-    
+class MoreTableViewController: UIViewController, SFSafariViewControllerDelegate {
+
+    let stackView: UIStackView   = UIStackView()
     let scrollView: UIScrollView = UIScrollView()
+    let containerView: UIView    = UIView()
     
     let trainServiceTableView:        UITableView  = UITableView()
     let highSpeedRailInfoTableView:   UITableView  = UITableView()
     let highSpeedRailOptionTableView: UITableView  = UITableView()
-    
+
     var trainServices:        [TrainService]        = []
     var highSpeedRailInfos:   [HighSpeedRailInfo]   = []
     var highSpeedRailOptions: [HighSpeedRailOption] = []
     
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,15 +32,9 @@ class MoreTableViewController: UIViewController {
         
         self.view.backgroundColor = Colors.brightGray
         
-        print("trainServices is \(trainServices.count)")
-        print("highSpeedRailInfos is \(highSpeedRailInfos.count)")
-        print("highSpeedRailOptions is \(highSpeedRailOptions.count)")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let totalHeight = highSpeedRailOptionTableView.frame.height + trainServiceTableView.frame.height + highSpeedRailInfoTableView.frame.height
-        scrollView.contentSize = CGSize(width: view.frame.width, height: totalHeight)
+        print("DEBUG PRINT: HSR Services data is \(trainServices.count)")
+        print("DEBUG PRINT: HSR Infos data is \(highSpeedRailInfos.count)")
+        print("DEBUG PRINT: HSR Options data is \(highSpeedRailOptions.count)")
     }
     
     func fetchAllTheData () {
@@ -50,13 +43,18 @@ class MoreTableViewController: UIViewController {
         highSpeedRailOptions = fetchHighSpeedRailOptionData()
     }
     
+    // MARK: - NavigationBar
     func setupNavigationBar () {
         // Set up titleText color in appearance.
         let navigationBarAppearance                 = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor     = Colors.navigationBarColor
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: Colors.white]
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: Colors.navigationBarColor]
         self.navigationItem.scrollEdgeAppearance    = navigationBarAppearance
                
+        let standardAppearance                                 = UINavigationBarAppearance()
+        standardAppearance.backgroundColor                     = Colors.navigationBarColor
+        navigationController?.navigationBar.standardAppearance = standardAppearance
+        
         // Set up titleView
         let hsrImageView = UIImageView(image: Images.hsrImage)
         self.navigationController?.isNavigationBarHidden      = false
@@ -77,11 +75,11 @@ class MoreTableViewController: UIViewController {
     }
     
     @objc func speakerBarButtonTapped () {
-        print("speakerBarButtonTapped")
+        print("DEBUG PRINT: speakerBarButtonTapped")
     }
     
     @objc func accountBarButtonTapped () {
-        print("accountBarButtonTapped")
+        print("DEBUG PRINT: accountBarButtonTapped")
         let accountVC                  = AccountViewController()
         accountVC.modalTransitionStyle = .crossDissolve
         self.navigationController?.navigationBar.tintColor = Colors.white
@@ -112,12 +110,12 @@ class MoreTableViewController: UIViewController {
     
     func setupTableView () {
         trainServiceTableView.isScrollEnabled        = false
-        highSpeedRailInfoTableView.isScrollEnabled  = false
+        highSpeedRailInfoTableView.isScrollEnabled   = false
         highSpeedRailOptionTableView.isScrollEnabled = false
         
         // rowHeight
         trainServiceTableView.rowHeight        = 55
-        highSpeedRailInfoTableView.rowHeight  = 55
+        highSpeedRailInfoTableView.rowHeight   = 55
         highSpeedRailOptionTableView.rowHeight = 55
         
         // separatorStyle
@@ -126,8 +124,8 @@ class MoreTableViewController: UIViewController {
         highSpeedRailOptionTableView.separatorStyle = .singleLine
         
         // backgroundColor
-        trainServiceTableView.backgroundColor        = Colors.black
-        highSpeedRailInfoTableView.backgroundColor   = Colors.black
+        trainServiceTableView.backgroundColor        = Colors.white
+        highSpeedRailInfoTableView.backgroundColor   = Colors.white
         highSpeedRailOptionTableView.backgroundColor = Colors.white
         
         // register
@@ -136,42 +134,60 @@ class MoreTableViewController: UIViewController {
         highSpeedRailOptionTableView.register(MoreTableViewCell.nib(), forCellReuseIdentifier: MoreTableViewCell.identifier)
     }
     
-    func constraintsTableView () {
+    func constraintsTableView() {
+        scrollView.backgroundColor = Colors.brightGray
+        
         view.addSubview(scrollView)
-        scrollView.addSubview(highSpeedRailOptionTableView)
-        scrollView.addSubview(trainServiceTableView)
-        scrollView.addSubview(highSpeedRailInfoTableView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            highSpeedRailOptionTableView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            highSpeedRailOptionTableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            highSpeedRailOptionTableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            highSpeedRailOptionTableView.heightAnchor.constraint(equalToConstant: 165)
-        ])
-        
-        NSLayoutConstraint.activate([
-            trainServiceTableView.topAnchor.constraint(equalTo: highSpeedRailOptionTableView.bottomAnchor, constant: 20),
-            trainServiceTableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            trainServiceTableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            trainServiceTableView.heightAnchor.constraint(equalToConstant: 165)
-        ])
-        
-        NSLayoutConstraint.activate([
-            highSpeedRailInfoTableView.topAnchor.constraint(equalTo: trainServiceTableView.bottomAnchor, constant: 20),
-            highSpeedRailInfoTableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            highSpeedRailInfoTableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            highSpeedRailInfoTableView.heightAnchor.constraint(equalToConstant: 330),
-            highSpeedRailInfoTableView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
+        
+        scrollView.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+        
+        containerView.addSubview(highSpeedRailInfoTableView)
+        containerView.addSubview(trainServiceTableView)
+        containerView.addSubview(highSpeedRailOptionTableView)
+        
+        highSpeedRailInfoTableView.translatesAutoresizingMaskIntoConstraints = false
+        trainServiceTableView.translatesAutoresizingMaskIntoConstraints = false
+        highSpeedRailOptionTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            highSpeedRailOptionTableView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            highSpeedRailOptionTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            highSpeedRailOptionTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+
+            trainServiceTableView.topAnchor.constraint(equalTo: highSpeedRailOptionTableView.bottomAnchor, constant: 20),
+            trainServiceTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            trainServiceTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            
+            highSpeedRailInfoTableView.topAnchor.constraint(equalTo: trainServiceTableView.bottomAnchor, constant: 20),
+            highSpeedRailInfoTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            highSpeedRailInfoTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            highSpeedRailInfoTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
+        ])
+        
+        // Set the fixed heights for the table views
+        highSpeedRailOptionTableView.heightAnchor.constraint(equalToConstant: 165).isActive = true
+        trainServiceTableView.heightAnchor.constraint(equalToConstant: 165).isActive        = true
+        highSpeedRailInfoTableView.heightAnchor.constraint(equalToConstant: 330).isActive   = true
     }
+
 }
 
 extension MoreTableViewController {
@@ -221,13 +237,44 @@ extension MoreTableViewController {
 
 extension MoreTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("DeselectRow is\(indexPath)")
-
-            let safariServiceVC = SFSafariViewController(url: URL(fileURLWithPath: ""))
-            present(safariServiceVC, animated: true)
+        
+        if tableView == highSpeedRailOptionTableView {
+            
+            tableView.deselectRow(at: indexPath, animated: false)
+            print("DEBUG PRINT: highSpeedRailOptionTableView didSelectRow is\(indexPath)")
+            
+        } else if tableView == trainServiceTableView {
+            
+            tableView.deselectRow(at: indexPath, animated: false)
+            
+            let selectedURL = trainServices[indexPath.row].url
+            if let url = URL(string: selectedURL) {
+                let safariVC = SFSafariViewController(url: url)
+                safariVC.delegate = self
+                present(safariVC, animated: true)
+            } else {
+                fatalError("DEBUG PRINT: Unable to present the safariVC.")
+            }
+            print("DEBUG PRINT: trainServiceTableView didSelectRow is\(indexPath)")
+            
+        } else if tableView == highSpeedRailInfoTableView {
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            let selectedURL = highSpeedRailInfos[indexPath.row].url
+            if let url = URL(string: selectedURL) {
+                let safariVC = SFSafariViewController(url: url)
+                safariVC.delegate = self
+                present(safariVC, animated: true)
+            } else {
+                fatalError("DEBUG PRINT: Unable to present the safariVC.")
+            }
+            print("DEBUG PRINT: highSpeedRailInfoTableView didSelectRow is\(indexPath)")
+        } else {
+            print("DEBUG PRINT: tableView is EMPTY")
         }
     }
+}
 
 extension MoreTableViewController: UITableViewDataSource {
     

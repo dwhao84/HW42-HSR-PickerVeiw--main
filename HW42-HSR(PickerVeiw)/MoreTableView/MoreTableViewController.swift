@@ -118,9 +118,9 @@ class MoreTableViewController: UIViewController, SFSafariViewControllerDelegate 
         highSpeedRailOptionTableView.rowHeight = 55
         
         // separatorStyle
-        trainServiceTableView.separatorStyle        = .singleLine
-        highSpeedRailInfoTableView.separatorStyle   = .singleLine
-        highSpeedRailOptionTableView.separatorStyle = .singleLine
+//        trainServiceTableView.separatorStyle        = .singleLine
+//        highSpeedRailInfoTableView.separatorStyle   = .singleLine
+//        highSpeedRailOptionTableView.separatorStyle = .singleLine
         
         // backgroundColor
         trainServiceTableView.backgroundColor        = Colors.white

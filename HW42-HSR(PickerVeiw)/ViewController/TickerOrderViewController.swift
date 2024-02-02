@@ -9,6 +9,8 @@ import UIKit
 
 class TickerOrderViewController: UIViewController {
     
+    let nonReservedView: NonReservedView = NonReservedView()
+    
     let backgroundView: UIView                = UIView()
     let stackView:       UIStackView          = UIStackView()
     let backgroundShadowView: UIView          = UIView()
@@ -463,6 +465,8 @@ class TickerOrderViewController: UIViewController {
         case 1:
             return
         case 2:
+            backgroundView.isHidden = true
+            view.addSubview(nonReservedView)
             return
         default:
             break

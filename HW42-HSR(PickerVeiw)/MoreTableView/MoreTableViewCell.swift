@@ -18,6 +18,7 @@ class MoreTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         setupUI()
+//        drawLineFromPoint(start: CGPoint(x: 0, y: self.contentView.bounds.height), toPoint: CGPoint(x: self.contentView.bounds.width, y: self.contentView.bounds.height), ofColor: Colors.systemGray4, inView: self.contentView)
     }
 
     func setupUI () {
@@ -38,6 +39,20 @@ class MoreTableViewCell: UITableViewCell {
         serviceTitleLabel.textAlignment = .left
         serviceTitleLabel.numberOfLines = 0
         serviceTitleLabel.font          = UIFont.boldSystemFont(ofSize: 17)
+    }
+    
+    func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
+        //design the path
+        let path = UIBezierPath()
+        path.move(to: start)
+        path.addLine(to: end)
+        
+        //design path in layer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = lineColor.cgColor
+        shapeLayer.lineWidth = 1.0
+        view.layer.addSublayer(shapeLayer)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

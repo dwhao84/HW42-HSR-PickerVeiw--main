@@ -54,4 +54,7 @@ struct Images {
     
     static let bluetoothIcon  = UIImage(named: "bluetooth-Icon")!
     static let circle         = UIImage(systemName: "circle")!
+    static let hsrLogo        = UIImage(named: "HSRIcon")!
+    static let tifeLogo       = UIImage(named: "TLifeIcon")!
+    static let co2Logo        = UIImage(named: "Co2Icon")!
 }

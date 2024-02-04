@@ -23,13 +23,17 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     let ridingDateLabel: UILabel   = UILabel() // 單程・2024/01/21
     let ticketRandomLabel: UILabel = UILabel() // 票號 2900200213160
     
-    // trainTimeInfoView
+    // trainTimeInfoView:
     let trainTimeInfoView: UIView = UIView()   // width: 390, height: 90
     var departureLabel: UILabel   = UILabel()  // 左營
     var destinationLabel: UILabel = UILabel()  // 台北
     
     var departureTimeLabel: UILabel   = UILabel() // 18:55
     var destinationTimeLabel: UILabel = UILabel() // 20:20
+    
+    // StackView:
+    let depatureLabelsStackView: UIStackView   = UIStackView()
+    let destinationLabelStackView: UIStackView = UIStackView()
     
     // trainInfoView
     let trainInfoView: UIView                  = UIView()  // width: 390, height: 45
@@ -42,6 +46,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     var carriageSeatsTitleNumberLabel: UILabel = UILabel() // 座位
     var carriageSeatsNumberLabel: UILabel      = UILabel() // 15A
     
+    // StackView:
     let trainNumberStackView: UIStackView    = UIStackView()
     let carriageNumberStackView: UIStackView = UIStackView()
     let carriageSeatsStackView: UIStackView  = UIStackView()
@@ -59,11 +64,12 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         configuretrainInfoLabels    ()
         configureTrainInfoView      ()
         
+        configureTrainTimeInfoViewLabels ()
+        constraintsTrainTimeInfoView ()
         
+        self.backgroundColor = Colors.navigationBarColor
         
-        self.backgroundColor = Colors.brightGray
-        
-        self.layer.borderColor = Colors.black.cgColor
+        self.layer.borderColor = Colors.navigationBarColor.cgColor
         self.layer.borderWidth = 1
     }
     
@@ -179,8 +185,87 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configuretrainInfoLabels () {
+    func configureTrainTimeInfoViewLabels () {
+        // 左營
+        // 18:55
+        departureLabel.text             = "左營"
+        departureLabel.font             = UIFont.systemFont(ofSize: 16)
+        departureLabel.textColor        = Colors.black
+        departureLabel.numberOfLines    = 0
+        departureLabel.textAlignment    = .center
+        trainTimeInfoView.addSubview(departureLabel)
         
+        // 18:55
+        departureTimeLabel.text             = "18:55"
+        departureTimeLabel.font             = UIFont.boldSystemFont(ofSize: 24)
+        departureTimeLabel.textColor        = Colors.black
+        departureTimeLabel.numberOfLines    = 0
+        departureTimeLabel.textAlignment    = .center
+        trainTimeInfoView.addSubview(departureTimeLabel)
+        
+        // 台北
+        // 20:30
+        destinationLabel.text             = "台北"
+        destinationLabel.font             = UIFont.systemFont(ofSize: 16)
+        destinationLabel.textColor        = Colors.black
+        destinationLabel.numberOfLines    = 0
+        destinationLabel.textAlignment    = .right
+        trainTimeInfoView.addSubview(destinationLabel)
+        
+        // 20:30
+        destinationTimeLabel.text             = "20:30"
+        destinationTimeLabel.font             = UIFont.boldSystemFont(ofSize: 24)
+        destinationTimeLabel.textColor        = Colors.black
+        destinationTimeLabel.numberOfLines    = 0
+        destinationTimeLabel.textAlignment    = .right
+        trainTimeInfoView.addSubview(destinationTimeLabel)
+    }
+    
+    func constraintsTrainTimeInfoView () {
+        trainTimeInfoView.backgroundColor = Colors.white
+        self.addSubview(trainTimeInfoView)
+        trainTimeInfoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // depatureLabelsStackView:
+        depatureLabelsStackView.addArrangedSubview(departureLabel)
+        depatureLabelsStackView.addArrangedSubview(departureTimeLabel)
+
+        depatureLabelsStackView.axis         = .vertical
+        depatureLabelsStackView.alignment    = .leading
+        depatureLabelsStackView.spacing      = 5
+        depatureLabelsStackView.distribution = .fill
+                
+        trainTimeInfoView.addSubview(depatureLabelsStackView)
+        depatureLabelsStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // destinationLabelStackView:
+        destinationLabelStackView.addArrangedSubview(destinationLabel)
+        destinationLabelStackView.addArrangedSubview(destinationTimeLabel)
+
+        destinationLabelStackView.axis         = .vertical
+        destinationLabelStackView.alignment    = .trailing
+        destinationLabelStackView.spacing      = 5
+        destinationLabelStackView.distribution = .fill
+        
+        trainTimeInfoView.addSubview(destinationLabelStackView)
+        destinationLabelStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            trainTimeInfoView.topAnchor.constraint(equalTo: trainNumberView.bottomAnchor),
+            trainTimeInfoView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            trainTimeInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            trainTimeInfoView.heightAnchor.constraint(equalToConstant: 90),
+            
+            depatureLabelsStackView.bottomAnchor.constraint(equalTo: trainTimeInfoView.bottomAnchor, constant: -10),
+            depatureLabelsStackView.leadingAnchor.constraint(equalTo: trainTimeInfoView.leadingAnchor, constant: 15),
+        
+            destinationLabelStackView.bottomAnchor.constraint(equalTo: trainTimeInfoView.bottomAnchor, constant: -10),
+            destinationLabelStackView.trailingAnchor.constraint(equalTo: trainTimeInfoView.trailingAnchor, constant: -70)
+        ])
+    }
+    
+    
+    func configuretrainInfoLabels () {
         // 車次 152
         trainNumberTitleLabel.text             = "車次"
         trainNumberTitleLabel.font             = UIFont.systemFont(ofSize: 16)
@@ -232,9 +317,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     func configureTrainInfoView () {
         self.addSubview(trainInfoView)
         trainInfoView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //        trainInfoView.layer.borderWidth = 0.5
-        //        trainInfoView.layer.borderColor = Colors.black.cgColor
         
         trainInfoView.layer.cornerRadius = 15
         trainInfoView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]

@@ -42,19 +42,31 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     var carriageSeatsTitleNumberLabel: UILabel = UILabel() // 座位
     var carriageSeatsNumberLabel: UILabel      = UILabel() // 15A
     
+    let trainNumberStackView: UIStackView    = UIStackView()
+    let carriageNumberStackView: UIStackView = UIStackView()
+    let carriageSeatsStackView: UIStackView  = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureTopViewLabels     ()
         constriantsTopView         ()
+        
         configureTrainNumberLabels ()
         constraintsTrainNumberView  ()
+        
+        constaintsTrainTimeInfoView ()
+        
         configuretrainInfoLabels    ()
-        configureBottomView ()
+        configureTrainInfoView      ()
+        
+        
+        
+        self.backgroundColor = Colors.brightGray
+        
         self.layer.borderColor = Colors.black.cgColor
         self.layer.borderWidth = 1
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -77,9 +89,9 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     }
     
     func constriantsTopView () {
-
-//        topView.layer.borderWidth = 2
-//        topView.layer.borderColor = Colors.black.cgColor
+        
+        //        topView.layer.borderWidth = 2
+        //        topView.layer.borderColor = Colors.black.cgColor
         
         topView.backgroundColor   = Colors.clear
         self.addSubview(topView)
@@ -87,7 +99,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         topView.translatesAutoresizingMaskIntoConstraints                = false
         reservationNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         ticketNumberLabel.translatesAutoresizingMaskIntoConstraints      = false
-            
+        
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: self.topAnchor),
             topView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -125,17 +137,17 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         
         trainNumberView.backgroundColor = Colors.white
     }
-
+    
     func constraintsTrainNumberView () {
         trainNumberView.layer.borderWidth = 0.5
         trainNumberView.layer.borderColor = Colors.lightGray.cgColor
-
-        trainNumberView.layer.cornerRadius = 10
+        
+        trainNumberView.layer.cornerRadius = 15
         trainNumberView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         trainNumberView.backgroundColor = Colors.white
         self.addSubview(trainNumberView)
-    
+        
         trainNumberView.translatesAutoresizingMaskIntoConstraints  = false
         ridingDateLabel.translatesAutoresizingMaskIntoConstraints   = false
         ticketRandomLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -153,6 +165,20 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    func constaintsTrainTimeInfoView () {
+        self.addSubview(trainTimeInfoView)
+        trainTimeInfoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        trainTimeInfoView.backgroundColor = Colors.white
+        NSLayoutConstraint.activate([
+            trainTimeInfoView.topAnchor.constraint(equalTo: trainNumberView.bottomAnchor),
+            trainTimeInfoView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            trainTimeInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            trainTimeInfoView.heightAnchor.constraint(equalToConstant: 90)
+        ])
+        
+    }
+    
     func configuretrainInfoLabels () {
         
         // 車次 152
@@ -164,7 +190,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         trainInfoView.addSubview(trainNumberTitleLabel)
         
         trainNumberLabel.text                  = "152"
-        trainNumberLabel.font                  = UIFont.boldSystemFont(ofSize: 18)
+        trainNumberLabel.font                  = UIFont.boldSystemFont(ofSize: 22)
         trainNumberLabel.textColor             = Colors.black
         trainNumberLabel.numberOfLines         = 0
         trainNumberLabel.textAlignment         = .center
@@ -179,7 +205,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         trainInfoView.addSubview(carriageNumberTitleLabel)
         
         carriageNumberLabel.text               = "4"
-        carriageNumberLabel.font               = UIFont.boldSystemFont(ofSize: 18)
+        carriageNumberLabel.font               = UIFont.boldSystemFont(ofSize: 22)
         carriageNumberLabel.textColor          = Colors.black
         carriageNumberLabel.numberOfLines      = 1
         carriageNumberLabel.textAlignment      = .center
@@ -194,7 +220,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         trainInfoView.addSubview(carriageSeatsTitleNumberLabel)
         
         carriageSeatsNumberLabel.text               = "15A"
-        carriageSeatsNumberLabel.font               = UIFont.boldSystemFont(ofSize: 18)
+        carriageSeatsNumberLabel.font               = UIFont.boldSystemFont(ofSize: 22)
         carriageSeatsNumberLabel.textColor          = Colors.black
         carriageSeatsNumberLabel.numberOfLines      = 1
         carriageSeatsNumberLabel.textAlignment      = .center
@@ -203,21 +229,66 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         trainInfoView.backgroundColor = Colors.secondBrightGray
     }
     
-    func configureBottomView () {
+    func configureTrainInfoView () {
         self.addSubview(trainInfoView)
         trainInfoView.translatesAutoresizingMaskIntoConstraints = false
         
-//        trainInfoView.layer.borderWidth = 0.5
-//        trainInfoView.layer.borderColor = Colors.black.cgColor
+        //        trainInfoView.layer.borderWidth = 0.5
+        //        trainInfoView.layer.borderColor = Colors.black.cgColor
         
-        trainInfoView.layer.cornerRadius = 10
+        trainInfoView.layer.cornerRadius = 15
         trainInfoView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
+        // trainNumberStackView:
+        trainNumberStackView.addArrangedSubview(trainNumberTitleLabel)
+        trainNumberStackView.addArrangedSubview(trainNumberLabel)
+        
+        trainNumberStackView.axis         = .horizontal
+        trainNumberStackView.alignment    = .fill
+        trainNumberStackView.spacing      = 0
+        trainNumberStackView.distribution = .fill
+        
+        trainInfoView.addSubview(trainNumberStackView)
+        trainNumberStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // carriageNumberStackView:
+        carriageNumberStackView.addArrangedSubview(carriageNumberTitleLabel)
+        carriageNumberStackView.addArrangedSubview(carriageNumberLabel)
+        
+        carriageNumberStackView.axis         = .horizontal
+        carriageNumberStackView.alignment    = .fill
+        carriageNumberStackView.spacing      = 0
+        carriageNumberStackView.distribution = .fill
+        
+        trainInfoView.addSubview(carriageNumberStackView)
+        carriageNumberStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // carriageSeatsStackView
+        carriageSeatsStackView.addArrangedSubview(carriageSeatsTitleNumberLabel)
+        carriageSeatsStackView.addArrangedSubview(carriageSeatsNumberLabel)
+        
+        carriageSeatsStackView.axis         = .horizontal
+        carriageSeatsStackView.alignment    = .fill
+        carriageSeatsStackView.spacing      = 0
+        carriageSeatsStackView.distribution = .fill
+        
+        trainInfoView.addSubview(carriageSeatsStackView)
+        carriageSeatsStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            trainInfoView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            trainInfoView.leadingAnchor.constraint(equalTo:  self.leadingAnchor),
             trainInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            trainInfoView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            trainInfoView.heightAnchor.constraint(equalToConstant: 45)
+            trainInfoView.bottomAnchor.constraint(equalTo:   self.bottomAnchor),
+            trainInfoView.heightAnchor.constraint(equalToConstant: 45),
+            
+            trainNumberStackView.leadingAnchor.constraint(equalTo: trainInfoView.leadingAnchor, constant: 15),
+            trainNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor),
+            
+            carriageNumberStackView.centerXAnchor.constraint(equalTo: trainInfoView.centerXAnchor),
+            carriageNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor),
+            
+            carriageSeatsStackView.trailingAnchor.constraint(equalTo: trainInfoView.trailingAnchor, constant: -15),
+            carriageSeatsStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor),
         ])
     }
     

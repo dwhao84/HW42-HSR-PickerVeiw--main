@@ -119,6 +119,12 @@ class MyTicketViewController: UIViewController {
     func configureForwardButton () {
         forwardButton.setImage(Images.forwardImage, for: .normal)
         forwardButton.tintColor = Colors.navigationBarColor
+        
+        forwardButton.layer.cornerRadius = 10
+        forwardButton.clipsToBounds      = true
+        
+        forwardButton.setBackgroundColor(Colors.clear, for: .normal)
+        forwardButton.setBackgroundColor(Colors.systemGray4, for: .selected)
 //        forwardButton.layer.borderWidth = 2
 //        forwardButton.layer.borderColor = Colors.black.cgColor
         view.addSubview(forwardButton)

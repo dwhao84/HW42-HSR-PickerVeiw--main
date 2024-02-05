@@ -51,6 +51,8 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     let carriageNumberStackView: UIStackView = UIStackView()
     let carriageSeatsStackView: UIStackView  = UIStackView()
     
+    let collectionViewCellStackView: UIStackView = UIStackView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureTopViewLabels     ()
@@ -67,9 +69,10 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         configureTrainTimeInfoViewLabels ()
         constraintsTrainTimeInfoView ()
         
-        self.backgroundColor = Colors.navigationBarColor
-        
-        self.layer.borderColor = Colors.navigationBarColor.cgColor
+//        constraintsCollectionViewCell ()
+//        
+//        self.backgroundColor = Colors.navigationBarColor
+//        self.layer.borderColor = Colors.navigationBarColor.cgColor
         self.layer.borderWidth = 1
     }
     
@@ -95,9 +98,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     }
     
     func constriantsTopView () {
-        
-        //        topView.layer.borderWidth = 2
-        //        topView.layer.borderColor = Colors.black.cgColor
         
         topView.backgroundColor   = Colors.clear
         self.addSubview(topView)
@@ -142,13 +142,16 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         trainNumberView.addSubview(ticketRandomLabel)
         
         trainNumberView.backgroundColor = Colors.white
+        
+        // Add the gray color bottom Line on the top of the trainInfoView.
+        addTopGrayLine ()
     }
     
     func constraintsTrainNumberView () {
-        trainNumberView.layer.borderWidth = 0.5
+        trainNumberView.layer.borderWidth = 0.1
         trainNumberView.layer.borderColor = Colors.lightGray.cgColor
         
-        trainNumberView.layer.cornerRadius = 15
+        trainNumberView.layer.cornerRadius = 10
         trainNumberView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         trainNumberView.backgroundColor = Colors.white
@@ -171,6 +174,23 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    func addTopGrayLine () {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: 0.6))
+        path.addLine(to: CGPoint(x: 390, y: 0.6))
+        path.addLine(to: CGPoint(x: 390, y: 0))
+        path.close()
+        
+        let grayColorLayer = CAShapeLayer()
+        grayColorLayer.path = path.cgPath
+        let colorFrame = CGRect(x: 0, y: 0, width: 390, height: 90)
+        let colorView = UIView(frame: colorFrame)
+        colorView.backgroundColor = Colors.systemGray4
+        colorView.layer.mask = grayColorLayer
+        trainTimeInfoView.addSubview(colorView)
+    }
+    
     func constaintsTrainTimeInfoView () {
         self.addSubview(trainTimeInfoView)
         trainTimeInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -182,7 +202,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             trainTimeInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             trainTimeInfoView.heightAnchor.constraint(equalToConstant: 90)
         ])
-        
     }
     
     func configureTrainTimeInfoViewLabels () {
@@ -205,11 +224,11 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         
         // 台北
         // 20:30
-        destinationLabel.text             = "台北"
-        destinationLabel.font             = UIFont.systemFont(ofSize: 16)
-        destinationLabel.textColor        = Colors.black
-        destinationLabel.numberOfLines    = 0
-        destinationLabel.textAlignment    = .right
+        destinationLabel.text               = "台北"
+        destinationLabel.font               = UIFont.systemFont(ofSize: 16)
+        destinationLabel.textColor          = Colors.black
+        destinationLabel.numberOfLines      = 0
+        destinationLabel.textAlignment      = .right
         trainTimeInfoView.addSubview(destinationLabel)
         
         // 20:30
@@ -219,8 +238,62 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         destinationTimeLabel.numberOfLines    = 0
         destinationTimeLabel.textAlignment    = .right
         trainTimeInfoView.addSubview(destinationTimeLabel)
+        
+        // width: 390, height: 90
+        addGrayColorBlock ()
+        addTopOrangeColorBlock ()
     }
     
+    func addGrayColorBlock () {
+        // Add Color block
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: 390))
+        path.addLine(to: CGPoint(x: 0, y: 85))
+        path.addLine(to: CGPoint(x: 330, y: 85))
+
+        // 曲線的部分
+        let controlPoint1 = CGPoint(x: 370, y: 85) // 第一個控制點，稍微向右上方
+        let controlPoint2 = CGPoint(x: 385, y: 65) // 第二個控制點，向下彎曲至目標點
+        path.addCurve(to: CGPoint(x: 390, y: 65), controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+        path.addLine(to: CGPoint(x: 390, y: 90))
+        path.close()
+        
+        let grayColorLayer = CAShapeLayer()
+        grayColorLayer.path = path.cgPath
+        let colorFrame = CGRect(x: 0, y: 0, width: 390, height: 90)
+        let colorView = UIView(frame: colorFrame)
+        colorView.backgroundColor = Colors.systemGray4
+        colorView.layer.mask = grayColorLayer
+        trainTimeInfoView.addSubview(colorView)
+    }
+    
+    // TODO: - Add top of orange color block.
+    func addTopOrangeColorBlock () {
+        // Add Color block
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 390, y: 65))
+        path.addLine(to: CGPoint(x: 390, y: 55))
+
+        // 添加直线到弧线的起始点
+           path.addLine(to: CGPoint(x: 355, y: 75))
+
+           // 添加弧线的部分
+           let endPoint = CGPoint(x: 310, y: 85)
+           let controlPoint1 = CGPoint(x: 345, y: 100) // 第一个控制点，向下拉伸弧线
+           let controlPoint2 = CGPoint(x: 320, y: 100) // 第二个控制点，继续向下拉伸弧线，形成明显的逆向弧形效果
+           path.addCurve(to: endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+        path.close()
+        
+        let orangeColorLayer = CAShapeLayer()
+        orangeColorLayer.path = path.cgPath
+        let colorFrame = CGRect(x: 0, y: 0, width: 390, height: 90)
+        let colorView = UIView(frame: colorFrame)
+        colorView.backgroundColor = Colors.tickerOrangeShape
+        colorView.layer.mask = orangeColorLayer
+        trainTimeInfoView.addSubview(colorView)
+    }
+    
+    // MARK: Constraint TrainTimeInfoView
     func constraintsTrainTimeInfoView () {
         trainTimeInfoView.backgroundColor = Colors.white
         self.addSubview(trainTimeInfoView)
@@ -230,10 +303,10 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         depatureLabelsStackView.addArrangedSubview(departureLabel)
         depatureLabelsStackView.addArrangedSubview(departureTimeLabel)
 
-        depatureLabelsStackView.axis         = .vertical
-        depatureLabelsStackView.alignment    = .leading
-        depatureLabelsStackView.spacing      = 5
-        depatureLabelsStackView.distribution = .fill
+        depatureLabelsStackView.axis           = .vertical
+        depatureLabelsStackView.alignment      = .leading
+        depatureLabelsStackView.spacing        = 5
+        depatureLabelsStackView.distribution   = .fill
                 
         trainTimeInfoView.addSubview(depatureLabelsStackView)
         depatureLabelsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -256,15 +329,15 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             trainTimeInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             trainTimeInfoView.heightAnchor.constraint(equalToConstant: 90),
             
-            depatureLabelsStackView.bottomAnchor.constraint(equalTo: trainTimeInfoView.bottomAnchor, constant: -10),
+            depatureLabelsStackView.bottomAnchor.constraint(equalTo: trainTimeInfoView.bottomAnchor, constant: -15),
             depatureLabelsStackView.leadingAnchor.constraint(equalTo: trainTimeInfoView.leadingAnchor, constant: 15),
         
-            destinationLabelStackView.bottomAnchor.constraint(equalTo: trainTimeInfoView.bottomAnchor, constant: -10),
+            destinationLabelStackView.bottomAnchor.constraint(equalTo: trainTimeInfoView.bottomAnchor, constant: -15),
             destinationLabelStackView.trailingAnchor.constraint(equalTo: trainTimeInfoView.trailingAnchor, constant: -70)
         ])
     }
     
-    
+    // MARK: Configure trainInfoLabels
     func configuretrainInfoLabels () {
         // 車次 152
         trainNumberTitleLabel.text             = "車次"
@@ -312,13 +385,45 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         trainInfoView.addSubview(carriageSeatsNumberLabel)
         
         trainInfoView.backgroundColor = Colors.secondBrightGray
+       
+        // Add the Orange color block on the top of the trainInfoView.
+        addOrangeColorBlock ()
     }
     
+    // MARK: Add Orange Color block in trainInfoView
+    func addOrangeColorBlock () {
+        // Add Color block
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: 370, y: 0))
+
+        // 添加曲線
+        let controlPoint1 = CGPoint(x: 350, y: 5)   // 控制點1
+        let controlPoint2 = CGPoint(x: 317.5, y: 5) // 控制點2
+        path.addCurve(to:
+            CGPoint(x: 315, y: 5),
+            controlPoint1: controlPoint1,
+            controlPoint2: controlPoint2
+        )
+        path.addLine(to: CGPoint(x: 340, y: 5))
+        path.addLine(to: CGPoint(x: 0, y: 5))
+        path.close()
+        
+        let orangeLayer = CAShapeLayer()
+        orangeLayer.path = path.cgPath
+        let colorFrame = CGRect(x: 0, y: 0, width: 390, height: 30)
+        let colorView = UIView(frame: colorFrame)
+        colorView.backgroundColor = Colors.tickerOrangeShape
+        colorView.layer.mask = orangeLayer
+        trainInfoView.addSubview(colorView)
+    }
+    
+    // MARK: Constraint TrainInfoView
     func configureTrainInfoView () {
         self.addSubview(trainInfoView)
         trainInfoView.translatesAutoresizingMaskIntoConstraints = false
         
-        trainInfoView.layer.cornerRadius = 15
+        trainInfoView.layer.cornerRadius = 10
         trainInfoView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         // trainNumberStackView:
@@ -364,16 +469,38 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             trainInfoView.heightAnchor.constraint(equalToConstant: 45),
             
             trainNumberStackView.leadingAnchor.constraint(equalTo: trainInfoView.leadingAnchor, constant: 15),
-            trainNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor),
+            trainNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor, constant: 2),
             
             carriageNumberStackView.centerXAnchor.constraint(equalTo: trainInfoView.centerXAnchor),
-            carriageNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor),
+            carriageNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor, constant: 2),
             
             carriageSeatsStackView.trailingAnchor.constraint(equalTo: trainInfoView.trailingAnchor, constant: -15),
-            carriageSeatsStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor),
+            carriageSeatsStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor, constant: 2),
         ])
     }
     
+    func constraintsCollectionViewCell () {
+        collectionViewCellStackView.backgroundColor = Colors.orange
+        
+        self.addSubview(collectionViewCellStackView)
+        collectionViewCellStackView.translatesAutoresizingMaskIntoConstraints = false
+        collectionViewCellStackView.axis         = .vertical
+        collectionViewCellStackView.distribution = .fillEqually
+        collectionViewCellStackView.spacing      = 10
+        
+        collectionViewCellStackView.addArrangedSubview(trainNumberView)
+        collectionViewCellStackView.addArrangedSubview(trainTimeInfoView)
+        collectionViewCellStackView.addArrangedSubview(trainInfoView)
+        
+        NSLayoutConstraint.activate([
+            collectionViewCellStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            collectionViewCellStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            collectionViewCellStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            collectionViewCellStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+        
+        ])
+
+    }
     
     
 }

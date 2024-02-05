@@ -9,6 +9,7 @@ import UIKit
 
 enum Colors {
     // Custom:
+    static let tickerOrangeShape : UIColor           = UIColor(red: 235/255, green: 97/255, blue: 0/255, alpha: 1)
     static let orange            : UIColor           = UIColor(red: 222/255, green: 83/255,  blue: 0/255, alpha: 1)
     static let orangeBrandColor  : UIColor           = UIColor(red: 222/255, green: 83/255,  blue: 9/255, alpha: 1)
     static let orangeBrandColorSelected: UIColor     = UIColor(red: 222/255, green: 83/255,  blue: 9/255, alpha: 0.5)

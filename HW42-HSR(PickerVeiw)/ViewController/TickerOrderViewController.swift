@@ -58,7 +58,6 @@ class TickerOrderViewController: UIViewController {
         
         self.view.backgroundColor = Colors.brightGray
         setupUI ()
-//        tapTheViewController()
     }
     
     func setupUI () {
@@ -465,8 +464,8 @@ class TickerOrderViewController: UIViewController {
         case 1:
             return
         case 2:
-            backgroundView.isHidden = true
-            view.addSubview(nonReservedView)
+//            backgroundView.isHidden = true
+//            view.addSubview(nonReservedView)
             return
         default:
             break
@@ -483,6 +482,78 @@ class TickerOrderViewController: UIViewController {
         let accountVC = AccountViewController()
         self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.pushViewController(accountVC, animated: true)
+    }
+    
+    // MARK: Alert Controller
+    func trainClassSelectionAC() {
+        // 建立一個提示框
+        let alertController = UIAlertController(
+            title: "",
+            message: "選擇車廂種類",
+            preferredStyle: .actionSheet)
+
+        let cancelAction = UIAlertAction(
+          title: "取消",
+          style: .cancel,
+          handler: nil)
+
+        let economyClassAction = UIAlertAction(
+          title: "標準車廂",
+          style: .default,
+          handler: nil)
+        
+        let bussinessClassAction  = UIAlertAction(
+          title: "商務車廂",
+          style: .default,
+          handler: nil)
+        
+        alertController.view.tintColor = Colors.black
+        alertController.addAction(cancelAction)
+        alertController.addAction(economyClassAction)
+        alertController.addAction(bussinessClassAction)
+        
+        // 顯示提示框
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func seatsPeferenceAC() {
+        // 建立一個提示框
+        let alertController = UIAlertController(
+            title: "",
+            message: "選擇座位偏好",
+            preferredStyle: .actionSheet)
+
+        // 建立[取消]按鈕
+        let cancelAction = UIAlertAction(
+          title: "取消",
+          style: .cancel,
+          handler: nil)
+
+        // 建立[確認]按鈕
+        let okAction = UIAlertAction(
+          title: "靠窗優先",
+          style: .default,
+          handler: nil)
+        
+        let aisleAction = UIAlertAction(
+          title: "靠走道優先",
+          style: .default,
+          handler: nil)
+        
+        let noPreferAction = UIAlertAction(
+            title: "無偏好",
+            style: .default,
+            handler: nil
+        )
+        
+        alertController.view.tintColor = Colors.black
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        alertController.addAction(aisleAction)
+        alertController.addAction(noPreferAction)
+        
+        // 顯示提示框
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -581,6 +652,7 @@ extension TickerOrderViewController: UITableViewDataSource {
 extension TickerOrderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == trainStatusTableView {
+            
             trainStatusTableView.deselectRow(at: indexPath, animated: true)
             print("trainStatusTableView's index is \(indexPath)")
             
@@ -589,12 +661,35 @@ extension TickerOrderViewController: UITableViewDelegate {
             print("chooseStationTableView's index is \(indexPath)")
             
         } else if tableView == serviceTableView && indexPath.row == 0 {
-            serviceTableView.deselectRow(at: indexPath, animated: true)
-            print("serviceTableView's index is \(indexPath)")
             
+            print("serviceTableView's index is \(indexPath.row)")
+            serviceTableView.deselectRow(at: indexPath, animated: true)
             let ridingTimeVC = RidingTimeViewController()
             self.navigationController?.navigationBar.tintColor = Colors.white
             self.navigationController?.pushViewController(ridingTimeVC, animated: true)
+      
+        } else if tableView == serviceTableView && indexPath.row == 1 {
+            
+            print("serviceTableView's index is \(indexPath.row)")
+            serviceTableView.deselectRow(at: indexPath, animated: true)
+            
+            // Showing which class that customer want.
+            trainClassSelectionAC()
+            
+        } else if tableView == serviceTableView && indexPath.row == 2 {
+            
+            print("serviceTableView's index is \(indexPath.row)")
+            serviceTableView.deselectRow(at: indexPath, animated: true)
+            
+
+        } else if tableView == serviceTableView && indexPath.row == 3 {
+            
+            print("serviceTableView's index is \(indexPath.row)")
+            serviceTableView.deselectRow(at: indexPath, animated: true)
+            
+            // Showing which postion that customer want.
+            seatsPeferenceAC()
+            
             
         } else if tableView == searchTableView {
             searchTableView.deselectRow(at: indexPath, animated: true)

@@ -71,7 +71,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         
 //        constraintsCollectionViewCell ()
 //        
-//        self.backgroundColor = Colors.navigationBarColor
+        self.backgroundColor = Colors.navigationBarColor
 //        self.layer.borderColor = Colors.navigationBarColor.cgColor
         self.layer.borderWidth = 1
     }
@@ -241,7 +241,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         
         // width: 390, height: 90
         addGrayColorBlock ()
-        addTopOrangeColorBlock ()
+//        addTopOrangeColorBlock ()
     }
     
     func addGrayColorBlock () {
@@ -258,12 +258,12 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         path.addLine(to: CGPoint(x: 390, y: 90))
         path.close()
         
-        let grayColorLayer = CAShapeLayer()
-        grayColorLayer.path = path.cgPath
-        let colorFrame = CGRect(x: 0, y: 0, width: 390, height: 90)
-        let colorView = UIView(frame: colorFrame)
+        let grayColorLayer        = CAShapeLayer()
+        grayColorLayer.path       = path.cgPath
+        let colorFrame            = CGRect(x: 0, y: 0, width: 390, height: 90)
+        let colorView             = UIView(frame: colorFrame)
         colorView.backgroundColor = Colors.systemGray4
-        colorView.layer.mask = grayColorLayer
+        colorView.layer.mask      = grayColorLayer
         trainTimeInfoView.addSubview(colorView)
     }
     
@@ -271,25 +271,20 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     func addTopOrangeColorBlock () {
         // Add Color block
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 390, y: 65))
-        path.addLine(to: CGPoint(x: 390, y: 55))
-
-        // 添加直线到弧线的起始点
-           path.addLine(to: CGPoint(x: 355, y: 75))
-
-           // 添加弧线的部分
-           let endPoint = CGPoint(x: 310, y: 85)
-           let controlPoint1 = CGPoint(x: 345, y: 100) // 第一个控制点，向下拉伸弧线
-           let controlPoint2 = CGPoint(x: 320, y: 100) // 第二个控制点，继续向下拉伸弧线，形成明显的逆向弧形效果
-           path.addCurve(to: endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+        path.move(to: CGPoint(x: 375.0, y: 26.3))
+        path.addCurve(to: CGPoint(x: 346.3, y: 17.4), controlPoint1: CGPoint(x: 367.3, y: 25.0), controlPoint2: CGPoint(x: 355.8, y: 21.5))
+        path.addLine(to: CGPoint(x: 335.8, y: 13.5))
+        path.addCurve(to: CGPoint(x: 389.1, y: 25.3), controlPoint1: CGPoint(x: 357.4, y: 14.0), controlPoint2: CGPoint(x: 373.9, y: 17.7))
+        path.addLine(to: CGPoint(x: 389.1, y: 28.8))
+        path.addCurve(to: CGPoint(x: 380.3, y: 28.2), controlPoint1: CGPoint(x: 385.6, y: 28.7), controlPoint2: CGPoint(x: 381.7, y: 28.4))
         path.close()
-        
-        let orangeColorLayer = CAShapeLayer()
-        orangeColorLayer.path = path.cgPath
-        let colorFrame = CGRect(x: 0, y: 0, width: 390, height: 90)
-        let colorView = UIView(frame: colorFrame)
+
+        let orangeColorLayer      = CAShapeLayer()
+        orangeColorLayer.path     = path.cgPath
+        let colorFrame            = CGRect(x: 0, y: 0, width: 390, height: 90)
+        let colorView             = UIView(frame: colorFrame)
         colorView.backgroundColor = Colors.tickerOrangeShape
-        colorView.layer.mask = orangeColorLayer
+        colorView.layer.mask      = orangeColorLayer
         trainTimeInfoView.addSubview(colorView)
     }
     

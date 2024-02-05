@@ -10,10 +10,6 @@ import UIKit
 class AlertViewController: UIViewController {
     
     let backgroundView: UIView   = UIView()
-
-
-
-    
     let dataErrorTitleLabel: UILabel   = UILabel()
     
     let dataErrorContentLabel: UILabel = UILabel()

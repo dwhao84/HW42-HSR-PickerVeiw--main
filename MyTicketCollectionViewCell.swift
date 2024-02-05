@@ -69,13 +69,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         configureTrainTimeInfoViewLabels ()
         constraintsTrainTimeInfoView ()
         
-//        constraintsCollectionViewCell ()
-//        
-        self.backgroundColor = Colors.navigationBarColor
-//        self.layer.borderColor = Colors.navigationBarColor.cgColor
-        self.layer.borderWidth = 1
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -99,7 +93,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     
     func constriantsTopView () {
         
-        topView.backgroundColor   = Colors.clear
+        topView.backgroundColor   = Colors.brightGray
         self.addSubview(topView)
         
         topView.translatesAutoresizingMaskIntoConstraints                = false
@@ -148,8 +142,8 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     }
     
     func constraintsTrainNumberView () {
-        trainNumberView.layer.borderWidth = 0.1
-        trainNumberView.layer.borderColor = Colors.lightGray.cgColor
+//        trainNumberView.layer.borderWidth = 0.1
+//        trainNumberView.layer.borderColor = Colors.lightGray.cgColor
         
         trainNumberView.layer.cornerRadius = 10
         trainNumberView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -481,7 +475,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         collectionViewCellStackView.translatesAutoresizingMaskIntoConstraints = false
         collectionViewCellStackView.axis         = .vertical
         collectionViewCellStackView.distribution = .fillEqually
-        collectionViewCellStackView.spacing      = 10
+        collectionViewCellStackView.spacing      = 0
         
         collectionViewCellStackView.addArrangedSubview(trainNumberView)
         collectionViewCellStackView.addArrangedSubview(trainTimeInfoView)
@@ -492,9 +486,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             collectionViewCellStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             collectionViewCellStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             collectionViewCellStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-        
         ])
-
     }
     
     

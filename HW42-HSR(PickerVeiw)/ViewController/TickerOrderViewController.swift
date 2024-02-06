@@ -459,13 +459,12 @@ class TickerOrderViewController: UIViewController {
         changeSegmentedControlLinePosition()
         print("segmentedControl's selectedIndex is \(segmentedControl.selectedSegmentIndex)")
         switch selectedIndex {
-        case 0:
-            return
-        case 1:
-            return
+        case 0: break
+            
+        case 1: break
+           
         case 2:
-//            backgroundView.isHidden = true
-//            view.addSubview(nonReservedView)
+
             return
         default:
             break
@@ -491,6 +490,24 @@ class TickerOrderViewController: UIViewController {
             title: "",
             message: "選擇車廂種類",
             preferredStyle: .actionSheet)
+        
+        let alertActionHandler: (UIAlertAction) -> Void = { action in
+            let selectedTitle = action.title!
+            
+            switch action.title {
+            case "取消":
+                print(selectedTitle)
+                
+            case "標準車廂":
+                print(selectedTitle)
+
+            case "商務車廂":
+                print(selectedTitle)
+                
+            default:
+                break
+            }
+        }
 
         let cancelAction = UIAlertAction(
           title: "取消",
@@ -516,35 +533,53 @@ class TickerOrderViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func updateServiceTableViewWithSelection(_ selection: String) {
+        // Assuming you have a model or a way to know which cell or section to update
+        // Update your model/data source here with the new selection
+
+        // Then reload the tableView or specific cell
+        serviceTableView.reloadData()
+        // or, if you know the specific indexPath:
+        // let indexPath = IndexPath(row: yourRow, section: yourSection)
+        // serviceTableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
     func seatsPeferenceAC() {
-        // 建立一個提示框
+        // Create a alertController
         let alertController = UIAlertController(
             title: "",
             message: "選擇座位偏好",
             preferredStyle: .actionSheet)
 
+        // alertActionHandler
+        let alertActionHandler: (UIAlertAction) -> Void = { action in
+            
+            let selectedTitle = action.title!
+            switch action.title {
+            case "取消":
+                print(selectedTitle)
+                
+            case "靠窗優先":
+                print(selectedTitle)
+                
+            case "靠走道優先":
+                print(selectedTitle)
+                
+            case "無偏好":
+                print(selectedTitle)
+                
+            default:
+                break
+            }
+
+        }
+        
         // 建立[取消]按鈕
         let cancelAction = UIAlertAction(
-          title: "取消",
-          style: .cancel,
-          handler: nil)
-
-        // 建立[確認]按鈕
-        let okAction = UIAlertAction(
-          title: "靠窗優先",
-          style: .default,
-          handler: nil)
-        
-        let aisleAction = UIAlertAction(
-          title: "靠走道優先",
-          style: .default,
-          handler: nil)
-        
-        let noPreferAction = UIAlertAction(
-            title: "無偏好",
-            style: .default,
-            handler: nil
-        )
+          title: "取消", style: .cancel, handler: nil)
+        let okAction    = UIAlertAction(title: "靠窗優先", style: .default, handler: alertActionHandler)
+        let aisleAction = UIAlertAction(title: "靠走道優先", style: .default, handler: alertActionHandler)
+        let noPreferAction = UIAlertAction(title: "無偏好", style: .default, handler: alertActionHandler)
         
         alertController.view.tintColor = Colors.black
         alertController.addAction(cancelAction)
@@ -628,16 +663,9 @@ extension TickerOrderViewController: UITableViewDataSource {
             serviceTableViewCell.selectionStyle = .none
             serviceTableViewCell.accessoryType  = .disclosureIndicator
             serviceTableViewCell.serviceStatusLabel.text = servicesData[indexPath.row].service
-            serviceTableViewCell.serviceImageView.image       = servicesData[indexPath.row].serviceIcon
-            serviceTableViewCell.statusLabel.text             = servicesData[indexPath.row].subtitleService
-            
-            // Update the status label based on the selected index
-            if let selectedIndex = selectedIndex, selectedServiceIndex == indexPath {
-                serviceTableViewCell.statusLabel.text = names[selectedIndex]
-                  } else {
-                // Default or previous value
-///                serviceSelectionTableViewCell.statusLabel.text = "無偏好"
-            }
+            serviceTableViewCell.serviceImageView.image  = servicesData[indexPath.row].serviceIcon
+            serviceTableViewCell.statusLabel.text        = servicesData[indexPath.row].subtitleService
+
             
             return serviceTableViewCell
         } else {
@@ -687,9 +715,7 @@ extension TickerOrderViewController: UITableViewDelegate {
             print("serviceTableView's index is \(indexPath.row)")
             serviceTableView.deselectRow(at: indexPath, animated: true)
             
-            // Showing which postion that customer want.
             seatsPeferenceAC()
-            
             
         } else if tableView == searchTableView {
             searchTableView.deselectRow(at: indexPath, animated: true)

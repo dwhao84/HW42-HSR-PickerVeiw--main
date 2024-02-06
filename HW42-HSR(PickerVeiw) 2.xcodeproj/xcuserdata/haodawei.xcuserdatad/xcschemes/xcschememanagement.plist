@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>HW42-HSR(PickerVeiw).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>D3407D212B39A49800D9DFA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3407D372B39A4AA00D9DFA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3407D412B39A4AA00D9DFA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

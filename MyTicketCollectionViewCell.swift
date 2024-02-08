@@ -69,6 +69,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         configureTrainTimeInfoViewLabels ()
         constraintsTrainTimeInfoView ()
         
+        constraintsCollectionViewCell ()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -104,8 +105,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             topView.topAnchor.constraint(equalTo: self.topAnchor),
             topView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topView.widthAnchor.constraint(equalToConstant: 390),
-            topView.heightAnchor.constraint(equalToConstant: 35),
+
             
             reservationNumberLabel.topAnchor.constraint(equalTo: topView.topAnchor),
             reservationNumberLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor),
@@ -117,6 +117,8 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             ticketNumberLabel.widthAnchor.constraint(equalToConstant: 200),
             ticketNumberLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
+        topView.widthAnchor.constraint(equalToConstant: 390).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     // MARK: - TrainNumberView
@@ -454,8 +456,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             trainInfoView.leadingAnchor.constraint(equalTo:  self.leadingAnchor),
             trainInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            trainInfoView.bottomAnchor.constraint(equalTo:   self.bottomAnchor),
-            trainInfoView.heightAnchor.constraint(equalToConstant: 45),
+//            trainInfoView.bottomAnchor.constraint(equalTo:   self.bottomAnchor),
             
             trainNumberStackView.leadingAnchor.constraint(equalTo: trainInfoView.leadingAnchor, constant: 15),
             trainNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor, constant: 2),
@@ -466,27 +467,24 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             carriageSeatsStackView.trailingAnchor.constraint(equalTo: trainInfoView.trailingAnchor, constant: -15),
             carriageSeatsStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor, constant: 2),
         ])
+        trainInfoView.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
     func constraintsCollectionViewCell () {
-        collectionViewCellStackView.backgroundColor = Colors.orange
         
         self.addSubview(collectionViewCellStackView)
         collectionViewCellStackView.translatesAutoresizingMaskIntoConstraints = false
         collectionViewCellStackView.axis         = .vertical
-        collectionViewCellStackView.distribution = .fillEqually
+        collectionViewCellStackView.distribution = .fill
         collectionViewCellStackView.spacing      = 0
         
+        collectionViewCellStackView.addArrangedSubview(topView)
         collectionViewCellStackView.addArrangedSubview(trainNumberView)
         collectionViewCellStackView.addArrangedSubview(trainTimeInfoView)
         collectionViewCellStackView.addArrangedSubview(trainInfoView)
         
-        NSLayoutConstraint.activate([
-            collectionViewCellStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            collectionViewCellStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            collectionViewCellStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            collectionViewCellStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-        ])
+        collectionViewCellStackView.widthAnchor.constraint(equalToConstant: 390).isActive = true
+        collectionViewCellStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     

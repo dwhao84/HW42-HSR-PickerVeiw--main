@@ -31,7 +31,7 @@ class MyTicketViewController: UIViewController {
     let bottomOnTopStackView: UIStackView = UIStackView()
     
     let ticketCollectionView: UICollectionView = {
-         let itemSpace:   Double = 2
+         let itemSpace:   Double = 1
          let columnCount: Double = 1
 
          // The calculation method by using different devices to make sure the image will fit in View.
@@ -73,7 +73,6 @@ class MyTicketViewController: UIViewController {
     }
     
     func setupCollectionView () {
-
         view.addSubview(ticketCollectionView)
         ticketCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -81,8 +80,9 @@ class MyTicketViewController: UIViewController {
             ticketCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
             ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-            ticketCollectionView.heightAnchor.constraint(equalToConstant: 200)
+//            ticketCollectionView.widthAnchor.constraint(equalToConstant: 390)
         ])
+        ticketCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     func setupNavigationBar () {

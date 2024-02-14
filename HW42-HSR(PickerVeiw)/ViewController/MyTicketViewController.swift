@@ -77,11 +77,11 @@ class MyTicketViewController: UIViewController {
         ticketCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             ticketCollectionView.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 20),
-            ticketCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-            ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
+            ticketCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
         ])
         ticketCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        ticketCollectionView.widthAnchor.constraint(equalToConstant: 390).isActive = true
+        ticketCollectionView.widthAnchor.constraint(equalToConstant: 400).isActive = true
     }
     
     func setupNavigationBar () {

@@ -117,7 +117,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             ticketNumberLabel.widthAnchor.constraint(equalToConstant: 200),
             ticketNumberLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
-        topView.widthAnchor.constraint(equalToConstant: 390).isActive = true
+//        topView.widthAnchor.constraint(equalToConstant: 390).isActive = true
         topView.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     

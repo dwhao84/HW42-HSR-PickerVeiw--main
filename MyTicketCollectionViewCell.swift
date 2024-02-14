@@ -483,8 +483,8 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         collectionViewCellStackView.addArrangedSubview(trainTimeInfoView)
         collectionViewCellStackView.addArrangedSubview(trainInfoView)
         
-        collectionViewCellStackView.widthAnchor.constraint(equalToConstant: 390).isActive = true
-        collectionViewCellStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+//        collectionViewCellStackView.widthAnchor.constraint(equalToConstant: 390).isActive = true
+//        collectionViewCellStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     

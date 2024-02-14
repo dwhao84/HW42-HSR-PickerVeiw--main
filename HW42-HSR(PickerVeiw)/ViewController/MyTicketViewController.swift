@@ -32,7 +32,7 @@ class MyTicketViewController: UIViewController {
     
     let ticketCollectionView: UICollectionView = {
          let itemSpace:   Double = 1
-         let columnCount: Double = 1
+         let columnCount: Double = 2
 
          // The calculation method by using different devices to make sure the image will fit in View.
          let width = floor((UIScreen.main.bounds.width - itemSpace * (columnCount - 1)) / columnCount)
@@ -79,10 +79,9 @@ class MyTicketViewController: UIViewController {
             ticketCollectionView.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 20),
             ticketCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-            ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-//            ticketCollectionView.widthAnchor.constraint(equalToConstant: 390)
         ])
         ticketCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        ticketCollectionView.widthAnchor.constraint(equalToConstant: 390).isActive = true
     }
     
     func setupNavigationBar () {

@@ -73,6 +73,13 @@
             ReferencedContainer = "container:HW42-HSR(PickerVeiw).xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "IDELogRedirectionPolicy"
+            value = "oslogToStdio"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

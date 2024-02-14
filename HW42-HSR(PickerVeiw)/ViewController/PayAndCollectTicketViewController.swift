@@ -16,6 +16,11 @@ class PayAndCollectTicketViewController: UIViewController {
     let segmentedControlContainerView: UIView = UIView()
     let underlineView: UIView = UIView()
     
+    let firstContainerView: UIView = UIView()
+    let imageView: UIImageView     = UIImageView()
+    let descriptionLabel: UILabel  = UILabel()
+    let stackView: UIStackView     = UIStackView()
+    
     enum Constants {
         static let segmentedControlHeight: CGFloat = 45
         static let underlineViewColor    : UIColor = Colors.orangeBrandColor
@@ -32,7 +37,47 @@ class PayAndCollectTicketViewController: UIViewController {
         configureSegmentedControlContainerView ()
         constraintSegmentedControl ()
         changeSegmentedControlLinePosition()
+        configureFirstContainerView ()
+    }
+    
+    func configureFirstContainerView () {
+        firstContainerView.backgroundColor = Colors.brightGray
+        view.addSubview(firstContainerView)
+        firstContainerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstContainerView.topAnchor.constraint(equalTo: underlineView.bottomAnchor),
+            firstContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            firstContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            firstContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
         
+        imageView.image = Images.nonReservationImage
+        imageView.contentMode = .scaleAspectFit
+        
+        descriptionLabel.text = "目前沒有未付款的訂位紀錄"
+        descriptionLabel.textColor = Colors.darkGray
+        descriptionLabel.font      = UIFont.systemFont(ofSize: 12)
+        
+        imageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        
+        descriptionLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        descriptionLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(descriptionLabel)
+        
+        stackView.axis         = .vertical
+        stackView.spacing      = 30
+        stackView.distribution = .fill
+        stackView.alignment    = .center
+        
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.centerYAnchor.constraint(equalTo: firstContainerView.topAnchor, constant: 250),
+            stackView.centerXAnchor.constraint(equalTo: firstContainerView.centerXAnchor)
+        ])
     }
     
     func setupNavigationBar () {
@@ -131,6 +176,15 @@ class PayAndCollectTicketViewController: UIViewController {
     
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
         changeSegmentedControlLinePosition()
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            descriptionLabel.text = "目前沒有未付款的訂位紀錄"
+        case 1:
+            descriptionLabel.text = "目前沒有未取票的訂位紀錄"
+        default:
+            break
+        }
+        print("DEBUG PRINT: segmentedControl index is \(segmentedControl.selectedSegmentIndex)")
     }
     
     func configureBackgroundView () {

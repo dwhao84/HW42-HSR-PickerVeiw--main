@@ -60,4 +60,5 @@ struct Images {
     
     static let forwardImage   = UIImage(systemName: "chevron.forward")!
     static let backwardImage  = UIImage(systemName: "chevron.backward")!
+    static let nonReservationImage = UIImage(named: "nonReservationImage")!
 }

@@ -176,11 +176,13 @@ class PayAndCollectTicketViewController: UIViewController {
     
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
         changeSegmentedControlLinePosition()
-        switch segmentedControl.selectedSegmentIndex {
+        switch segmentedControl.numberOfSegments {
         case 0:
             descriptionLabel.text = "目前沒有未付款的訂位紀錄"
+            print("DEBUG PRINT: 付款 Page")
         case 1:
             descriptionLabel.text = "目前沒有未取票的訂位紀錄"
+            print("DEBUG PRINT: 取票 Page")
         default:
             break
         }

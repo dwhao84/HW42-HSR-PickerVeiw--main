@@ -94,6 +94,8 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     
     func constriantsTopView () {
         
+        
+        
         topView.backgroundColor   = Colors.brightGray
         self.addSubview(topView)
         
@@ -105,7 +107,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             topView.topAnchor.constraint(equalTo: self.topAnchor),
             topView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-
             
             reservationNumberLabel.topAnchor.constraint(equalTo: topView.topAnchor),
             reservationNumberLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor),
@@ -117,7 +118,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             ticketNumberLabel.widthAnchor.constraint(equalToConstant: 200),
             ticketNumberLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
-//        topView.widthAnchor.constraint(equalToConstant: 390).isActive = true
         topView.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
@@ -483,8 +483,8 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         collectionViewCellStackView.addArrangedSubview(trainTimeInfoView)
         collectionViewCellStackView.addArrangedSubview(trainInfoView)
         
-//        collectionViewCellStackView.widthAnchor.constraint(equalToConstant: 390).isActive = true
-//        collectionViewCellStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        collectionViewCellStackView.widthAnchor.constraint(equalToConstant: 390).isActive = true
+        collectionViewCellStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     

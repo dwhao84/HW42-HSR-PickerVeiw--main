@@ -491,7 +491,7 @@ class TickerOrderViewController: UIViewController {
             message: "選擇車廂種類",
             preferredStyle: .actionSheet)
         
-        let alertActionHandler: (UIAlertAction) -> Void = { action in
+        let _: (UIAlertAction) -> Void = { action in
             let selectedTitle = action.title!
             
             switch action.title {

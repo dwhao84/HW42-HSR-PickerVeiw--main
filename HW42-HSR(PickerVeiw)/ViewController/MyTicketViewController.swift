@@ -31,11 +31,12 @@ class MyTicketViewController: UIViewController {
     let bottomOnTopStackView: UIStackView = UIStackView()
     
     let ticketCollectionView: UICollectionView = {
-         let itemSpace:   Double = 1
-         let columnCount: Double = 2
+        let itemSpace: Double = 1
+        let columnCount: Double = 1
+        let sectionInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20) // 假設的邊界內距
 
-         // The calculation method by using different devices to make sure the image will fit in View.
-         let width = floor((UIScreen.main.bounds.width - itemSpace * (columnCount - 1)) / columnCount)
+        // 修改後的寬度計算
+        let width = floor((UIScreen.main.bounds.width - itemSpace * (columnCount - 1) - sectionInsets.left - sectionInsets.right) / columnCount)
 
          let flowLayout = UICollectionViewFlowLayout()
          flowLayout.scrollDirection = .vertical
@@ -69,19 +70,24 @@ class MyTicketViewController: UIViewController {
         ticketCollectionView.register(MyTicketCollectionViewCell.self, forCellWithReuseIdentifier: MyTicketCollectionViewCell.identifier)
         ticketCollectionView.delegate   = self
         ticketCollectionView.dataSource = self
+        ticketCollectionView.isScrollEnabled = false
         setupCollectionView ()
     }
     
     func setupCollectionView () {
+        // Set up cornerRadius.
+        ticketCollectionView.layer.cornerRadius = 10
+        ticketCollectionView.clipsToBounds      = true
+        
+        // Set up Auto-Layout.
         view.addSubview(ticketCollectionView)
         ticketCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             ticketCollectionView.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 20),
-            ticketCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            ticketCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            ticketCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ticketCollectionView.heightAnchor.constraint(equalToConstant: 200),
+            ticketCollectionView.widthAnchor.constraint(equalToConstant: 390)
         ])
-        ticketCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        ticketCollectionView.widthAnchor.constraint(equalToConstant: 400).isActive = true
     }
     
     func setupNavigationBar () {
@@ -228,7 +234,6 @@ class MyTicketViewController: UIViewController {
             bottomOnTopStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomOnTopStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
-        
     }
     
     func addTarget () {
@@ -267,25 +272,21 @@ class MyTicketViewController: UIViewController {
         print("DEGUG PRINT: Index is \(pageControlIndex)")
     }
 }
-            extension MyTicketViewController: UICollectionViewDataSource {
-                func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    extension MyTicketViewController: UICollectionViewDataSource {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
                     1
-                }
-                func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-                    guard let cell = ticketCollectionView.dequeueReusableCell(withReuseIdentifier: MyTicketCollectionViewCell.identifier, for: indexPath) as? MyTicketCollectionViewCell else {
+        }
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            guard let cell = ticketCollectionView.dequeueReusableCell(withReuseIdentifier: MyTicketCollectionViewCell.identifier, for: indexPath) as? MyTicketCollectionViewCell else {
                         fatalError("Failed to deqeue cell")
                     }
                     ticketCollectionView.reloadData()
                     return cell
-
                 }
             }
-            
-            extension MyTicketViewController: UICollectionViewDelegate {
+    extension MyTicketViewController: UICollectionViewDelegate {
                 
-            }
-            
-            
+        }
 #Preview {
     UINavigationController(rootViewController: MyTicketViewController())
 }

@@ -67,7 +67,7 @@ class NonReservedView: UIView {
 
     // MARK: - Top Container View
     func configureTrainStatusButton () {
-        let attributedText = NSAttributedString(string: " 全線正常營運", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)])
+        let attributedText = NSAttributedString(string: " 全線正常營運", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)])
         trainStatusButton.setAttributedTitle(attributedText, for: .normal)
         trainStatusButton.setImage(Images.circle, for: .normal)
         
@@ -80,8 +80,9 @@ class NonReservedView: UIView {
         trainStatusButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            trainStatusButton.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 5),
             trainStatusButton.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-            trainStatusButton.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor)
+
         ])
     }
     
@@ -191,7 +192,7 @@ class NonReservedView: UIView {
         topContainerStackView.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         let bottomLine             = CALayer()
-        bottomLine.frame           = CGRect(x: -195, y: 44, width: 390, height: 1)
+        bottomLine.frame           = CGRect(x: -200, y: 44, width: 400, height: 1)
         bottomLine.backgroundColor = Colors.systemGray4.cgColor
         bottomStackView.layer.addSublayer(bottomLine)
         
@@ -210,11 +211,10 @@ class NonReservedView: UIView {
             bottomStackView.topAnchor.constraint(equalTo: self.topAnchor),
             bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topContainerStackView.topAnchor.constraint(equalTo: self.topAnchor)
+            topContainerStackView.topAnchor.constraint(equalTo: self.topAnchor),
+            topInnerStackView.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
-    
-    
 }
 
 #Preview(traits: .fixedLayout(width: 390, height: 545), body: {

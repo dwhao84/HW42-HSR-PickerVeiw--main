@@ -47,8 +47,6 @@ class MyTicketViewController: UIViewController {
          flowLayout.minimumInteritemSpacing = itemSpace
 
          let ticketCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-//        ticketCollectionView.backgroundColor = Colors.black
-
          return ticketCollectionView
      }()
     
@@ -78,6 +76,7 @@ class MyTicketViewController: UIViewController {
         // Set up cornerRadius.
         ticketCollectionView.layer.cornerRadius = 10
         ticketCollectionView.clipsToBounds      = true
+        
         
         // Set up Auto-Layout.
         view.addSubview(ticketCollectionView)

@@ -73,11 +73,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MyTickets" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-EH-0Ma">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="nonReservedSeatView" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-EH-0Ma">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                             </imageView>
                             <view alpha="0.34999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NAn-OX-Zhd">
-                                <rect key="frame" x="20" y="329" width="347" height="4"/>
+                                <rect key="frame" x="17" y="157" width="397" height="545"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91969150300000002" green="0.37995523209999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.35294118520000001" green="0.48235297199999999" blue="0.13725490870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -103,6 +103,6 @@
         <image name="Launch Screen BackgroundColor" width="912" height="1962"/>
         <image name="Launch Screen Middle logo" width="438" height="103"/>
         <image name="Launch Screen Top logo" width="272" height="168"/>
-        <image name="MyTickets" width="1284" height="2778"/>
+        <image name="nonReservedSeatView" width="1284" height="2778"/>
     </resources>
 </document>

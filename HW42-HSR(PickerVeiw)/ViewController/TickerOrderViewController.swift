@@ -53,6 +53,14 @@ class TickerOrderViewController: UIViewController {
         static let underlineViewWidth    : CGFloat = UIScreen.main.bounds.width / 10
     }
     
+    // MARK: - 信用卡優惠
+    
+    
+    
+    // MARK: - 今日自由座
+    let nonReservedBackgroundView: UIView = UIView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +74,7 @@ class TickerOrderViewController: UIViewController {
         constraintTableView        ()
         setupTableView             ()
         
+        // tableView Delegate & DataSource
         addTableViewDelegateAndDataSource ()
         
         // pickerView
@@ -269,10 +278,7 @@ class TickerOrderViewController: UIViewController {
             pickerStackView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
-    
-    func showingSeatSelectionAlertSheet () {
-        
-    }
+
 
     // MARK: - SegmentedControl
     func configureSegmentedControlContainerView () {
@@ -331,7 +337,7 @@ class TickerOrderViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             underlineView.bottomAnchor.constraint(equalTo: segmentedControlContainerView.bottomAnchor),
-            underlineView.leadingAnchor.constraint(equalTo: segmentedControlContainerView.leadingAnchor, constant: 60),
+            underlineView.leadingAnchor.constraint(equalTo: segmentedControlContainerView.leadingAnchor, constant: 50),
             underlineView.heightAnchor.constraint(equalToConstant: Constants.underlineViewHeight),
             underlineView.widthAnchor.constraint(equalToConstant:  Constants.underlineViewWidth)
         ])
@@ -342,13 +348,14 @@ class TickerOrderViewController: UIViewController {
             let segmentWidth = self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)
             let offsetX = segmentWidth * CGFloat(self.segmentedControl.selectedSegmentIndex) + 50
             self.underlineView.frame.origin.x = offsetX + self.segmentedControl.frame.minX
+            
+            print("offsetX Value is \(offsetX)")
         }
     }
     
     func constraintBackgroundView () {
         backgroundView.layer.cornerRadius = 10
-        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        
+        backgroundView.clipsToBounds      = true
         backgroundView.layer.borderColor  = UIColor.lightGray.cgColor
         backgroundView.layer.borderWidth  = 0.2
         backgroundView.dropShadow()
@@ -372,6 +379,46 @@ class TickerOrderViewController: UIViewController {
         ])
     }
     
+    // MARK: - 信用卡優惠:
+    func configureCreidCardOfferBackgroundView () {
+        
+    }
+    
+    // MARK: - 今日自由座:
+    func configureNonReservedBackgroundView () {
+                
+        nonReservedBackgroundView.layer.cornerRadius = 10
+        nonReservedBackgroundView.clipsToBounds      = true
+        nonReservedBackgroundView.layer.borderColor  = UIColor.lightGray.cgColor
+        nonReservedBackgroundView.layer.borderWidth  = 0.2
+        
+        nonReservedBackgroundView.backgroundColor = Colors.white
+        nonReservedBackgroundView.dropShadow()
+        
+        nonReservedBackgroundView.heightAnchor.constraint(equalToConstant: 545).isActive = true
+        
+        view.addSubview(nonReservedBackgroundView)
+        
+        nonReservedBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            nonReservedBackgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 62),
+            nonReservedBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nonReservedBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            nonReservedBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+        ])
+        
+        // Set up nonReservedView for Auto-Layout.
+        nonReservedBackgroundView.addSubview(nonReservedView)
+        nonReservedView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nonReservedView.topAnchor.constraint(equalTo: nonReservedBackgroundView.topAnchor, constant: 0),
+            nonReservedView.centerXAnchor.constraint(equalTo: nonReservedBackgroundView.centerXAnchor)
+        ])
+    }
+    
+    
+    // MARK: - Tap Gesture
     func tapTheViewController () {
         // tapGesture
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTheView))
@@ -394,7 +441,7 @@ class TickerOrderViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    //MARK: -  ServiceTableViewCell Action:
+    //MARK: - ServiceTableViewCell Action:
     @objc func ridingTimeSelectionCellTapped () {
         print("ridingTimeSelectionCellTapped")
         
@@ -411,7 +458,6 @@ class TickerOrderViewController: UIViewController {
     
     @objc func seatSelectionCellTapped () {
         print("seatSelectionCellTapped")
-        showingSeatSelectionAlertSheet ()
     }
     
     //MARK: - SearchTableViewCell Action:
@@ -456,19 +502,27 @@ class TickerOrderViewController: UIViewController {
     
     //MARK: - Segmented Control Action:
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
-        changeSegmentedControlLinePosition()
+//        changeSegmentedControlLinePosition()
         print("segmentedControl's selectedIndex is \(segmentedControl.selectedSegmentIndex)")
-        switch selectedIndex {
-        case 0: break
-            
-        case 1: break
-           
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            backgroundView.isHidden            = false
+            nonReservedBackgroundView.isHidden = true
+            print(segmentedControl.selectedSegmentIndex)
+        case 1:
+            backgroundView.isHidden = true
+            nonReservedBackgroundView.isHidden = true
+            print(segmentedControl.selectedSegmentIndex)
         case 2:
-
-            return
+            backgroundView.isHidden = true
+            nonReservedBackgroundView.isHidden = false
+            configureNonReservedBackgroundView ()
+            print(segmentedControl.selectedSegmentIndex)
         default:
-            break
+            print("default")
         }
+
     }
     
     // MARK: - UIButton Action:
@@ -484,30 +538,12 @@ class TickerOrderViewController: UIViewController {
     }
     
     // MARK: Alert Controller
-    func trainClassSelectionAC() {
+    func trainClassSelectionAC () {
         // 建立一個提示框
         let alertController = UIAlertController(
             title: "",
             message: "選擇車廂種類",
             preferredStyle: .actionSheet)
-        
-        let _: (UIAlertAction) -> Void = { action in
-            let selectedTitle = action.title!
-            
-            switch action.title {
-            case "取消":
-                print(selectedTitle)
-                
-            case "標準車廂":
-                print(selectedTitle)
-
-            case "商務車廂":
-                print(selectedTitle)
-                
-            default:
-                break
-            }
-        }
 
         let cancelAction = UIAlertAction(
           title: "取消",
@@ -534,16 +570,10 @@ class TickerOrderViewController: UIViewController {
     }
     
     func updateServiceTableViewWithSelection(_ selection: String) {
-        // Assuming you have a model or a way to know which cell or section to update
-        // Update your model/data source here with the new selection
-
-        // Then reload the tableView or specific cell
         serviceTableView.reloadData()
-        // or, if you know the specific indexPath:
-        // let indexPath = IndexPath(row: yourRow, section: yourSection)
-        // serviceTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
+    // MARK: - Seats Peference
     func seatsPeferenceAC() {
         // Create a alertController
         let alertController = UIAlertController(

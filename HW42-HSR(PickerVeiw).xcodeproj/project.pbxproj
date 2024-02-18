@@ -36,6 +36,7 @@
 		D3F844042B5DEC48001AF2D1 /* RidingTimeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */; };
 		D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */; };
 		EB631B982B3B1EE200D77A16 /* TickerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */; };
+		EB6E5F982B825E6C00A4FEDA /* CreditCardOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */; };
 		EB83C6F52B4473B100C78859 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83C6F42B4473B100C78859 /* UIView+Ext.swift */; };
 		EB9FEA362B64F78900E1517E /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */; };
 		EB9FEA382B64F87D00E1517E /* PayAndCollectTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */; };
@@ -103,6 +104,7 @@
 		D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingTimeSelectorView.swift; sourceTree = "<group>"; };
 		D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingDatePickerView.swift; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
+		EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreditCardOfferView.swift; path = "HW42-HSR(PickerVeiw)/CreditCardOfferView.swift"; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
 		EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayAndCollectTicketViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/PayAndCollectTicketViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -149,6 +151,7 @@
 				D3407D632B39E00200D9DFA2 /* README.md */,
 				D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */,
 				D3B2D1832B69F882002E3380 /* NonReservedView.swift */,
+				EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */,
 				D36617BF2B706E5300937CC4 /* MyTicketCollectionViewCell.swift */,
 				D3407D3B2B39A4AA00D9DFA2 /* HW42-HSR(PickerVeiw)Tests */,
 				D3407D452B39A4AA00D9DFA2 /* HW42-HSR(PickerVeiw)UITests */,
@@ -482,6 +485,7 @@
 				D3407D262B39A49800D9DFA2 /* AppDelegate.swift in Sources */,
 				EBFEBF3F2B3B07E900B9B3E1 /* TrainStatusTableViewCell.swift in Sources */,
 				EB9FEA382B64F87D00E1517E /* PayAndCollectTicketViewController.swift in Sources */,
+				EB6E5F982B825E6C00A4FEDA /* CreditCardOfferView.swift in Sources */,
 				D3407D282B39A49800D9DFA2 /* SceneDelegate.swift in Sources */,
 				EB9FEA3E2B66428500E1517E /* UITextField+Ext.swift in Sources */,
 				D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */,

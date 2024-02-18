@@ -14,10 +14,17 @@ extension UIView {
         layer.shadowColor   = UIColor.black.cgColor
         layer.shadowOpacity = 0.2
         layer.shadowOffset  = .zero
-        layer.shadowRadius  = 10
-//        layer.shouldRasterize = false
-//        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
     }
+
+    func dropBottomShadow() {
+        layer.masksToBounds = false
+        layer.shadowColor   = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset  = .zero
+        layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+    }
+    
     
     func dropSecondShadow() {
         let view = UIView(frame: CGRect(x: 100, y: 100, width: 500, height: 500))
@@ -45,6 +52,5 @@ extension UIView {
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer
     }
-    
     
 }

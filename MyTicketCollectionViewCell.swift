@@ -327,6 +327,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     
     // MARK: Configure trainInfoLabels
     func configuretrainInfoLabels () {
+        
         // 車次 152
         trainNumberTitleLabel.text             = "車次"
         trainNumberTitleLabel.font             = UIFont.systemFont(ofSize: 16)
@@ -453,7 +454,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             trainInfoView.leadingAnchor.constraint(equalTo:  self.leadingAnchor),
             trainInfoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            trainInfoView.bottomAnchor.constraint(equalTo:   self.bottomAnchor),
             
             trainNumberStackView.leadingAnchor.constraint(equalTo: trainInfoView.leadingAnchor, constant: 15),
             trainNumberStackView.centerYAnchor.constraint(equalTo: trainInfoView.centerYAnchor, constant: 2),
@@ -468,13 +468,12 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     }
     
     func constraintsCollectionViewCell () {
-        
         self.addSubview(collectionViewCellStackView)
         collectionViewCellStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         collectionViewCellStackView.axis         = .vertical
         collectionViewCellStackView.distribution = .fill
         collectionViewCellStackView.spacing      = 0
-        
         collectionViewCellStackView.addArrangedSubview(topView)
         collectionViewCellStackView.addArrangedSubview(trainNumberView)
         collectionViewCellStackView.addArrangedSubview(trainTimeInfoView)
@@ -483,8 +482,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         collectionViewCellStackView.widthAnchor.constraint(equalToConstant: 390).isActive = true
         collectionViewCellStackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
-    
-    
 }
 
 

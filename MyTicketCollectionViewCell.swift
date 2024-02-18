@@ -147,9 +147,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
 //        trainNumberView.layer.borderWidth = 0.1
 //        trainNumberView.layer.borderColor = Colors.lightGray.cgColor
         
-        trainNumberView.layer.cornerRadius = 10
-        trainNumberView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        
         trainNumberView.backgroundColor = Colors.white
         self.addSubview(trainNumberView)
         

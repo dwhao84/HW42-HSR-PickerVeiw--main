@@ -28,16 +28,19 @@ class CreditCardOfferView: UIView {
     
     // MARK: - UIView:
 //    let policyView: UIView = UIView()
+    let policyTextView: UITextView = UITextView()// 我已閱讀商務升等優惠規則/標準車廂優惠規則並且同意遵守所有規定
+    
     
     // MARK: - UIButton:
     let loginButton: UIButton                  = UIButton(type: .system) /// 登入查詢
     let trainOffersButton: UIButton            = UIButton(type: .system) /// 查看商務升等/標準車廂對號座優惠
-    var rectangleButton: UIButton              = UIButton(type: .system) /// rectangleButton
+    let rectangleButton: UIButton              = UIButton(type: .system) /// rectangleButton
+
     var informationImageView: UIImageView      = UIImageView()           /// information icon
     ///
     // MARK: UIStackView:
     let creditCardNumberStackView: UIStackView = UIStackView() // beginningPartCardNumberTextField & middlePartCardNumberTextField & dashLineLabel
-    let middleSectionStackView: UIStackView    = UIStackView() // rectangleButton &
+    let middleSectionStackView: UIStackView    = UIStackView() // rectangleButton & rectangleB
     let searchSectionStackView: UIStackView    = UIStackView() // loginButton
     let seatsBonusInfoStackView: UIStackView   = UIStackView() // informationImageView &
     
@@ -73,6 +76,7 @@ class CreditCardOfferView: UIView {
         configureLoginButton       ()
         configureTrainOffersButton ()
         configureRectangleButton   ()
+        configurePolicyTextView ()
         
         configureInfoImageView ()
         
@@ -193,6 +197,44 @@ class CreditCardOfferView: UIView {
         
 //        rectangleButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
 //        rectangleButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    func configurePolicyTextView () {
+        policyTextView.backgroundColor   = Colors.clear
+        policyTextView.isEditable        = false
+        policyTextView.isScrollEnabled   = false
+        policyTextView.dataDetectorTypes = .link
+        
+        let text     = "我已閱讀商務升等優惠規則/標準車廂優惠規則並且同意遵守所有規定"
+        let linkText = "商務升等優惠規則/標準車廂優惠規則"
+
+        // 創建富文本對象
+        let attributedString = NSMutableAttributedString(string: text)
+
+        // 為整個文本設置字體大小
+        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16), range: NSRange(location: 0, length: text.count))
+
+        // 為連結範圍設置字體顏色和下劃線
+        if let linkRange = text.range(of: linkText) {
+            let nsRange = NSRange(linkRange, in: text)
+            attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: nsRange)
+            // Add links.
+            attributedString.addAttribute(.link, value: Links.creditCardOffer, range: nsRange)
+            // 如果您還想改變連結的字體大小，可以再次使用以下代碼
+            attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: nsRange)
+        }
+        
+        // "商務升等優惠規則/標準車廂優惠規則" textColor adjustment with underline.
+        policyTextView.linkTextAttributes = [
+            .foregroundColor: Colors.orange,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        
+        policyTextView.attributedText   = attributedString
+        policyTextView.frame            = CGRect(x: 60, y: 410, width: 275, height: 60)
+        self.addSubview(policyTextView)
+        //        policyTextView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        //        policyTextView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     // 查看商務升等/標準車廂對號座優惠

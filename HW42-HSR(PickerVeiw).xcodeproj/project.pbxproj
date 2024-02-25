@@ -96,7 +96,7 @@
 		D3B2D1832B69F882002E3380 /* NonReservedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonReservedView.swift; sourceTree = "<group>"; };
 		D3CC54CB2B636B3E00E236F7 /* ImagesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesConstants.swift; sourceTree = "<group>"; };
 		D3F843E22B576F84001AF2D1 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
-		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
+		D3F843E62B57A654001AF2D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewControllers/AccountViewController.swift"; sourceTree = SOURCE_ROOT; };
 		D3F843E82B57B031001AF2D1 /* AccountTableViewCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountTableViewCell+Model.swift"; sourceTree = "<group>"; };
 		D3F843EA2B57CB2B001AF2D1 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		D3F843EB2B57CB2B001AF2D1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreditCardOfferView.swift; path = "HW42-HSR(PickerVeiw)/CreditCardOfferView.swift"; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
-		EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayAndCollectTicketViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewController/PayAndCollectTicketViewController.swift"; sourceTree = SOURCE_ROOT; };
+		EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayAndCollectTicketViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewControllers/PayAndCollectTicketViewController.swift"; sourceTree = SOURCE_ROOT; };
 		EB9FEA392B64F8DA00E1517E /* LoadReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadReservationViewController.swift; sourceTree = "<group>"; };
 		EB9FEA3B2B655B3D00E1517E /* LoadReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadReservationView.swift; sourceTree = "<group>"; };
 		EB9FEA3D2B66428500E1517E /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				EB9FEA432B665DAB00E1517E /* MoreTableView */,
 				EB9FEA422B665D7300E1517E /* RidingTimeSelectorView */,
 				EB9FEA412B665D5A00E1517E /* LoadReservationView */,
-				D3407D572B39A55400D9DFA2 /* ViewController */,
+				D3407D572B39A55400D9DFA2 /* ViewControllers */,
 			);
 			path = "HW42-HSR(PickerVeiw)";
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 			path = "HW42-HSR(PickerVeiw)UITests";
 			sourceTree = "<group>";
 		};
-		D3407D572B39A55400D9DFA2 /* ViewController */ = {
+		D3407D572B39A55400D9DFA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */,
@@ -216,7 +216,7 @@
 				EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */,
 				D3F843E62B57A654001AF2D1 /* AccountViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		D3407D612B39D17B00D9DFA2 /* SearchTableViewCell */ = {

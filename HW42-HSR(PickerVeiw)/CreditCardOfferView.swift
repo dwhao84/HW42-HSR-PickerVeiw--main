@@ -34,15 +34,17 @@ class CreditCardOfferView: UIView {
     // MARK: - UIButton:
     let loginButton: UIButton                  = UIButton(type: .system) /// 登入查詢
     let trainOffersButton: UIButton            = UIButton(type: .system) /// 查看商務升等/標準車廂對號座優惠
-    let rectangleButton: UIButton              = UIButton(type: .system) /// rectangleButton
+    let squareButton: UIButton              = UIButton(type: .system) /// squareButton
 
     var informationImageView: UIImageView      = UIImageView()           /// information icon
-    ///
+
     // MARK: UIStackView:
     let creditCardNumberStackView: UIStackView = UIStackView() // beginningPartCardNumberTextField & middlePartCardNumberTextField & dashLineLabel
-    let middleSectionStackView: UIStackView    = UIStackView() // rectangleButton & rectangleB
+    let policyStackView: UIStackView           = UIStackView() // squareButton & policyTextView
     let searchSectionStackView: UIStackView    = UIStackView() // loginButton
-    let seatsBonusInfoStackView: UIStackView   = UIStackView() // informationImageView &
+    let seatsBonusInfoStackView: UIStackView   = UIStackView() // informationImageView & trainOffersButton
+    
+    let creditCardOfferStackView: UIStackView  = UIStackView() //
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
@@ -75,14 +77,15 @@ class CreditCardOfferView: UIView {
         // Set up UIButton
         configureLoginButton       ()
         configureTrainOffersButton ()
-        configureRectangleButton   ()
+        configureSquareButton   ()
         configurePolicyTextView ()
         
         configureInfoImageView ()
         
-        configureStackView()
+        configureCardNumberStackView     ()
         configureSeatsBonusInfoStackView ()
         configureSearchSectionStackView  ()
+        configurePolicyStackView ()
     }
 
 
@@ -145,22 +148,23 @@ class CreditCardOfferView: UIView {
 
     // MARK: - Configure UITextField:
     func configureBeginningPartCardNumberTextField () {
-        initialCardNumberTextField.frame       = CGRect(x: 25, y: 42, width: 70, height: 30)
-        initialCardNumberTextField.textColor   = Colors.black
-        initialCardNumberTextField.font        = UIFont.systemFont(ofSize: 17)
-        initialCardNumberTextField.delegate    = self
-        initialCardNumberTextField.borderStyle = .none
+        initialCardNumberTextField.frame        = CGRect(x: 0, y: 0, width: 70, height: 30)
+        initialCardNumberTextField.borderStyle  = .none
+        initialCardNumberTextField.textColor    = Colors.black
+        initialCardNumberTextField.font         = UIFont.systemFont(ofSize: 17)
+        initialCardNumberTextField.delegate     = self
+        initialCardNumberTextField.keyboardType = .numberPad
         initialCardNumberTextField.addBottomBorder()
         self.addSubview(initialCardNumberTextField)
     }
     
     func configureMiddlePartCardNumberTextField () {
-        midCardNumberTextField.frame       = CGRect(x: 110, y: 42, width: 70, height: 30)
-        midCardNumberTextField.borderStyle = .roundedRect
-        midCardNumberTextField.textColor   = Colors.black
-        midCardNumberTextField.font        = UIFont.systemFont(ofSize: 17)
-        midCardNumberTextField.delegate    = self
-        midCardNumberTextField.borderStyle = .none
+        midCardNumberTextField.frame        = CGRect(x: 0, y: 0, width: 70, height: 30)
+        midCardNumberTextField.borderStyle  = .none
+        midCardNumberTextField.textColor    = Colors.black
+        midCardNumberTextField.font         = UIFont.systemFont(ofSize: 17)
+        midCardNumberTextField.delegate     = self
+        midCardNumberTextField.keyboardType = .numberPad
         midCardNumberTextField.addBottomBorder()
         self.addSubview(midCardNumberTextField)
     }
@@ -168,37 +172,6 @@ class CreditCardOfferView: UIView {
     
     // MARK: - Configure UITextView:
     /// Width: 340 Height: 400
-    
-    // MARK: - Configure UIButton:
-    // 登入查詢
-    func configureLoginButton () {
-        var title                  = AttributedString("登入查詢")
-        title.font                 = UIFont.boldSystemFont(ofSize: 17)
-        var config                 = UIButton.Configuration.filled()
-        config.baseBackgroundColor = Colors.orange
-        config.baseForegroundColor = Colors.white
-        config.attributedTitle     = title
-        config.cornerStyle         = .small
-        
-        loginButton.configuration = config
-        loginButton.frame = CGRect(x: 25, y: 455, width: 340, height: 45)
-        self.addSubview(loginButton)
-    }
-    
-    // Rectangle Button
-    func configureRectangleButton () {
-        var config                    = UIButton.Configuration.plain()
-        config.baseForegroundColor    = Colors.systemGray2
-        config.image                  = Images.rectangleImage
-        config.imagePlacement         = .leading
-        rectangleButton.configuration = config
-        rectangleButton.frame         = CGRect(x: 28, y: 410, width: 20, height: 20)
-        self.addSubview(rectangleButton)
-        
-//        rectangleButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-//        rectangleButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-    }
-    
     func configurePolicyTextView () {
         policyTextView.backgroundColor   = Colors.clear
         policyTextView.isEditable        = false
@@ -229,12 +202,33 @@ class CreditCardOfferView: UIView {
             .foregroundColor: Colors.orange,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
-        
         policyTextView.attributedText   = attributedString
         policyTextView.frame            = CGRect(x: 60, y: 410, width: 275, height: 60)
         self.addSubview(policyTextView)
-        //        policyTextView.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        //        policyTextView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    // MARK: - Configure UIButton:
+    // 登入查詢
+    func configureLoginButton () {
+        var title                  = AttributedString("登入查詢")
+        title.font                 = UIFont.boldSystemFont(ofSize: 17)
+        var config                 = UIButton.Configuration.filled()
+        config.baseBackgroundColor = Colors.orange
+        config.baseForegroundColor = Colors.white
+        config.attributedTitle     = title
+        config.cornerStyle         = .small
+        loginButton.configuration  = config
+        self.addSubview(loginButton)
+    }
+    
+    // squareButton
+    func configureSquareButton () {
+        var config                 = UIButton.Configuration.plain()
+        config.baseForegroundColor = Colors.darkGray
+        config.image               = Images.square
+        config.imagePlacement      = .leading
+        squareButton.configuration = config
+        self.addSubview(squareButton)
     }
     
     // 查看商務升等/標準車廂對號座優惠
@@ -243,7 +237,6 @@ class CreditCardOfferView: UIView {
         title.font                 = UIFont.boldSystemFont(ofSize: 15)
         var config                 = UIButton.Configuration.plain()
         config.baseForegroundColor = Colors.systemGray2
-        config.baseBackgroundColor = Colors.green
         config.attributedTitle     = title
         trainOffersButton.configuration = config
         trainOffersButton.isUserInteractionEnabled = true
@@ -259,7 +252,22 @@ class CreditCardOfferView: UIView {
     }
     
     // MARK: - UIStackView:
-    func configureStackView () {
+    func configureCardNumberStackView      () {
+        initialCardNumberTextField.widthAnchor.constraint(equalToConstant: 70).isActive   = true
+        initialCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive  = true
+        dashLineLabel.widthAnchor.constraint(equalToConstant: 10).isActive                = true
+        dashLineLabel.heightAnchor.constraint(equalToConstant: 20).isActive               = true
+        midCardNumberTextField.widthAnchor.constraint(equalToConstant: 70).isActive       = true
+        midCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive      = true
+        dashLineTwoLabel.widthAnchor.constraint(equalToConstant: 10).isActive             = true
+        dashLineTwoLabel.heightAnchor.constraint(equalToConstant: 20).isActive            = true
+        hiddenCardNumberLabel.widthAnchor.constraint(equalToConstant: 60).isActive        = true
+        hiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive       = true
+        dashLineThreeLabel.widthAnchor.constraint(equalToConstant: 10).isActive           = true
+        dashLineThreeLabel.heightAnchor.constraint(equalToConstant: 20).isActive          = true
+        secondHiddenCardNumberLabel.widthAnchor.constraint(equalToConstant: 60).isActive  = true
+        secondHiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
         creditCardNumberStackView.axis         = .horizontal
         creditCardNumberStackView.distribution = .fill
         creditCardNumberStackView.alignment    = .center
@@ -271,35 +279,27 @@ class CreditCardOfferView: UIView {
         creditCardNumberStackView.addArrangedSubview(hiddenCardNumberLabel)
         creditCardNumberStackView.addArrangedSubview(dashLineThreeLabel)
         creditCardNumberStackView.addArrangedSubview(secondHiddenCardNumberLabel)
-        
         creditCardNumberStackView.frame = CGRect(x: 25, y: 50, width: 330, height: 30)
-        
         self.addSubview(creditCardNumberStackView)
-         
-        initialCardNumberTextField.widthAnchor.constraint(equalToConstant: 70).isActive   = true
-        initialCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive  = true
-        
-        dashLineLabel.widthAnchor.constraint(equalToConstant: 10).isActive               = true
-        dashLineLabel.heightAnchor.constraint(equalToConstant: 20).isActive              = true
-        
-        midCardNumberTextField.widthAnchor.constraint(equalToConstant: 70).isActive       = true
-        midCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive      = true
-        
-        dashLineTwoLabel.widthAnchor.constraint(equalToConstant: 10).isActive            = true
-        dashLineTwoLabel.heightAnchor.constraint(equalToConstant: 20).isActive           = true
-        
-        hiddenCardNumberLabel.widthAnchor.constraint(equalToConstant: 60).isActive       = true
-        hiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive       = true
-        
-        dashLineThreeLabel.widthAnchor.constraint(equalToConstant: 10).isActive          = true
-        dashLineThreeLabel.heightAnchor.constraint(equalToConstant: 20).isActive         = true
-        
-        secondHiddenCardNumberLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        secondHiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
-    func configureSecondStackView () {
+    func configurePolicyStackView () {
+        squareButton.widthAnchor.constraint(equalToConstant: 25).isActive    = true
+        squareButton.heightAnchor.constraint(equalToConstant: 25).isActive   = true
+        policyTextView.widthAnchor.constraint(equalToConstant: 275).isActive = true
+        policyTextView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
+        policyStackView.axis         = .horizontal
+        policyStackView.distribution = .fill
+        policyStackView.alignment    = .center
+        policyStackView.spacing      = 20
+        policyStackView.addArrangedSubview(squareButton)
+        policyStackView.addArrangedSubview(policyTextView)
+        
+        // Testing
+        policyStackView.frame        = CGRect(x: 25, y: 450, width: 275, height: 60)
+        policyStackView.backgroundColor = Colors.brightGray
+        self.addSubview(policyStackView)
     }
     
     func configureSeatsBonusInfoStackView () {
@@ -311,7 +311,6 @@ class CreditCardOfferView: UIView {
         seatsBonusInfoStackView.addArrangedSubview(trainOffersButton)
         
         informationImageView.widthAnchor.constraint(equalToConstant: 10).isActive  = true
-        
         trainOffersButton.widthAnchor.constraint(equalToConstant: 260).isActive = true
         trainOffersButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }
@@ -326,10 +325,10 @@ class CreditCardOfferView: UIView {
         self.addSubview(searchSectionStackView)
         
         searchSectionStackView.frame        = CGRect(x: 25, y: 300, width: 300, height: 80)
-        
         loginButton.widthAnchor.constraint(equalToConstant: 340).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
+    
     
     
 }

@@ -8,9 +8,7 @@
 import UIKit
 
 class TickerOrderViewController: UIViewController {
-    
-    let nonReservedView: NonReservedView = NonReservedView()
-    
+        
     let backgroundView: UIView                = UIView()
     let stackView:       UIStackView          = UIStackView()
     let backgroundShadowView: UIView          = UIView()
@@ -54,12 +52,12 @@ class TickerOrderViewController: UIViewController {
     }
     
     // MARK: - 信用卡優惠
-    
-    
-    
+    let creditCardBackgroundView: UIView = UIView()
+    let creditCardOfferView: CreditCardOfferView = CreditCardOfferView()
     // MARK: - 今日自由座
     let nonReservedBackgroundView: UIView = UIView()
-    
+    let nonReservedView: NonReservedView  = NonReservedView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -380,7 +378,33 @@ class TickerOrderViewController: UIViewController {
     }
     
     // MARK: - 信用卡優惠:
-    func configureCreidCardOfferBackgroundView () {
+    func configureCreditCardOfferBackgroundView () {
+        creditCardBackgroundView.layer.cornerRadius = 10
+        creditCardBackgroundView.clipsToBounds      = true
+        creditCardBackgroundView.layer.borderColor  = UIColor.lightGray.cgColor
+        creditCardBackgroundView.layer.borderWidth  = 0.2
+        
+        creditCardBackgroundView.backgroundColor = Colors.white
+        creditCardBackgroundView.dropShadow()
+        
+        creditCardBackgroundView.heightAnchor.constraint(equalToConstant: 545).isActive = true
+        
+        view.addSubview(creditCardBackgroundView)
+        
+        creditCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            creditCardBackgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 62),
+            creditCardBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            creditCardBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            creditCardBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+        ])
+        creditCardBackgroundView.addSubview(creditCardOfferView)
+        creditCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            creditCardOfferView.topAnchor.constraint(equalTo: creditCardBackgroundView.topAnchor, constant: 0),
+            creditCardOfferView.centerXAnchor.constraint(equalTo: creditCardBackgroundView.centerXAnchor)
+        ])
         
     }
     
@@ -444,12 +468,10 @@ class TickerOrderViewController: UIViewController {
     //MARK: - ServiceTableViewCell Action:
     @objc func ridingTimeSelectionCellTapped () {
         print("ridingTimeSelectionCellTapped")
-        
     }
     
     @objc func carriageSelectionCellTapped () {
         print("carriageSelectionCellTapped")
-        
     }
     
     @objc func numberOfPassengersCellTapped (_ sender: UITableViewCell) {
@@ -502,7 +524,6 @@ class TickerOrderViewController: UIViewController {
     
     //MARK: - Segmented Control Action:
     @objc func segmentedControlTapped (_ sender: UISegmentedControl) {
-//        changeSegmentedControlLinePosition()
         print("segmentedControl's selectedIndex is \(segmentedControl.selectedSegmentIndex)")
         
         switch segmentedControl.selectedSegmentIndex {
@@ -511,11 +532,12 @@ class TickerOrderViewController: UIViewController {
             nonReservedBackgroundView.isHidden = true
             print(segmentedControl.selectedSegmentIndex)
         case 1:
-            backgroundView.isHidden = true
+            backgroundView.isHidden            = true
             nonReservedBackgroundView.isHidden = true
+            configureCreditCardOfferBackgroundView ()
             print(segmentedControl.selectedSegmentIndex)
         case 2:
-            backgroundView.isHidden = true
+            backgroundView.isHidden            = true
             nonReservedBackgroundView.isHidden = false
             configureNonReservedBackgroundView ()
             print(segmentedControl.selectedSegmentIndex)

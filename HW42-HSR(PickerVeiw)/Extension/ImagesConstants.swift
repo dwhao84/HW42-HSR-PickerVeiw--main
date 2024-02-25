@@ -62,7 +62,7 @@ struct Images {
     static let nonReservationImage     = UIImage(named: "nonReservationImage")!
     
     // CreditCardOfferView:
-    static let rectangleImage          = UIImage(systemName: "rectangle")!
-    static let checkmarkRectangleImage = UIImage(systemName: "checkmark.rectangle.fill")!
+    static let square                  = UIImage(systemName: "square")!
+    static let checkmarkSquare         = UIImage(systemName: "checkmark.square")!
     static let asterisk                = UIImage(systemName: "asterisk")!
 }

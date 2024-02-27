@@ -27,15 +27,15 @@ class CreditCardOfferView: UIView {
     var midCardNumberTextField: UITextField     = UITextField() /// ____ --
     
     // MARK: - UIView:
-//    let policyView: UIView = UIView()
-    let policyTextView: UITextView = UITextView()// 我已閱讀商務升等優惠規則/標準車廂優惠規則並且同意遵守所有規定
-    
-    
+    let informationTextView: UIView = UIView()
+    let policyTextView: UITextView = UITextView() // 我已閱讀商務升等優惠規則/標準車廂優惠規則並且同意遵守所有規定
+
     // MARK: - UIButton:
     let loginButton: UIButton                  = UIButton(type: .system) /// 登入查詢
     let trainOffersButton: UIButton            = UIButton(type: .system) /// 查看商務升等/標準車廂對號座優惠
-    let squareButton: UIButton              = UIButton(type: .system) /// squareButton
+    let squareButton: UIButton                 = UIButton(type: .system) /// squareButton
 
+    // MARK: - UIImageView
     var informationImageView: UIImageView      = UIImageView()           /// information icon
 
     // MARK: UIStackView:
@@ -62,30 +62,33 @@ class CreditCardOfferView: UIView {
     func setupUI ()  {
         self.backgroundColor = Colors.white
         
-        // Set up UILabel
+        // UILabel
         configureDescriptionTitleLabel ()
         configureNoticeLabel           ()
         
+        // UITextField & UILabel
         configureBeginningPartCardNumberTextField ()
-        configureDashLineLabel()
+        configureDashLineLabel                    ()
         configureMiddlePartCardNumberTextField    ()
-        configureDashLineTwoLabel()
-        configureHiddenCardNumberLabel()
-        configureDashLineThreeLabel()
-        configureSecHiddenCardNumberLabel()
+        configureDashLineTwoLabel                 ()
+        configureHiddenCardNumberLabel            ()
+        configureDashLineThreeLabel               ()
+        configureSecHiddenCardNumberLabel         ()
         
-        // Set up UIButton
+        // UIButton
         configureLoginButton       ()
         configureTrainOffersButton ()
-        configureSquareButton   ()
-        configurePolicyTextView ()
+        configureSquareButton      ()
+        configurePolicyTextView    ()
         
-        configureInfoImageView ()
+        // UIImageView
+        configureInfoImageView     ()
         
+        // UIStackView
         configureCardNumberStackView     ()
         configureSeatsBonusInfoStackView ()
         configureSearchSectionStackView  ()
-        configurePolicyStackView ()
+        configurePolicyStackView         ()
     }
 
 
@@ -171,7 +174,16 @@ class CreditCardOfferView: UIView {
     
     
     // MARK: - Configure UITextView:
-    /// Width: 340 Height: 400
+    // Width: 340 Height: 400
+    func configureInfomationTextView () {
+        // 1
+        /* 本系統僅檢核您持有之信用卡是否參與本專案。*/
+        // 2
+        /* 優惠車票依各發卡銀行規定須扣抵紅利點數、哩程數；如點數不足或不符優惠資格者，各發卡行將收取加價費用或票價差額，訂票前請務必詳閱各銀行規則。 */
+        // 3
+        /* 如您持有的美國運通卡有參與本活動，請持卡至各車站售票窗口購買。*/
+    }
+
     func configurePolicyTextView () {
         policyTextView.backgroundColor   = Colors.clear
         policyTextView.isEditable        = false
@@ -206,7 +218,7 @@ class CreditCardOfferView: UIView {
         policyTextView.frame            = CGRect(x: 60, y: 410, width: 275, height: 60)
         self.addSubview(policyTextView)
     }
-    
+        
     // MARK: - Configure UIButton:
     // 登入查詢
     func configureLoginButton () {
@@ -310,9 +322,9 @@ class CreditCardOfferView: UIView {
         seatsBonusInfoStackView.addArrangedSubview(informationImageView)
         seatsBonusInfoStackView.addArrangedSubview(trainOffersButton)
         
-        informationImageView.widthAnchor.constraint(equalToConstant: 10).isActive  = true
-        trainOffersButton.widthAnchor.constraint(equalToConstant: 260).isActive = true
-        trainOffersButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        informationImageView.widthAnchor.constraint(equalToConstant: 10).isActive = true
+        trainOffersButton.widthAnchor.constraint(equalToConstant: 260).isActive   = true
+        trainOffersButton.heightAnchor.constraint(equalToConstant: 15).isActive   = true
     }
     
     func configureSearchSectionStackView () {
@@ -327,6 +339,18 @@ class CreditCardOfferView: UIView {
         searchSectionStackView.frame        = CGRect(x: 25, y: 300, width: 300, height: 80)
         loginButton.widthAnchor.constraint(equalToConstant: 340).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    
+    func configureCreditCardStackView () {
+        creditCardOfferStackView.axis         = .vertical
+        creditCardOfferStackView.distribution = .fill
+        creditCardOfferStackView.alignment    = .center
+        creditCardOfferStackView.spacing      = 2
+//        creditCardOfferStackView.addArrangedSubview(loginButton)
+//        creditCardOfferStackView.addArrangedSubview(seatsBonusInfoStackView)
+        
+        
+        self.addSubview(creditCardOfferStackView)
     }
     
     

@@ -11,7 +11,13 @@ class SearchTableViewCell: UITableViewCell {
     
     static let identifier = "SearchTableViewCell"
 
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton! {
+        didSet {
+            searchButton.setBackgroundColor(Colors.orangeBrandColor, for: .normal)
+            searchButton.setBackgroundColor(Colors.orangeBrandColorSelected, for: .highlighted)
+        }
+    }
+    
     @IBOutlet weak var savedItinerariesButton: UIButton!
 
     override func awakeFromNib() {
@@ -20,8 +26,6 @@ class SearchTableViewCell: UITableViewCell {
         // Initialization code
         self.backgroundColor   = .white
         searchButton.tintColor = Colors.orange
-        searchButton.setBackgroundColor(Colors.orangeBrandColor, for: .normal)
-        searchButton.setBackgroundColor(Colors.orangeBrandColorSelected, for: .highlighted)
     }
 
     static func nib () -> UINib {

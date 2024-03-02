@@ -185,9 +185,9 @@ class CreditCardOfferView: UIView {
         informationTextView.text = "注意事項\n\n* 本系統僅檢核您持有之信用卡是否參與本專案。\n\n* 優惠車票依各發卡銀行規定須扣抵紅利點數、哩程數；如點數不足或不符優惠資格者，各發卡行將收取加價費用或票價差額，訂票前請務必詳閱各銀行規則。\n\n* 如您持有的美國運通卡有參與本活動，請持卡至各車站售票窗口購買。\n\n* 欲使用商務升等優惠者，如搭乘區間較短或為敬老、愛心及孩童票，可能發生扣抵紅利或支付加價金額後，升等票價高於原價之情況，購票前敬請先行評估。\n\n* 本活動專區恕無法與其他優惠享重複折扣；欲購買早烏優惠者，請使用「一般訂票」功能預訂。"
         informationTextView.textColor       = Colors.darkGray
         informationTextView.backgroundColor = Colors.brightGray
-        informationTextView.font            = UIFont.systemFont(ofSize: 15.5)
+        informationTextView.font            = UIFont.systemFont(ofSize: 15)
         informationTextView.textAlignment   = .left
-        informationTextView.contentInset    = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
+        informationTextView.contentInset    = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         informationTextView.isScrollEnabled = false
         informationTextView.isEditable      = false
         informationTextView.isSelectable    = false
@@ -320,9 +320,8 @@ class CreditCardOfferView: UIView {
     }
     
     func configureSeatsBonusInfoStackView () {
-        informationImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
-//        trainOffersButton.widthAnchor.constraint(equalToConstant: 60).isActive    = true
-        trainOffersButton.heightAnchor.constraint(lessThanOrEqualToConstant:   20).isActive   = true
+        informationImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        trainOffersButton.heightAnchor.constraint(equalToConstant: 20).isActive   = true
         
         seatsBonusInfoStackView.axis         = .horizontal
         seatsBonusInfoStackView.distribution = .fill
@@ -361,14 +360,13 @@ class CreditCardOfferView: UIView {
     }
     
     func configureCreditCardStackView () {
-        
         informationTextView.widthAnchor.constraint(equalToConstant: 340).isActive  = true
-        informationTextView.heightAnchor.constraint(equalToConstant: 410).isActive = true
+        informationTextView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         
         creditCardOfferStackView.axis         = .vertical
         creditCardOfferStackView.distribution = .fill
         creditCardOfferStackView.alignment    = .center
-        creditCardOfferStackView.spacing      = 15
+        creditCardOfferStackView.spacing      = 10
         
         creditCardOfferStackView.addArrangedSubview(enterTextFieldStackView)
         creditCardOfferStackView.addArrangedSubview(informationTextView)
@@ -387,13 +385,12 @@ class CreditCardOfferView: UIView {
     }
     
     // Actions
-    @objc func loginButtonTapped () {
+    @objc func loginButtonTapped (_ sender: UIButton) {
         print("DEBUG PRINT: loginButtonTapped")
     }
     
-    @objc func squareButtonTapped () {
+    @objc func squareButtonTapped (_ sender: UIButton) {
         print("DEBUG PRINT: squareButtonTapped")
-        
     }
     
 }
@@ -401,10 +398,16 @@ class CreditCardOfferView: UIView {
 extension CreditCardOfferView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
+        hideKeyboardWhenTappedAround ()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
+        hideKeyboardWhenTappedAround ()
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        hideKeyboardWhenTappedAround ()
     }
     
     // textField's text length is 4.

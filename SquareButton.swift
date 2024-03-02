@@ -8,13 +8,19 @@
 import UIKit
 
 class SquareButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        configurationUpdateHandler = { button in
+                var config = button.configuration
+            config?.background.image = button.isHighlighted ? Images.square : Images.checkmarkSquare
+                button.configuration = config
+        }
+    }
 }

@@ -117,7 +117,7 @@ class NonReservedView: UIView {
     func cofigureFirstTextView () {
         firstTextView.text = "本功能僅限於高鐵車站內使用，請開啟藍牙功能後即可開始購票，如末能啟用購票功能，建議移動至車站售票區域操作，或改由自動售票機購票。"
         firstTextView.textColor                          = Colors.darkGray
-        firstTextView.font                               = UIFont.systemFont(ofSize: 14)
+        firstTextView.font                               = UIFont.systemFont(ofSize: 15)
         firstTextView.backgroundColor                    = Colors.clear
         firstTextView.textAlignment                      = .natural
         firstTextView.textContainer.maximumNumberOfLines = 0
@@ -126,7 +126,7 @@ class NonReservedView: UIView {
     func configureSecondTextView () {
         secondTextView.text = "本功能服務時間為每日05:00~23:59(特殊狀況除外)，若仍有購票需求請洽車站窗口或自動售票機。"
         secondTextView.textColor                          = Colors.darkGray
-        secondTextView.font                               = UIFont.systemFont(ofSize: 14)
+        secondTextView.font                               = UIFont.systemFont(ofSize: 15)
         secondTextView.backgroundColor                    = Colors.clear
         secondTextView.textAlignment                      = .natural
         secondTextView.textContainer.maximumNumberOfLines = 0

@@ -381,14 +381,13 @@ class TickerOrderViewController: UIViewController {
     func configureCreditCardOfferBackgroundView () {
         creditCardBackgroundView.layer.cornerRadius = 10
         creditCardBackgroundView.clipsToBounds      = true
+        
         creditCardBackgroundView.layer.borderColor  = UIColor.lightGray.cgColor
         creditCardBackgroundView.layer.borderWidth  = 0.2
         
         creditCardBackgroundView.backgroundColor = Colors.white
         creditCardBackgroundView.dropShadow()
-        
-        creditCardBackgroundView.heightAnchor.constraint(equalToConstant: 545).isActive = true
-        
+                
         view.addSubview(creditCardBackgroundView)
         
         creditCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -398,12 +397,20 @@ class TickerOrderViewController: UIViewController {
             creditCardBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             creditCardBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             creditCardBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            creditCardBackgroundView.heightAnchor.constraint(equalToConstant: 690)
         ])
+        
+        creditCardOfferView.layer.cornerRadius = 10
+        creditCardOfferView.clipsToBounds      = true
+        
+        // Credit Card Offer View
         creditCardBackgroundView.addSubview(creditCardOfferView)
-        creditCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        creditCardOfferView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            creditCardOfferView.topAnchor.constraint(equalTo: creditCardBackgroundView.topAnchor, constant: 0),
-            creditCardOfferView.centerXAnchor.constraint(equalTo: creditCardBackgroundView.centerXAnchor)
+            creditCardOfferView.topAnchor.constraint(equalTo: creditCardBackgroundView.topAnchor, constant: 20),
+            creditCardOfferView.leadingAnchor.constraint(equalTo: creditCardBackgroundView.leadingAnchor),
+            creditCardOfferView.trailingAnchor.constraint(equalTo: creditCardBackgroundView.trailingAnchor),
+            creditCardOfferView.heightAnchor.constraint(equalToConstant: 690)
         ])
         
     }
@@ -529,16 +536,19 @@ class TickerOrderViewController: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             backgroundView.isHidden            = false
+            creditCardBackgroundView.isHidden  = true
             nonReservedBackgroundView.isHidden = true
             print(segmentedControl.selectedSegmentIndex)
         case 1:
             backgroundView.isHidden            = true
             nonReservedBackgroundView.isHidden = true
+            creditCardOfferView.isHidden       = false
             configureCreditCardOfferBackgroundView ()
             print(segmentedControl.selectedSegmentIndex)
         case 2:
             backgroundView.isHidden            = true
             nonReservedBackgroundView.isHidden = false
+            creditCardOfferView.isHidden       = true
             configureNonReservedBackgroundView ()
             print(segmentedControl.selectedSegmentIndex)
         default:

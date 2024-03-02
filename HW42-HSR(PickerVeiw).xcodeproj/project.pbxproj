@@ -21,6 +21,8 @@
 		D3407D602B39D17700D9DFA2 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D5E2B39D17700D9DFA2 /* SearchTableViewCell.xib */; };
 		D3407D822B39F06100D9DFA2 /* ChooseStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */; };
 		D3407D832B39F06100D9DFA2 /* ChooseStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */; };
+		D3434A562B930F580084300B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3434A552B930F580084300B /* LoginButton.swift */; };
+		D3434A582B93150E0084300B /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3434A572B93150E0084300B /* SquareButton.swift */; };
 		D36617C02B706E5300937CC4 /* MyTicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36617BF2B706E5300937CC4 /* MyTicketCollectionViewCell.swift */; };
 		D38C05922B42D6860098E0B9 /* ServiceSelection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */; };
 		D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C05932B42D6E50098E0B9 /* StationName+Model.swift */; };
@@ -90,6 +92,8 @@
 		D3407D632B39E00200D9DFA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D3407D802B39F06100D9DFA2 /* ChooseStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStationTableViewCell.swift; sourceTree = "<group>"; };
 		D3407D812B39F06100D9DFA2 /* ChooseStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseStationTableViewCell.xib; sourceTree = "<group>"; };
+		D3434A552B930F580084300B /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		D3434A572B93150E0084300B /* SquareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
 		D36617BF2B706E5300937CC4 /* MyTicketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		D38C05912B42D6860098E0B9 /* ServiceSelection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceSelection+Model.swift"; sourceTree = "<group>"; };
 		D38C05932B42D6E50098E0B9 /* StationName+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationName+Model.swift"; sourceTree = "<group>"; };
@@ -106,7 +110,7 @@
 		D3F844032B5DEC48001AF2D1 /* RidingTimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingTimeSelectorView.swift; sourceTree = "<group>"; };
 		D3F844092B5FAE60001AF2D1 /* RidingDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidingDatePickerView.swift; sourceTree = "<group>"; };
 		EB631B972B3B1EE200D77A16 /* TickerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerOrderViewController.swift; sourceTree = "<group>"; };
-		EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreditCardOfferView.swift; path = "HW42-HSR(PickerVeiw)/CreditCardOfferView.swift"; sourceTree = "<group>"; };
+		EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardOfferView.swift; sourceTree = "<group>"; };
 		EB83C6F42B4473B100C78859 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		EB9FEA352B64F78900E1517E /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
 		EB9FEA372B64F87D00E1517E /* PayAndCollectTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayAndCollectTicketViewController.swift; path = "HW42-HSR(PickerVeiw)/ViewControllers/PayAndCollectTicketViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -152,8 +156,8 @@
 			children = (
 				D3407D632B39E00200D9DFA2 /* README.md */,
 				D3407D242B39A49800D9DFA2 /* HW42-HSR(PickerVeiw) */,
-				D3B2D1832B69F882002E3380 /* NonReservedView.swift */,
-				EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */,
+				D3434A5A2B9319D20084300B /* Views */,
+				D3434A592B9319BF0084300B /* UIButtons */,
 				D36617BF2B706E5300937CC4 /* MyTicketCollectionViewCell.swift */,
 				D3407D3B2B39A4AA00D9DFA2 /* HW42-HSR(PickerVeiw)Tests */,
 				D3407D452B39A4AA00D9DFA2 /* HW42-HSR(PickerVeiw)UITests */,
@@ -237,6 +241,24 @@
 				D3407D302B39A4AA00D9DFA2 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3434A592B9319BF0084300B /* UIButtons */ = {
+			isa = PBXGroup;
+			children = (
+				D3434A552B930F580084300B /* LoginButton.swift */,
+				D3434A572B93150E0084300B /* SquareButton.swift */,
+			);
+			name = UIButtons;
+			sourceTree = "<group>";
+		};
+		D3434A5A2B9319D20084300B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB6E5F972B825E6C00A4FEDA /* CreditCardOfferView.swift */,
+				D3B2D1832B69F882002E3380 /* NonReservedView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D377B5B32B3BEE6F00392B26 /* ChooseStationTableView */ = {
@@ -471,6 +493,7 @@
 				EB9FEA402B664D9F00E1517E /* UIViewController+Ext.swift in Sources */,
 				D38C05942B42D6E50098E0B9 /* StationName+Model.swift in Sources */,
 				EB9FEA3A2B64F8DA00E1517E /* LoadReservationViewController.swift in Sources */,
+				D3434A582B93150E0084300B /* SquareButton.swift in Sources */,
 				D3F843E72B57A654001AF2D1 /* AccountViewController.swift in Sources */,
 				EBA8F8622B62D2CA000237A4 /* MoreTableViewController.swift in Sources */,
 				EB9FEA362B64F78900E1517E /* MyTicketViewController.swift in Sources */,
@@ -481,6 +504,7 @@
 				D3B2D1842B69F882002E3380 /* NonReservedView.swift in Sources */,
 				D3F843E92B57B031001AF2D1 /* AccountTableViewCell+Model.swift in Sources */,
 				D3F843E32B576F84001AF2D1 /* UIColor+Ext.swift in Sources */,
+				D3434A562B930F580084300B /* LoginButton.swift in Sources */,
 				EBA8F8602B62ADF0000237A4 /* UIButton+Ext.swift in Sources */,
 				EB9FEA472B66B46900E1517E /* AlertViewController.swift in Sources */,
 				D3F8440A2B5FAE60001AF2D1 /* RidingDatePickerView.swift in Sources */,

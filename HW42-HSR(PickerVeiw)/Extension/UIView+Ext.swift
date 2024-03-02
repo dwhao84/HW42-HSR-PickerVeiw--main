@@ -53,4 +53,15 @@ extension UIView {
         layer.mask = maskLayer
     }
     
+    // MARK: Hide Keyboard.
+    func hideKeyboardWhenTappedAround() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                         action: #selector(hideKeyboard))
+        self.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func hideKeyboard() {
+        self.endEditing(true)
+        print("DEBUG PRINT: View hide Keyboard")
+    }
 }

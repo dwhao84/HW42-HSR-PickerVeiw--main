@@ -29,9 +29,9 @@ class CreditCardOfferView: UIView {
     let policyTextView: UITextView = UITextView() // 我已閱讀商務升等優惠規則/標準車廂優惠規則並且同意遵守所有規定
 
     // MARK: - UIButton:
-    let loginButton: UIButton                  = UIButton(type: .system) /// 登入查詢
+    let loginButton: UIButton                  = LoginButton(type: .system) /// 登入查詢
     let trainOffersButton: UIButton            = UIButton(type: .system) /// 查看商務升等/標準車廂對號座優惠
-    let squareButton: UIButton                 = UIButton(type: .system) /// squareButton
+    let squareButton: UIButton                 = SquareButton(type: .system) /// squareButton
 
     // MARK: - UIImageView
     var informationImageView: UIImageView      = UIImageView()           /// information icon
@@ -93,6 +93,10 @@ class CreditCardOfferView: UIView {
         configureEnterSTextFieldtackView ()
         
         configureCreditCardStackView()
+        
+        // Targets:
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        squareButton.addTarget(self, action: #selector(squareButtonTapped), for: .touchUpInside)
     }
 
 
@@ -143,22 +147,24 @@ class CreditCardOfferView: UIView {
     // MARK: - Configure UITextField:
     func configureBeginningPartCardNumberTextField () {
         initialCardNumberTextField.frame        = CGRect(x: 0, y: 0, width: 70, height: 30)
-        initialCardNumberTextField.borderStyle  = .none
-        initialCardNumberTextField.textColor    = Colors.black
-        initialCardNumberTextField.font         = UIFont.systemFont(ofSize: 17)
-        initialCardNumberTextField.delegate     = self
-        initialCardNumberTextField.keyboardType = .numberPad
+        initialCardNumberTextField.borderStyle   = .none
+        initialCardNumberTextField.textColor     = Colors.black
+        initialCardNumberTextField.font          = UIFont.systemFont(ofSize: 17)
+        initialCardNumberTextField.delegate      = self
+        initialCardNumberTextField.keyboardType  = .numberPad
+        initialCardNumberTextField.textAlignment = .center
         initialCardNumberTextField.addBottomBorder()
         self.addSubview(initialCardNumberTextField)
     }
     
     func configureMiddlePartCardNumberTextField () {
-        midCardNumberTextField.frame        = CGRect(x: 0, y: 0, width: 70, height: 30)
-        midCardNumberTextField.borderStyle  = .none
-        midCardNumberTextField.textColor    = Colors.black
-        midCardNumberTextField.font         = UIFont.systemFont(ofSize: 17)
-        midCardNumberTextField.delegate     = self
-        midCardNumberTextField.keyboardType = .numberPad
+        midCardNumberTextField.frame         = CGRect(x: 0, y: 0, width: 70, height: 30)
+        midCardNumberTextField.borderStyle   = .none
+        midCardNumberTextField.textColor     = Colors.black
+        midCardNumberTextField.font          = UIFont.systemFont(ofSize: 17)
+        midCardNumberTextField.delegate      = self
+        midCardNumberTextField.keyboardType  = .numberPad
+        midCardNumberTextField.textAlignment = .center
         midCardNumberTextField.addBottomBorder()
         self.addSubview(midCardNumberTextField)
     }
@@ -182,6 +188,9 @@ class CreditCardOfferView: UIView {
         informationTextView.font            = UIFont.systemFont(ofSize: 15.5)
         informationTextView.textAlignment   = .left
         informationTextView.contentInset    = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
+        informationTextView.isScrollEnabled = false
+        informationTextView.isEditable      = false
+        informationTextView.isSelectable    = false
         self.addSubview(informationTextView)
     }
 
@@ -311,9 +320,9 @@ class CreditCardOfferView: UIView {
     }
     
     func configureSeatsBonusInfoStackView () {
-        informationImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        trainOffersButton.widthAnchor.constraint(equalToConstant: 60).isActive    = true
-        trainOffersButton.heightAnchor.constraint(equalToConstant: 20).isActive   = true
+        informationImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+//        trainOffersButton.widthAnchor.constraint(equalToConstant: 60).isActive    = true
+        trainOffersButton.heightAnchor.constraint(lessThanOrEqualToConstant:   20).isActive   = true
         
         seatsBonusInfoStackView.axis         = .horizontal
         seatsBonusInfoStackView.distribution = .fill
@@ -353,16 +362,13 @@ class CreditCardOfferView: UIView {
     
     func configureCreditCardStackView () {
         
-        descriptionTitleLabel.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        descriptionTitleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
         informationTextView.widthAnchor.constraint(equalToConstant: 340).isActive  = true
         informationTextView.heightAnchor.constraint(equalToConstant: 410).isActive = true
         
         creditCardOfferStackView.axis         = .vertical
         creditCardOfferStackView.distribution = .fill
         creditCardOfferStackView.alignment    = .center
-        creditCardOfferStackView.spacing      = 20
+        creditCardOfferStackView.spacing      = 15
         
         creditCardOfferStackView.addArrangedSubview(enterTextFieldStackView)
         creditCardOfferStackView.addArrangedSubview(informationTextView)
@@ -376,20 +382,43 @@ class CreditCardOfferView: UIView {
             creditCardOfferStackView.topAnchor.constraint(equalTo:      self.topAnchor),
             creditCardOfferStackView.leadingAnchor.constraint(equalTo:  self.leadingAnchor),
             creditCardOfferStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            creditCardOfferStackView.bottomAnchor.constraint(equalTo:   self.bottomAnchor, constant: -5)
+            creditCardOfferStackView.bottomAnchor.constraint(equalTo:   self.bottomAnchor)
         ])
     }
     
+    // Actions
+    @objc func loginButtonTapped () {
+        print("DEBUG PRINT: loginButtonTapped")
+    }
     
+    @objc func squareButtonTapped () {
+        print("DEBUG PRINT: squareButtonTapped")
+        
+    }
     
 }
 
 extension CreditCardOfferView: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+    }
+    
+    // textField's text length is 4.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // get the current text, or use an empty string if that failed
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 4
+    }
 }
 
 // MARK: - Preview for CreditCardView.
-#Preview(traits: .fixedLayout(width: 390, height: 690), body: {
+#Preview(traits: .fixedLayout(width: 390, height: 710), body: {
     let creditCardOfferView = CreditCardOfferView()
     return creditCardOfferView
    })

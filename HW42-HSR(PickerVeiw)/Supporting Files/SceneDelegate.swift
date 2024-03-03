@@ -63,11 +63,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabBarController () -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.barTintColor  = Colors.white
-        tabBarController.viewControllers      = [createMyTicketViewController(),
-                                                 createTicketOrderViewController(),
-                                                 createPayAndCollectViewController(),
+        tabBarController.viewControllers      = [createMyTicketViewController       (),
+                                                 createTicketOrderViewController    (),
+                                                 createPayAndCollectViewController  (),
                                                  createLoadReservationViewController(),
-                                                 createMoreTableViewController()]
+                                                 createMoreTableViewController      ()]
         tabBarController.tabBar.tintColor     = Colors.orange
         tabBarController.tabBar.isTranslucent = true
         let standardAppearance = UITabBarAppearance()

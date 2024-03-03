@@ -346,14 +346,16 @@ class TickerOrderViewController: UIViewController {
     
     func changeSegmentedControlLinePosition() {
         UIView.animate(withDuration: 0.3) {
+            // Calculate the width of each segment
             let segmentWidth = self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)
-            let offsetX = segmentWidth * CGFloat(self.segmentedControl.selectedSegmentIndex) + 50
+            // Calculate the offset x based on the selected segment index
+            let offsetX = segmentWidth * CGFloat(self.segmentedControl.selectedSegmentIndex)
+            // Update the underlineView's x position to align with the selected segment
             self.underlineView.frame.origin.x = offsetX + self.segmentedControl.frame.minX
-            
             print("offsetX Value is \(offsetX)")
         }
     }
-    
+
     func constraintBackgroundView () {
         backgroundView.layer.cornerRadius = 10
         backgroundView.clipsToBounds      = true
@@ -546,28 +548,28 @@ class TickerOrderViewController: UIViewController {
             backgroundView.isHidden            = false
             creditCardBackgroundView.isHidden  = true
             nonReservedBackgroundView.isHidden = true
-            print(segmentedControl.selectedSegmentIndex)
+            print("DEBUG PRINT: Case \(segmentedControl.selectedSegmentIndex)")
         case 1:
             backgroundView.isHidden            = true
             creditCardBackgroundView.isHidden  = false
             creditCardOfferView.isHidden       = false
             nonReservedBackgroundView.isHidden = true
             configureCreditCardOfferBackgroundView ()
-            print(segmentedControl.selectedSegmentIndex)
+            print("DEBUG PRINT: Case \(segmentedControl.selectedSegmentIndex)")
         case 2:
             backgroundView.isHidden            = true
             nonReservedBackgroundView.isHidden = false
             creditCardOfferView.isHidden       = true
             creditCardBackgroundView.isHidden  = true
             configureNonReservedBackgroundView ()
-            print(segmentedControl.selectedSegmentIndex)
+            print("DEBUG PRINT: Case \(segmentedControl.selectedSegmentIndex)")
         default:
             print("default")
         }
-
+        changeSegmentedControlLinePosition ()
     }
     
-    // MARK: - UIButton Action:
+    // MARK: - UIButton Actions:
     @objc func speakerBarButtonTapped (_ sender: UIButton) {
         print("speakerBarButtonTapped")
     }

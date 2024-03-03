@@ -69,14 +69,16 @@ class MyTicketViewController: UIViewController {
         ticketCollectionView.delegate        = self
         ticketCollectionView.dataSource      = self
         ticketCollectionView.isScrollEnabled = false
-        setupCollectionView ()
+        setupCollectionView    ()
+        
+        ticketCollectionView.layer.borderColor = Colors.brightGray.cgColor
+        ticketCollectionView.layer.borderWidth = 0
     }
     
     func setupCollectionView () {
         // Set up cornerRadius.
         ticketCollectionView.layer.cornerRadius = 10
         ticketCollectionView.clipsToBounds      = true
-
         // Set up Auto-Layout.
         view.addSubview(ticketCollectionView)
         ticketCollectionView.translatesAutoresizingMaskIntoConstraints = false

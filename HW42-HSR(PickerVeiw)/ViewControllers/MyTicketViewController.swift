@@ -8,7 +8,7 @@
 import UIKit
 
 class MyTicketViewController: UIViewController {
-
+    
     let reservationNumberLabel: UILabel = UILabel()
     let quantityLabel: UILabel          = UILabel()
     
@@ -34,21 +34,21 @@ class MyTicketViewController: UIViewController {
         let itemSpace: Double = 1
         let columnCount: Double = 1
         let sectionInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20) // 假設的邊界內距
-
+        
         // 修改後的寬度計算
         let width = floor((UIScreen.main.bounds.width - itemSpace * (columnCount - 1) - sectionInsets.left - sectionInsets.right) / columnCount)
-
-         let flowLayout = UICollectionViewFlowLayout()
-         flowLayout.scrollDirection = .vertical
-
-         flowLayout.itemSize                = CGSize(width: width, height: width)
-         flowLayout.estimatedItemSize       = .zero
-         flowLayout.minimumLineSpacing      = itemSpace
-         flowLayout.minimumInteritemSpacing = itemSpace
-
-         let ticketCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-         return ticketCollectionView
-     }()
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        
+        flowLayout.itemSize                = CGSize(width: width, height: width)
+        flowLayout.estimatedItemSize       = .zero
+        flowLayout.minimumLineSpacing      = itemSpace
+        flowLayout.minimumInteritemSpacing = itemSpace
+        
+        let ticketCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        return ticketCollectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,13 +61,13 @@ class MyTicketViewController: UIViewController {
         configureBackwardButton    ()
         configurePageControl       ()
         constraintBottomStackView  ()
-        addTarget                  ()
+        addTargets                 ()
         
         self.view.backgroundColor = Colors.brightGray
         
         ticketCollectionView.register(MyTicketCollectionViewCell.self, forCellWithReuseIdentifier: MyTicketCollectionViewCell.identifier)
-        ticketCollectionView.delegate   = self
-        ticketCollectionView.dataSource = self
+        ticketCollectionView.delegate        = self
+        ticketCollectionView.dataSource      = self
         ticketCollectionView.isScrollEnabled = false
         setupCollectionView ()
     }
@@ -76,8 +76,7 @@ class MyTicketViewController: UIViewController {
         // Set up cornerRadius.
         ticketCollectionView.layer.cornerRadius = 10
         ticketCollectionView.clipsToBounds      = true
-        
-        
+
         // Set up Auto-Layout.
         view.addSubview(ticketCollectionView)
         ticketCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -169,16 +168,12 @@ class MyTicketViewController: UIViewController {
         
         forwardButton.setBackgroundColor(Colors.clear, for: .normal)
         forwardButton.setBackgroundColor(Colors.systemGray4, for: .selected)
-//        forwardButton.layer.borderWidth = 2
-//        forwardButton.layer.borderColor = Colors.black.cgColor
         view.addSubview(forwardButton)
     }
     
     func configureBackwardButton () {
         backwardButton.setImage(Images.backwardImage, for: .normal)
         backwardButton.tintColor = Colors.navigationBarColor
-//        backwardButton.layer.borderWidth = 2
-//        backwardButton.layer.borderColor = Colors.black.cgColor
         view.addSubview(backwardButton)
     }
     
@@ -190,8 +185,6 @@ class MyTicketViewController: UIViewController {
         pageControl.hidesForSinglePage            = true
         pageControl.backgroundStyle               = .minimal
         pageControl.direction                     = .leftToRight
-//        pageControl.layer.borderColor = Colors.black.cgColor
-//        pageControl.layer.borderWidth = 1
         view.addSubview(pageControl)
     }
     
@@ -226,16 +219,13 @@ class MyTicketViewController: UIViewController {
         bottomOnTopStackView.alignment    = .fill
         bottomOnTopStackView.spacing      = 20
         
-//        bottomOnTopStackView.layer.borderColor = Colors.black.cgColor
-//        bottomOnTopStackView.layer.borderWidth = 1
-        
         NSLayoutConstraint.activate([
             bottomOnTopStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomOnTopStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
     
-    func addTarget () {
+    func addTargets () {
         backwardButton.addTarget(self, action: #selector(backwardButtonTapped), for: .touchUpInside)
         forwardButton.addTarget(self, action: #selector(forwardButtonTapped), for: .touchUpInside)
         pageControl.addTarget(self, action: #selector(pageControlValueChanged), for: .valueChanged)
@@ -252,7 +242,7 @@ class MyTicketViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
-
+    
     @objc func backwardButtonTapped (_ sender: UIButton) {
         print("DEGUG PRINT: backwardButtonTapped")
         pageControl.currentPage = 0
@@ -271,21 +261,22 @@ class MyTicketViewController: UIViewController {
         print("DEGUG PRINT: Index is \(pageControlIndex)")
     }
 }
-    extension MyTicketViewController: UICollectionViewDataSource {
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-                    1
+extension MyTicketViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = ticketCollectionView.dequeueReusableCell(withReuseIdentifier: MyTicketCollectionViewCell.identifier, for: indexPath) as? MyTicketCollectionViewCell else {
+            fatalError("Failed to deqeue cell")
         }
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = ticketCollectionView.dequeueReusableCell(withReuseIdentifier: MyTicketCollectionViewCell.identifier, for: indexPath) as? MyTicketCollectionViewCell else {
-                        fatalError("Failed to deqeue cell")
-                    }
-                    ticketCollectionView.reloadData()
-                    return cell
-                }
-            }
-    extension MyTicketViewController: UICollectionViewDelegate {
-                
-        }
+        ticketCollectionView.reloadData()
+        return cell
+    }
+}
+extension MyTicketViewController: UICollectionViewDelegate {
+    
+}
+
 #Preview {
     UINavigationController(rootViewController: MyTicketViewController())
 }

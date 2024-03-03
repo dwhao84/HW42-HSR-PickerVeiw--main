@@ -276,14 +276,18 @@ class RidingTimeViewController: UIViewController, UICalendarSelectionSingleDateD
     }
     
     // Actions
-    @objc func doneButtonTapped () {
-        print("DEBUG PRINT: doneButtonTapped")
-        self.view.endEditing(true)
+    fileprivate func selectedTimeText() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let selectedTime = dateFormatter.string(from: datePicker.date)
         let selectedTimeAddText = selectedTime + " 後出發"
         fromTimeTextField.text = selectedTimeAddText
+        self.view.endEditing(true)
+    }
+    
+    @objc func doneButtonTapped () {
+        print("DEBUG PRINT: doneButtonTapped")
+        selectedTimeText()
     }
     
     @objc func todayButtonTapped () {

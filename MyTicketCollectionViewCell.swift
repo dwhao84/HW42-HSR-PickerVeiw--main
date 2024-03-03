@@ -70,11 +70,51 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         constraintsTrainTimeInfoView ()
         
         constraintsCollectionViewCell ()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.contentView.backgroundColor = UIColor.clear
+
+        setupShadow()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configureTopViewLabels     ()
+        constriantsTopView         ()
+        
+        configureTrainNumberLabels ()
+        constraintsTrainNumberView  ()
+        
+        constaintsTrainTimeInfoView ()
+        
+        configuretrainInfoLabels    ()
+        configureTrainInfoView      ()
+        
+        configureTrainTimeInfoViewLabels ()
+        constraintsTrainTimeInfoView ()
+        
+        constraintsCollectionViewCell ()
+        self.contentView.backgroundColor = UIColor.clear
+
+        setupShadow()
+    }
+    
+    override func layoutSubviews() {
+           super.layoutSubviews()
+           // 设置阴影路径可以提高性能
+           self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+       }
+       
+       private func setupShadow() {
+           // 关键是将阴影添加到 cell 本身，而不是 contentView
+           self.layer.shadowColor = UIColor.black.cgColor
+           self.layer.shadowOffset = CGSize(width: 0, height: 0)
+           self.layer.shadowRadius = 0
+           self.layer.shadowOpacity = 0.5
+           self.layer.masksToBounds = false
+           
+           // 为 contentView 设置圆角和裁剪
+           self.contentView.layer.masksToBounds = true
+       }
+        
     // MARK: - Top View
     func configureTopViewLabels () {
         reservationNumberLabel.text          = "訂位代號 07562974"
@@ -93,9 +133,6 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     }
     
     func constriantsTopView () {
-        
-        
-        
         topView.backgroundColor   = Colors.brightGray
         self.addSubview(topView)
         
@@ -137,19 +174,16 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         ticketRandomLabel.textAlignment    = .right
         trainNumberView.addSubview(ticketRandomLabel)
         
-        trainNumberView.backgroundColor = Colors.white
-        
         // Add the gray color bottom Line on the top of the trainInfoView.
         addTopGrayLine ()
     }
     
     func constraintsTrainNumberView () {
-//        trainNumberView.layer.borderWidth = 0.1
-//        trainNumberView.layer.borderColor = Colors.lightGray.cgColor
-        
         trainNumberView.backgroundColor = Colors.white
+        trainNumberView.layer.cornerRadius = 10
+        trainNumberView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.addSubview(trainNumberView)
-        
+                
         trainNumberView.translatesAutoresizingMaskIntoConstraints  = false
         ridingDateLabel.translatesAutoresizingMaskIntoConstraints   = false
         ticketRandomLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -158,6 +192,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
             trainNumberView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             trainNumberView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             trainNumberView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            
             trainNumberView.heightAnchor.constraint(equalToConstant: 30),
             ridingDateLabel.centerYAnchor.constraint(equalTo: trainNumberView.centerYAnchor),
             ridingDateLabel.leadingAnchor.constraint(equalTo: trainNumberView.leadingAnchor, constant: 15),
@@ -373,7 +408,7 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
         carriageSeatsNumberLabel.textAlignment      = .center
         trainInfoView.addSubview(carriageSeatsNumberLabel)
         
-        trainInfoView.backgroundColor = Colors.secondBrightGray
+        trainInfoView.backgroundColor = Colors.systemGray5
        
         // Add the Orange color block on the top of the trainInfoView.
         addOrangeColorBlock ()
@@ -409,11 +444,12 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     
     // MARK: Constraint TrainInfoView
     func configureTrainInfoView () {
-        self.addSubview(trainInfoView)
-        trainInfoView.translatesAutoresizingMaskIntoConstraints = false
-        
         trainInfoView.layer.cornerRadius = 10
         trainInfoView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        trainInfoView.layer.masksToBounds = false
+        
+        self.addSubview(trainInfoView)
+        trainInfoView.translatesAutoresizingMaskIntoConstraints = false
         
         // trainNumberStackView:
         trainNumberStackView.addArrangedSubview(trainNumberTitleLabel)
@@ -468,6 +504,10 @@ class MyTicketCollectionViewCell: UICollectionViewCell {
     }
     
     func constraintsCollectionViewCell () {
+        collectionViewCellStackView.backgroundColor = Colors.brightGray
+        collectionViewCellStackView.layer.cornerRadius = 10
+        collectionViewCellStackView.clipsToBounds      = true
+        
         self.addSubview(collectionViewCellStackView)
         collectionViewCellStackView.translatesAutoresizingMaskIntoConstraints = false
         

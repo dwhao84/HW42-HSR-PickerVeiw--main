@@ -298,7 +298,6 @@ class TickerOrderViewController: UIViewController {
         segmentedControl.insertSegment(withTitle: "一般訂票",  at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "信用卡優惠", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "今日自由座", at: 2, animated: true)
-        
         segmentedControl.sizeToFit()
         segmentedControl.backgroundColor         = .clear
         segmentedControl.tintColor               = .white
@@ -738,9 +737,8 @@ extension TickerOrderViewController: UITableViewDataSource {
             serviceTableViewCell.serviceStatusLabel.text = servicesData[indexPath.row].service
             serviceTableViewCell.serviceImageView.image  = servicesData[indexPath.row].serviceIcon
             serviceTableViewCell.statusLabel.text        = servicesData[indexPath.row].subtitleService
-
-            
             return serviceTableViewCell
+            
         } else {
             print("Nothing")
         }

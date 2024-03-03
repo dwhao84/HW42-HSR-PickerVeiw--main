@@ -91,12 +91,11 @@ class CreditCardOfferView: UIView {
         configurePolicyStackView         ()
         
         configureEnterSTextFieldtackView ()
-        
         configureCreditCardStackView()
         
         // Targets:
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        squareButton.addTarget(self, action: #selector(squareButtonTapped), for: .touchUpInside)
+        addTargets ()
+
     }
 
 
@@ -173,15 +172,6 @@ class CreditCardOfferView: UIView {
     // MARK: - Configure UITextView:
     // Width: 340 Height: 400
     func configureInfomationTextView () {
-        /*
-        * 本系統僅檢核您持有之信用卡是否參與本專案。
-        * 優惠車票依各發卡銀行規定須扣抵紅利點數、哩程數；如點數不足或不符優惠資格者，各發卡行將收取加價費用或票價差額，訂票前請務必詳閱各銀行規則。
-        * 如您持有的美國運通卡有參與本活動，請持卡至各車站售票窗口購買。
-        * 欲使用商務升等優惠者，如搭乘區間較短或為敬老、愛心及孩童票，可能發生扣抵紅利或支付加價金額後，升等票價高於原價之情況，購票前敬請先行評估。
-        * 本活動專區恕無法與其他優惠享重複折扣；欲購買早烏優惠者，請使用「一般訂票」功能預訂。
-         */
-        
-        // 確認一下有沒有分行的寫法
         informationTextView.text = "注意事項\n\n* 本系統僅檢核您持有之信用卡是否參與本專案。\n\n* 優惠車票依各發卡銀行規定須扣抵紅利點數、哩程數；如點數不足或不符優惠資格者，各發卡行將收取加價費用或票價差額，訂票前請務必詳閱各銀行規則。\n\n* 如您持有的美國運通卡有參與本活動，請持卡至各車站售票窗口購買。\n\n* 欲使用商務升等優惠者，如搭乘區間較短或為敬老、愛心及孩童票，可能發生扣抵紅利或支付加價金額後，升等票價高於原價之情況，購票前敬請先行評估。\n\n* 本活動專區恕無法與其他優惠享重複折扣；欲購買早烏優惠者，請使用「一般訂票」功能預訂。"
         informationTextView.textColor       = Colors.darkGray
         informationTextView.backgroundColor = Colors.brightGray
@@ -275,19 +265,19 @@ class CreditCardOfferView: UIView {
     // MARK: - UIStackView:
     func configureCardNumberStackView      () {
         initialCardNumberTextField.widthAnchor.constraint(equalToConstant: 70).isActive   = true
-        initialCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive  = true
+//        initialCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive  = true
         dashLineLabel.widthAnchor.constraint(equalToConstant: 10).isActive                = true
-        dashLineLabel.heightAnchor.constraint(equalToConstant: 20).isActive               = true
+//        dashLineLabel.heightAnchor.constraint(equalToConstant: 20).isActive               = true
         midCardNumberTextField.widthAnchor.constraint(equalToConstant: 70).isActive       = true
-        midCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive      = true
+//        midCardNumberTextField.heightAnchor.constraint(equalToConstant: 30).isActive      = true
         dashLineTwoLabel.widthAnchor.constraint(equalToConstant: 10).isActive             = true
-        dashLineTwoLabel.heightAnchor.constraint(equalToConstant: 20).isActive            = true
+//        dashLineTwoLabel.heightAnchor.constraint(equalToConstant: 20).isActive            = true
         hiddenCardNumberLabel.widthAnchor.constraint(equalToConstant: 60).isActive        = true
-        hiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive       = true
+//        hiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive       = true
         dashLineThreeLabel.widthAnchor.constraint(equalToConstant: 10).isActive           = true
-        dashLineThreeLabel.heightAnchor.constraint(equalToConstant: 20).isActive          = true
+//        dashLineThreeLabel.heightAnchor.constraint(equalToConstant: 20).isActive          = true
         secondHiddenCardNumberLabel.widthAnchor.constraint(equalToConstant: 60).isActive  = true
-        secondHiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        secondHiddenCardNumberLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         creditCardNumberStackView.axis         = .horizontal
         creditCardNumberStackView.distribution = .fill
@@ -304,10 +294,10 @@ class CreditCardOfferView: UIView {
     }
     
     func configurePolicyStackView () {
-        squareButton.widthAnchor.constraint(equalToConstant: 25).isActive    = true
-        squareButton.heightAnchor.constraint(equalToConstant: 25).isActive   = true
+//        squareButton.widthAnchor.constraint(equalToConstant: 25).isActive    = true
+//        squareButton.heightAnchor.constraint(equalToConstant: 25).isActive   = true
         policyTextView.widthAnchor.constraint(equalToConstant: 285).isActive = true
-        policyTextView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        policyTextView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         policyStackView.axis         = .horizontal
         policyStackView.distribution = .fill
@@ -345,8 +335,8 @@ class CreditCardOfferView: UIView {
     }
     
     func configureEnterSTextFieldtackView () {
-        descriptionTitleLabel.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        descriptionTitleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        descriptionTitleLabel.widthAnchor.constraint(equalToConstant: 140).isActive = true
+//        descriptionTitleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         enterTextFieldStackView.axis         = .vertical
         enterTextFieldStackView.distribution = .fill
@@ -355,13 +345,11 @@ class CreditCardOfferView: UIView {
         
         enterTextFieldStackView.addArrangedSubview(descriptionTitleLabel)
         enterTextFieldStackView.addArrangedSubview(creditCardNumberStackView)
-        
         self.addSubview(enterTextFieldStackView)
     }
     
     func configureCreditCardStackView () {
         informationTextView.widthAnchor.constraint(equalToConstant: 340).isActive  = true
-        informationTextView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         
         creditCardOfferStackView.axis         = .vertical
         creditCardOfferStackView.distribution = .fill
@@ -382,6 +370,11 @@ class CreditCardOfferView: UIView {
             creditCardOfferStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             creditCardOfferStackView.bottomAnchor.constraint(equalTo:   self.bottomAnchor)
         ])
+    }
+    
+    func addTargets () {
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        squareButton.addTarget(self, action: #selector(squareButtonTapped), for: .touchUpInside)
     }
     
     // Actions
@@ -425,9 +418,3 @@ extension CreditCardOfferView: UITextFieldDelegate {
     let creditCardOfferView = CreditCardOfferView()
     return creditCardOfferView
    })
-
-
-//        優惠車票依各發卡銀行規定須扣抵紅利點數、哩程數；如點數不足或不符優惠資格者，各發卡行將收取加價費用或票價差額，訂票前請務必詳閱各銀行規則。
-//        如您持有的美國運通卡有參與本活動，請持卡至各車站售票窗口購買。
-//        欲使用商務升等優惠者，如搭乘區間較短或為敬老、愛心及孩童票，可能發生扣抵紅利或支付加價金額後，升等票價高於原價之情況，購票前敬請先行評估。
-//        本活動專區恕無法與其他優惠享重複折扣；欲購買早烏優惠者，請使用「一般訂票」功能預訂。
